@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wine Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0e0c0a; --bg2: #161310; --bg3: #1e1a16; --card: #1a1612;
+    --gold: #c9a96e; --gold2: #e8c98a; --gold-dim: #8a6e42;
+    --cream: #f0e8d8; --muted: #8a7e6e; --border: rgba(201,169,110,0.15);
+    --border2: rgba(201,169,110,0.3);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--cream); font-family: 'Outfit', sans-serif; font-weight: 300; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  .site-header { padding: 3rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .site-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
+  .header-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-dim); font-weight: 400; margin-bottom: 0.75rem; }
+  .header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: 0.02em; margin-bottom: 0.3rem; }
+  .header-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold-dim); font-style: italic; }
+  .controls { padding: 1rem 1.25rem 0.75rem; position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .search-wrap { position: relative; margin-bottom: 0.75rem; }
+  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gold-dim); font-size: 14px; pointer-events: none; }
+  #search { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px 10px 38px; color: var(--cream); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.2s; }
+  #search::placeholder { color: var(--muted); }
+  #search:focus { border-color: var(--gold-dim); }
+  .filter-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; margin-bottom: 6px; }
+  .filter-row::-webkit-scrollbar { display: none; }
+  .filter-btn { flex-shrink: 0; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .icon-btn { flex-shrink: 0; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 12px; cursor: pointer; transition: all 0.15s; white-space: nowrap; font-family: 'Outfit', sans-serif; }
+  .icon-btn:hover { border-color: var(--gold-dim); }
+  .icon-btn.active { background: var(--bg3); border-color: var(--gold); color: var(--cream); }
+  .price-section { margin-top: 2px; }
+  .price-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .price-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); }
+  .price-display { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold); }
+  .price-presets { display: flex; gap: 5px; margin-bottom: 8px; }
+  .preset-btn { flex: 1; padding: 5px 4px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; font-size: 11px; cursor: pointer; transition: all 0.15s; text-align: center; white-space: nowrap; }
+  .preset-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .preset-btn.active { background: rgba(201,169,110,0.12); border-color: var(--gold); color: var(--gold2); }
+  .slider-track-wrap { position: relative; height: 28px; display: flex; align-items: center; padding: 0 2px; }
+  .slider-track { position: absolute; left: 2px; right: 2px; height: 3px; background: var(--bg3); border-radius: 2px; border: 1px solid var(--border); }
+  .slider-fill { position: absolute; height: 3px; background: var(--gold-dim); border-radius: 2px; pointer-events: none; }
+  .range-input { position: absolute; width: 100%; -webkit-appearance: none; appearance: none; height: 3px; background: transparent; outline: none; pointer-events: none; left: 0; }
+  .range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); border: 2px solid var(--bg); cursor: pointer; pointer-events: all; box-shadow: 0 0 0 1px var(--gold-dim); }
+  .range-input::-webkit-slider-thumb:hover { background: var(--gold2); }
+  #range-min { z-index: 3; } #range-max { z-index: 4; }
+  .active-summary { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 6px 0 0; }
+  .active-tag { display: flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 8px; border-radius: 12px; background: rgba(201,169,110,0.1); border: 1px solid var(--border2); color: var(--gold); }
+  .active-tag button { background: none; border: none; color: var(--gold-dim); cursor: pointer; font-size: 11px; padding: 0; line-height: 1; margin-left: 2px; }
+  .clear-all { font-size: 11px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 3px 6px; font-family: 'Outfit', sans-serif; text-decoration: underline; text-underline-offset: 2px; }
+  .legend { margin: 0.75rem 1.25rem 0; padding: 10px 14px; background: var(--bg3); border-radius: 8px; border: 1px solid var(--border); }
+  .legend-title { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 6px; }
+  .legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 12px; }
+  .legend-item { font-size: 11px; color: var(--muted); }
+  .result-count { font-size: 11px; color: var(--muted); padding: 0.6rem 1.25rem 0; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+  .wine-list { padding: 0 1rem 5rem; }
+  .empty { text-align: center; padding: 4rem 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--gold-dim); }
+  .section-head { padding: 1.75rem 1.25rem 0.4rem; }
+  .section-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--gold); display: block; margin-bottom: 0.3rem; }
+  .section-intro { font-size: 13px; color: var(--muted); line-height: 1.6; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .wine-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--card); overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+  .wine-card:hover { border-color: var(--border2); }
+  .wine-card.open { border-color: var(--gold-dim); }
+  .wine-card-top { display: flex; align-items: flex-start; padding: 14px 16px; gap: 12px; }
+  .wine-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .wine-main { flex: 1; min-width: 0; }
+  .wine-number { font-size: 10px; letter-spacing: 0.12em; color: var(--gold-dim); margin-bottom: 2px; }
+  .wine-producer { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--cream); line-height: 1.2; }
+  .wine-name-line { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+  .wine-icons { display: flex; gap: 3px; flex-wrap: wrap; margin-top: 6px; align-items: center; }
+  .wine-icon-badge { font-size: 14px; line-height: 1; }
+  .cert-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: rgba(90,138,90,0.15); border: 1px solid rgba(90,138,90,0.3); color: #7ab87a; margin-left: 2px; }
+  .wine-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+  .wine-price { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); }
+  .chevron { color: var(--gold-dim); font-size: 12px; transition: transform 0.25s; }
+  .wine-card.open .chevron { transform: rotate(180deg); }
+  .wine-expand { display: none; padding: 0 16px 16px; border-top: 1px solid var(--border); animation: fadeIn 0.2s ease; }
+  .wine-card.open .wine-expand { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+  .tableside-line { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; font-weight: 300; color: var(--gold2); line-height: 1.5; padding: 14px 0 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 4px; }
+  .detail-block.full { grid-column: 1 / -1; }
+  .detail-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 5px; }
+  .note-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .note-pill { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border2); color: var(--gold); background: rgba(201,169,110,0.05); }
+  .pairing-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pairing-tag { font-size: 11px; padding: 3px 10px; border-radius: 6px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+  .expand-section { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
+  .expand-section-title { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .expand-section-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .expand-section-body p { margin-bottom: 8px; }
+  .expand-section-body p:last-child { margin-bottom: 0; }
+  .trivia-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .trivia-bullet { color: var(--gold-dim); flex-shrink: 0; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-eyebrow">Staff Reference</div>
+  <div class="header-title">The Wine List</div>
+  <div class="header-subtitle">Fine Dining Wine Guide</div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input id="search" type="text" placeholder="Search producer, grape, region, descriptor…" oninput="render()">
+  </div>
+  <div class="filter-row" id="cat-filters"></div>
+  <div class="filter-row" id="icon-filters"></div>
+  <div class="price-section">
+    <div class="price-header">
+      <span class="price-label">Price Range</span>
+      <span class="price-display" id="price-display">All prices</span>
+    </div>
+    <div class="price-presets">
+      <button class="preset-btn" data-min="0" data-max="100" onclick="setPreset(this)">Under $100</button>
+      <button class="preset-btn" data-min="100" data-max="150" onclick="setPreset(this)">$100–150</button>
+      <button class="preset-btn" data-min="150" data-max="200" onclick="setPreset(this)">$150–200</button>
+      <button class="preset-btn" data-min="200" data-max="9999" onclick="setPreset(this)">$200+</button>
+    </div>
+    <div class="slider-track-wrap">
+      <div class="slider-track"></div>
+      <div class="slider-fill" id="slider-fill"></div>
+      <input type="range" class="range-input" id="range-min" min="0" max="900" step="10" value="0" oninput="onSlider()">
+      <input type="range" class="range-input" id="range-max" min="0" max="900" step="10" value="900" oninput="onSlider()">
+    </div>
+  </div>
+  <div class="active-summary" id="active-summary"></div>
+</div>
+
+<div class="legend">
+  <div class="legend-title">Icon Key</div>
+  <div class="legend-grid">
+    <div class="legend-item">☁️ Light-bodied</div><div class="legend-item">⚖️ Medium-bodied</div>
+    <div class="legend-item">💪 Full-bodied</div><div class="legend-item">🍋 High acidity</div>
+    <div class="legend-item">🧂 Mineral</div><div class="legend-item">🌸 Floral</div>
+    <div class="legend-item">🌿 Herbal / savory</div><div class="legend-item">🪵 Oak</div>
+    <div class="legend-item">🍞 Toasty / lees</div><div class="legend-item">🧈 Creamy / buttery</div>
+    <div class="legend-item">🍊 Natural / orange</div><div class="legend-item">🏺 Large format</div>
+    <div class="legend-item">🍑 Fruit-forward</div><div class="legend-item">🍒 Red fruit forward</div>
+  </div>
+</div>
+
+<div class="result-count" id="result-count"></div>
+<div class="wine-list" id="wine-list"></div>
+
+<script>
+const SECTION_INTROS = {
+  "Champagne": "The real thing. Every bottle in this section is from the Champagne appellation in northeastern France — the only place in the world legally permitted to call itself Champagne. Method, terroir, and house style vary enormously. Know the differences and you'll be able to steer any guest to exactly what they want.",
+  "Other Bubbles": "Sparkling wine made everywhere else. Austria, Italy, Oregon, Virginia, Brazil — each with its own grape, method, and personality. These aren't consolation prizes for guests who can't afford Champagne. Several are extraordinary on their own terms and worth championing.",
+  "Grüner Veltliner": "Austria's signature grape. Think Sauvignon Blanc's precision crossed with Chardonnay's weight — but drier, more savory, and with a white pepper kick that's entirely its own. This is the wine Austria built its reputation on, and our list goes deep."
+};
+
+const WINES = [
+  // ── CHAMPAGNE ──────────────────────────────────────────────
+  {
+    id:"209", cat:"Champagne", type:"sparkling",
+    producer:"Beau Joie", name:"Brut, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:95, cert:"",
+    icons:["⚖️","🍞","🌸","🍑"],
+    notes:["White peach","Brioche","Honeysuckle","Toasted almond","Creamy mousse"],
+    tableside:"Beau Joie comes in a copper-clad bottle that looks unlike anything else on the table — which is half the point. The wine inside is genuinely good: round, toasty, and approachable. A strong opening move for a celebratory table.",
+    pairings:["Oysters on the half shell","Fried chicken","Brie","Light canapés"],
+    story:"Beau Joie was created with presentation in mind — the hammered copper bottle is designed to stand out on an ice bucket or a table, and it works. But the wine isn't just packaging: it's a Pinot Noir-dominant blend from Grand Cru and Premier Cru vineyards with real richness and a satisfying creamy finish. For guests who want something that makes a visual statement without sacrificing quality, this is the answer.",
+    trivia:["The copper bottle acts as an insulator, keeping the wine cooler for longer once out of the ice bucket — a genuine functional benefit, not just aesthetics.","Beau Joie sources fruit exclusively from Grand Cru and Premier Cru villages, which represents the top tier of Champagne's village classification system.","The name translates loosely to 'beautiful joy' — it was conceived explicitly as a celebration wine."]
+  },
+  {
+    id:"200", cat:"Champagne", type:"sparkling",
+    producer:"Beau Joie", name:"Brut Nature, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:180, cert:"",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Green apple","Lemon curd","Chalk","Flint","Bone dry finish"],
+    tableside:"Zero dosage — no sugar added after disgorgement, none. This is Champagne in its most naked form: pure fruit, pure mineral, pure acidity. For guests who find most Champagne too sweet or too soft, this is the answer.",
+    pairings:["Oysters","Sea urchin","Ceviche","Sashimi"],
+    story:"Most Champagne receives a small addition of sugar dissolved in wine — called dosage — right before the final cork goes in. It softens edges, rounds out acidity, and makes the wine more immediately approachable. Brut Nature skips that entirely. What you get is the wine as it actually is: unvarnished, high-acid, and mineral-driven. It's not for everyone, but for the guest who knows exactly what they want, it's a statement.",
+    trivia:["'Brut Nature,' 'Zero Dosage,' and 'Non-Dosé' all mean the same thing — no sugar added. The term 'Brut' on its own actually allows up to 12 grams of sugar per liter.","Without dosage to soften it, zero-dosage Champagne requires higher quality base wine — there's nowhere to hide.","The trend toward lower and zero dosage Champagnes has accelerated significantly since the 2010s as palates have moved toward drier, more mineral styles."]
+  },
+  {
+    id:"215", cat:"Champagne", type:"sparkling",
+    producer:"Billecart-Salmon", name:"Extra Brut, 2013", region:"Champagne, France", vintage:"2013", abv:"12%", price:301, cert:"",
+    icons:["💪","🍞","🧂"],
+    notes:["Hazelnut","Baked apple","Preserved lemon","White truffle","Toasted brioche","Lingering mineral finish"],
+    tableside:"A vintage Champagne from one of the great houses — meaning every grape in this bottle came from a single exceptional year, 2013, rather than a blend of multiple harvests. A decade of aging has done extraordinary things to it. This is a special occasion bottle.",
+    pairings:["Lobster","Pan-seared scallops","Aged Comté","Black truffle preparations"],
+    story:"Billecart-Salmon is a family-owned house in Mareuil-sur-Aÿ that has operated continuously since 1818 — through wars, phylloxera, the Great Depression, and every other catastrophe the 20th century threw at Champagne. Their house style is precision: lower dosage than most houses, longer aging on the lees, and a commitment to freshness over opulence. The 2013 vintage was challenging — a cold, late season — but produced wines of remarkable tension that have aged beautifully.",
+    trivia:["Billecart-Salmon has remained family-owned and operated for over 200 years — extraordinarily rare among Champagne houses, most of which are now owned by luxury conglomerates.","Vintage Champagne must be aged on the lees for a minimum of 3 years; prestige cuvées are often aged 8–10 years or more before release. This one has had over a decade.","The 2013 harvest in Champagne was one of the latest on record — grapes weren't picked until mid-October in many villages, producing wines with exceptional natural acidity."]
+  },
+  {
+    id:"203", cat:"Champagne", type:"sparkling",
+    producer:"Billecart-Salmon", name:"'N°2' Extra Brut, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:260, cert:"",
+    icons:["⚖️","🍋","🧂","🍞"],
+    notes:["Brioche","Green apple","Grapefruit pith","Chalk","Clean dry finish"],
+    tableside:"Billecart's serious non-vintage expression — bone-dry, mineral, and built around Chardonnay. More restrained than most NV Champagne, more cerebral. For the guest who finds standard Brut a bit too easy.",
+    pairings:["Oysters","Poached turbot","Caviar","Mild soft cheeses"],
+    story:"The 'N°2' designation signals this is their elevated non-vintage offering, sitting above the standard Brut in both price and intent. Chardonnay-dominant with extended lees aging, it's made in the same precision-first philosophy as everything Billecart produces. The extra brut designation means dosage is kept very low — this is a wine that asks something of the drinker rather than meeting them halfway.",
+    trivia:["Chardonnay-dominant Champagnes tend to be leaner and more mineral in their youth, developing richness with age — the opposite of Pinot Noir-dominant blends, which are rounder upfront.","The 'N°2' name is an internal house designation that positions it clearly in the Billecart lineup without needing to explain the classification system to guests.","Extra Brut allows 0–6 grams of sugar per liter; Brut allows up to 12. The difference is noticeable side by side."]
+  },
+  {
+    id:"221", cat:"Champagne", type:"sparkling",
+    producer:"Billecart-Salmon", name:"Rendez-Vous CINQ, Pinot Noir Extra Brut, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:173, cert:"",
+    icons:["⚖️","🌸","🍞"],
+    notes:["Wild strawberry","Rose petal","Cherry","Brioche","Soft spice"],
+    tableside:"A Pinot Noir-dominant blanc de noirs — red grapes vinified white, which gives it a delicate pink tinge and a red fruit character you don't find in Chardonnay-based Champagne. Elegant, perfumed, and slightly unexpected.",
+    pairings:["Salmon","Duck breast","Strawberry desserts","Charcuterie"],
+    story:"Blanc de noirs — 'white wine from black grapes' — is one of Champagne's most interesting styles. The juice of Pinot Noir and Pinot Meunier is naturally colorless; the color in red wine comes from extended skin contact. By pressing quickly and gently, you get a white wine with all of the aromatic complexity of a red grape variety. The result is something rounder and more fragrant than a Chardonnay-based Champagne, with a faint salmon blush and a fruit-forward character.",
+    trivia:["Blanc de noirs is one of the rarer styles in Champagne — most houses blend Chardonnay and Pinot Noir together rather than making them separately.","The 'Rendez-Vous' series from Billecart is designed to highlight individual grape variety expression rather than house blending philosophy.","Pinot Noir grown in Champagne is the same grape as red Burgundy — but the climate, winemaking, and sparkling process transform it into something completely unrecognizable."]
+  },
+  {
+    id:"226", cat:"Champagne", type:"sparkling",
+    producer:"Billecart-Salmon", name:"Rendez-Vous No.4, Chardonnay Extra Brut, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:173, cert:"",
+    icons:["☁️","🍋","🧂","🌸"],
+    notes:["Lemon verbena","White flower","Green apple","Chalk","Precise dry finish"],
+    tableside:"Blanc de blancs — 100% Chardonnay — at its most focused. Lean, electric, and mineral. If a guest wants to understand what Chardonnay tastes like before oak and butter get involved, this is a great place to start.",
+    pairings:["Oysters","Clams casino","Grilled sole","Goat cheese"],
+    story:"The companion piece to the CINQ — same series, same extra brut dosage, different grape. Where the Pinot Noir version is round and fragrant, this is all tension and precision. Blanc de blancs Champagne made from Côte des Blancs Chardonnay is about as pure an expression of that grape as exists anywhere in the world — no oak, no malolactic softening, just the fruit and the chalk it grew in.",
+    trivia:["The Côte des Blancs — the 'slope of whites' — is a ridge south of Épernay planted almost exclusively with Chardonnay. It's considered the spiritual home of blanc de blancs Champagne.","Champagne is the world's northernmost major wine region — the marginal climate means grapes rarely over-ripen, which is why the acidity is so pronounced.","Blanc de blancs ages exceptionally well — bottles from great years can evolve for 20–30 years, developing complexity while retaining freshness."]
+  },
+  {
+    id:"205", cat:"Champagne", type:"sparkling",
+    producer:"Delamotte", name:"Blanc de Blancs, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:224, cert:"",
+    icons:["☁️","🍋","🧂","🌸"],
+    notes:["Lemon curd","Oyster shell","White flower","Toasted almond","Chalky mineral finish"],
+    tableside:"Delamotte is the sister house to Salon — the most coveted blanc de blancs in all of Champagne — and they share the same vineyards in Le Mesnil-sur-Oger. In years when Salon isn't declared, that fruit goes into Delamotte. This is extraordinary Champagne at a fraction of what Salon costs.",
+    pairings:["Fine oysters","Sea urchin","Turbot","Lobster with light butter sauce"],
+    story:"Le Mesnil-sur-Oger is a Grand Cru village on the Côte des Blancs that many consider the single greatest source of Chardonnay in Champagne. The chalk here is unusually deep and pure, giving wines a minerality and tension that's almost startling. Salon, Delamotte's famous sibling, has only been produced in 37 vintages since it was first made in 1905 — the rest of the time, that fruit becomes this. For guests who know their Champagne, mention the Salon connection. It lands every time.",
+    trivia:["Salon is the only Champagne house that produces a single wine, from a single vineyard, in a single vintage. It's declared fewer than once every two years on average.","Delamotte and Salon have been under the same ownership since 1988 when Laurent-Perrier acquired both houses together.","Le Mesnil-sur-Oger's chalk soils are estimated to be over 70 million years old — remnants of an ancient seabed. The fossilized marine shells in the chalk are part of what gives the wine its distinctive mineral character."]
+  },
+  {
+    id:"217", cat:"Champagne", type:"sparkling",
+    producer:"Delamotte", name:"Rosé, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:187, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Raspberry","Wild strawberry","Rose petal","Brioche","Delicate red fruit finish"],
+    tableside:"Delamotte's rosé carries the same precision and minerality as their blanc de blancs, just with a layer of red fruit character from the addition of a small percentage of Pinot Noir red wine. Elegant rather than fruity — this is serious rosé Champagne.",
+    pairings:["Salmon tartare","Duck","Strawberry soufflé","Tuna crudo"],
+    story:"Rosé Champagne can be made two ways: either by briefly macerating the skins of red grapes with the juice (saignée method), or by blending a small amount of still red Pinot Noir wine into the base white Champagne before the second fermentation. Delamotte uses the blending method, which gives more control over the final color and flavor profile. The result is a wine that's recognizably a Delamotte — restrained, mineral, precise — with a delicate blush and a red fruit lift.",
+    trivia:["Rosé Champagne is the only wine in France where blending red and white wine together is legally permitted under AOC rules.","The precise amount of red wine added to make rosé Champagne is a closely guarded secret at most houses — it typically ranges from 5–20% of the final blend.","Delamotte rosé is made primarily from Le Mesnil Chardonnay with Pinot Noir sourced from Ambonnay, one of the Montagne de Reims' most celebrated red fruit villages."]
+  },
+  {
+    id:"113", cat:"Champagne", type:"sparkling",
+    producer:"Dom Pérignon", name:"Brut, 2015", region:"Champagne, France", vintage:"2015", abv:"12.5%", price:499, cert:"",
+    icons:["💪","🍞","🧈","🌸"],
+    notes:["White truffle","Toasted almond","Candied citrus","Cream","Dark cherry","Extraordinary length"],
+    tableside:"Dom Pérignon needs no introduction, but the 2015 vintage deserves one — it was one of the warmest and most celebrated harvests of the decade, producing wine with unusual richness and depth. This is as good as it gets for a table-opening bottle.",
+    pairings:["Foie gras","Lobster bisque","Black truffle","Aged Parmesan","Beluga caviar"],
+    story:"Dom Pérignon is the prestige cuvée of Moët & Chandon, produced only in declared vintages — years the chef de cave considers exceptional enough to warrant the label. The monk Dom Pérignon himself didn't invent Champagne (that's a myth), but he did advance the craft of blending significantly in the late 17th century at the Abbey of Hautvillers. The 2015 vintage was the hottest growing season Champagne had seen in years, producing wines of uncommon richness and immediacy. A bottle like this is its own event.",
+    trivia:["Dom Pérignon is only made in declared vintages — roughly 6–8 out of every 10 years. In years where it isn't declared, the fruit goes into Moët's non-vintage blend.","The wine is typically released about 8 years after harvest — by the time it's on your list, it's already had nearly a decade of development.","Dom Pérignon releases wines in three 'plénitudes': P1 (initial release), P2 (second release, ~15 years), and P3 (~25 years). Each is considered a distinct wine with its own character."]
+  },
+  {
+    id:"223", cat:"Champagne", type:"sparkling",
+    producer:"Etienne Calsac", name:"Blanc de Blancs 'L'Échappée Belle,' NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:129, cert:"",
+    icons:["☁️","🍋","🧂"],
+    notes:["Lemon zest","Green apple","Sea spray","Chalk","Light brioche","Taut finish"],
+    tableside:"A grower Champagne — meaning the person who grew the grapes also made the wine, rather than selling the fruit to a large house. Etienne Calsac farms his own vineyards in Avize, one of Champagne's great Chardonnay villages. More terroir-specific and individual than anything a large house makes.",
+    pairings:["Oysters","Clams","Grilled fish","Lightly dressed salads"],
+    story:"Grower Champagne has become one of the most exciting categories in the wine world over the past two decades. For most of Champagne's history, small farmers sold their grapes to the big houses — Moët, Veuve Clicquot, Krug — who then blended them into house-style wines. The récoltant-manipulant (RM) designation means the farmer made the wine themselves, which tends to produce something more specific, more personal, and often more interesting. Calsac works tiny plots in Avize on the Côte des Blancs — his wines taste like exactly where they came from.",
+    trivia:["The large Champagne houses (négociant-manipulants, or NM) buy grapes from thousands of small growers — many of those growers now bottle some of their own production under the RM designation.","Avize is a Grand Cru village rated 100% in the Champagne échelle des crus system — the maximum possible classification.","Grower Champagnes rarely go through the same level of filtration and dosage as large-house wines, giving them a more individual, sometimes more rustic character."]
+  },
+  {
+    id:"109", cat:"Champagne", type:"sparkling",
+    producer:"Krug", name:"Grand Cuvée 172nd Edition, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:440, cert:"",
+    icons:["💪","🍞","🧈","🧂"],
+    notes:["Hazelnut","Dried apricot","Marzipan","Warm brioche","Honeysuckle","Extraordinary persistence"],
+    tableside:"Krug makes one wine — this one — and they've been perfecting it since 1843. The Grand Cuvée is a blend of up to 120 different wines from as many as 10 different vintages, assembled to express the house's idea of what Champagne should taste like. The 172nd Edition means it's the 172nd time they've made it. Nothing else tastes like this.",
+    pairings:["Lobster","Foie gras","Black truffle","Roasted chicken","Aged hard cheese"],
+    story:"Krug's philosophy is fundamentally different from every other Champagne house. Where most producers treat non-vintage Champagne as their standard offering and vintage wine as the prestige tier, Krug inverts this — the Grand Cuvée is the statement. It's aged for a minimum of six years before release (most NV Champagne ages 15 months), blended from a library of reserve wines going back decades, and made exclusively in small oak barrels for the first fermentation. The result is something so complex and layered it almost doesn't feel like the same category of wine as other Champagnes.",
+    trivia:["Krug ages all their wines — including the Grand Cuvée — in small 205-liter oak barrels for the first fermentation. Every other major house uses stainless steel. This alone sets the flavor profile apart.","The 'Edition' number on each Grand Cuvée release identifies the year of assembly and allows collectors to compare different iterations. The 172nd Edition has a different character than the 169th.","Joseph Krug founded the house in 1843 after leaving Jacquesson because he disagreed with their move toward simpler, less labor-intensive winemaking. His founding philosophy — that non-vintage Champagne should be as serious as vintage — has never changed."]
+  },
+  {
+    id:"111", cat:"Champagne", type:"sparkling",
+    producer:"Laurent-Perrier", name:"Grand Siècle, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:340, cert:"",
+    icons:["💪","🍞","🌸","🧂"],
+    notes:["Lemon zest","Granny Smith apple","Brioche","White flower","Toasted hazelnut","Silk-fine mousse"],
+    tableside:"Grand Siècle is Laurent-Perrier's answer to vintage Champagne — but rather than using a single year, they blend three exceptional vintages together. The result is something no single year could produce: a wine with the complexity of aged Champagne and the consistency of a great blender.",
+    pairings:["Turbot","Scallops in cream sauce","Langoustines","Mild aged cheese"],
+    story:"Laurent-Perrier created Grand Siècle in 1959 with a specific philosophy: the best Champagne comes not from a single year but from combining the best qualities of multiple exceptional vintages. Each edition blends three years that complement each other, with the proportions adjusted each time based on what the chef de cave is trying to achieve. It's technically non-vintage, but it's made with the same care and intention as the finest prestige cuvées.",
+    trivia:["Grand Siècle is sometimes called 'the ideal Champagne' — a phrase Laurent-Perrier has used in their marketing for decades, and one that's hard to argue with once you've tasted it.","Laurent-Perrier is also the producer behind the iconic Cuvée Rosé — one of the world's best-selling luxury rosé Champagnes — made by the rarer saignée (skin maceration) method.","The house is based in Tours-sur-Marne, one of the few villages in Champagne that has Grand Cru status for both Pinot Noir and Chardonnay."]
+  },
+  {
+    id:"E1", cat:"Champagne", type:"sparkling",
+    producer:"Moët & Chandon", name:"Brut Impérial, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:124, cert:"",
+    icons:["⚖️","🍞","🌸","🍑"],
+    notes:["Green apple","White peach","Brioche","Light citrus","Approachable finish"],
+    tableside:"The world's best-selling Champagne — and for good reason. Moët Brut Impérial is the house style of the largest and most influential estate in Champagne: balanced, crowd-pleasing, consistently made, and recognizable to virtually every guest at the table.",
+    pairings:["Aperitivo","Fried starters","Light fish","Soft cheeses"],
+    story:"Moët & Chandon owns more vineyard land in Champagne than any other house — over 1,000 hectares — and produces roughly 30 million bottles of Brut Impérial every year. That scale makes true single-vineyard expression impossible, but it also means extraordinary resources for sourcing. The house style is deliberately accessible: Pinot Noir-dominant for body, balanced dosage for approachability, and consistent year to year regardless of harvest conditions. It's not the most complex Champagne on the list, but it's the one most guests already know and love.",
+    trivia:["Moët & Chandon was founded in 1743, making it one of the oldest Champagne houses still in operation. It has supplied Champagne to Napoleon Bonaparte, and every French monarch and head of state since Louis XV.","The house is now part of LVMH (Louis Vuitton Moët Hennessy), the world's largest luxury goods conglomerate. LVMH also owns Krug, Veuve Clicquot, and several other Champagne houses.","Formula 1 podium celebrations have used Moët since 1966 — one of the most visible product placements in sports history."]
+  },
+  {
+    id:"201", cat:"Champagne", type:"sparkling",
+    producer:"Pierre Moncuit", name:"Blanc de Blancs Grand Cru, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:206, cert:"",
+    icons:["☁️","🍋","🧂"],
+    notes:["Lemon","White flower","Chalk","Fine bubbles","Long mineral finish"],
+    tableside:"A grower Champagne from Le Mesnil-sur-Oger — one of the most coveted addresses in all of Champagne for Chardonnay. Pierre Moncuit has farmed the same Grand Cru plots for generations. Precise, mineral, and distinctly site-specific.",
+    pairings:["Oysters","Raw shellfish","Grilled fish","Light starters"],
+    story:"The Moncuit family has been growing Chardonnay in Le Mesnil-sur-Oger for generations and making Champagne from their own fruit since the 1960s. Le Mesnil is one of only a handful of villages in Champagne rated Grand Cru for Chardonnay, and the chalk here is some of the deepest and most mineral-rich in the region. This is about as direct an expression of a single Grand Cru village as you'll find on any list.",
+    trivia:["Le Mesnil-sur-Oger is home to Salon, arguably the most sought-after Champagne in the world. Pierre Moncuit and Salon sit on essentially the same chalk — the price difference reflects brand, not terroir.","Grower Champagnes from Le Mesnil are some of the best-kept secrets in the category. The village's reputation is made by Salon and Delamotte, which means small producers like Moncuit fly under the radar.","Blanc de blancs from Le Mesnil needs time — most serious examples benefit from 5–10 years of aging, far more than the average NV Champagne."]
+  },
+  {
+    id:"225", cat:"Champagne", type:"sparkling",
+    producer:"Tarlant", name:"Brut Zero Nature, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:152, cert:"",
+    icons:["☁️","🍋","🧂"],
+    notes:["Grapefruit","Lime zest","Wet stone","Lemon pith","Austere dry finish"],
+    tableside:"Zero dosage from one of Champagne's most respected grower families. No sugar, no softening, no compromise — just fruit and chalk in their purest form. Not easy drinking, but if a guest wants to understand what Champagne actually is underneath all the house style and dosage, this is the wine.",
+    pairings:["Raw oysters","Sea urchin","Ceviche","Sashimi","Minimal preparations"],
+    story:"The Tarlant family has been growing grapes in Œuilly since 1687 — one of the oldest continuous winegrowing families in all of Champagne. They were among the early adopters of the grower-Champagne movement and have become a reference point for terroir-driven, minimal-intervention sparkling wine. The Brut Zero is their clearest statement of philosophy: no dosage, no compromise, no house style obscuring what the vineyard actually tastes like.",
+    trivia:["Tarlant farms over 14 hectares across 56 different plots in the Marne Valley — an unusual diversity that gives them a wide palette to blend from.","The family has records of continuous winegrowing on their land going back to 1687, making them one of the longest-established family estates in Champagne.","Zero-dosage Champagne has seen a surge in popularity among sommeliers and wine professionals, who appreciate its transparency and aging potential."]
+  },
+  {
+    id:"206", cat:"Champagne", type:"sparkling",
+    producer:"Vilmart & Cie", name:"Brut 1er Cru 'Grand Cellier,' NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:222, cert:"",
+    icons:["⚖️","🍞","🧈","🪵"],
+    notes:["Toasted brioche","Butterscotch","Ripe apple","Vanilla","Warm spice","Rich creamy mousse"],
+    tableside:"Vilmart is one of the few Champagne growers who ferments and ages in oak barrels — large old foudres, not new barrique — which gives the wine a richness and texture that steel-fermented Champagnes simply don't have. For guests who love the buttery, toasty side of Champagne, this is the bottle.",
+    pairings:["Roast chicken","Lobster with butter","Mushroom risotto","Aged Gruyère"],
+    story:"Vilmart & Cie has been farming Premier Cru vineyards in Rilly-la-Montagne on the Montagne de Reims since 1890. What sets them apart is their commitment to oak: while virtually every major house and most growers use stainless steel for fermentation, Vilmart uses large old oak foudres for both the first and second fermentations. The result is Champagne with a richness and texture that tastes almost like still Burgundy with bubbles — in the best possible way.",
+    trivia:["Vilmart uses large foudres — barrels of 600–2000 liters — rather than the small 225-liter barriques used in Burgundy. Large format means less oak contact and flavor, but more oxygen exposure and texture development.","The Grand Cellier is Vilmart's flagship non-vintage, aged on the lees for a minimum of 3 years before release — double the legal minimum.","René Champs, who took over from his parents in the 1990s, is widely credited with elevating Vilmart to international recognition by doubling down on the oak-aging approach rather than modernizing."]
+  },
+  {
+    id:"202", cat:"Champagne", type:"sparkling",
+    producer:"Veuve A. Devaux", name:"Brut 'D Millésime,' 2014", region:"Champagne, France", vintage:"2014", abv:"12%", price:180, cert:"",
+    icons:["⚖️","🍞","🧂"],
+    notes:["Toasted brioche","Poached pear","Lemon cream","Dried flowers","Long finish"],
+    tableside:"A vintage Champagne from a cooperative house that punches well above its weight. The 2014 harvest was one of the cleaner and more precise of the decade — cool, late, and mineral. This has had a decade to develop and it shows.",
+    pairings:["Roasted fish","Veal","Mushroom dishes","Soft-ripened cheeses"],
+    story:"Devaux is the brand of the Union Auboise, a cooperative of over 800 growers farming more than 1,400 hectares in the Aube — the southern and often-overlooked half of the Champagne appellation. The Aube grows predominantly Pinot Noir and produces wines with a darker, earthier character than the classic Marne Valley style. The D Millésime is their flagship vintage expression, made in exceptional years only.",
+    trivia:["The Aube is sometimes called the 'other Champagne' — it sits closer to Chablis geographically than to Épernay, and the soils are Kimmeridgian limestone rather than pure chalk.","Cooperative Champagne often gets dismissed by wine enthusiasts, but the best cooperatives control extraordinary vineyard resources that no single estate could match.","The 2014 vintage was initially underrated at release but has consistently impressed tasters over time — a classic 'sleeper' vintage."]
+  },
+  {
+    id:"224", cat:"Champagne", type:"sparkling",
+    producer:"Veuve A. Devaux", name:"Brut 'Cuvée D,' NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:125, cert:"",
+    icons:["⚖️","🍞","🌸","🍑"],
+    notes:["White peach","Brioche","Citrus blossom","Light honey","Clean finish"],
+    tableside:"Devaux's entry point — fresh, well-made, balanced, and fairly priced for the quality. An honest crowd-pleaser from an underrated house. Good for tables that want something approachable without paying prestige prices.",
+    pairings:["Aperitivo","Fried calamari","Mild fish","Brie"],
+    story:"The Cuvée D is Devaux's standard non-vintage expression — a Pinot Noir-dominant blend designed for immediate enjoyment. It's not the most complex bottle on the list, but it's consistent, well-made, and offers genuine value relative to more famous house names at similar price points. A useful tool for tables that want Champagne without ceremony.",
+    trivia:["The 'Veuve' in Veuve A. Devaux means 'widow' in French — a common designation in Champagne that refers to a widow who took over a house after her husband's death. The most famous is Veuve Clicquot.","Devaux sources fruit from across the Aube, which is why the Pinot Noir character tends to be more prominent and earthy than Marne Valley Champagnes.","Despite being cooperative-produced, Devaux has won multiple international awards and is frequently cited by critics as one of France's best-value luxury sparkling wines."]
+  },
+  {
+    id:"219", cat:"Champagne", type:"sparkling",
+    producer:"Veuve A. Devaux", name:"Blanc de Blancs, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:197, cert:"",
+    icons:["☁️","🍋","🧂","🌸"],
+    notes:["Lemon","Green apple","Chalk","White flower","Crisp mineral finish"],
+    tableside:"Devaux's all-Chardonnay expression — lighter, crisper, and more mineral than their Pinot Noir-dominant wines. A good bridge for guests who like white Burgundy but want bubbles, or who find standard Champagne too rich.",
+    pairings:["Fine oysters","Shellfish","Sashimi","Light salads"],
+    story:"Less common in the Devaux lineup than their Pinot-driven blends, this blanc de blancs shows the house working outside its Aube comfort zone. The Chardonnay here comes from higher-acid plots, producing something leaner and more mineral than the Cuvée D. For guests who've had enough buttery Champagne and want something more electric.",
+    trivia:["Blanc de blancs represents a small fraction of total Champagne production — most of the appellation's wine contains both Chardonnay and Pinot Noir or Meunier.","The Aube produces very little Chardonnay relative to the Marne Valley — sourcing 100% Chardonnay for a blanc de blancs requires either blending across regions or finding specific cooler plots within the Aube.","All-Chardonnay Champagne is typically lower in alcohol than Pinot-dominant blends due to the grape's naturally lower sugar at harvest in this climate."]
+  },
+  {
+    id:"211", cat:"Champagne", type:"sparkling",
+    producer:"Veuve A. Devaux", name:"Grand Reserve, NV", region:"Champagne, France", vintage:"NV", abv:"12%", price:94, cert:"",
+    icons:["⚖️","🍞","🌸","🍑"],
+    notes:["Apple","Citrus","Light brioche","Soft mousse","Easy finish"],
+    tableside:"The entry point into Devaux — honest, well-made, approachable Champagne at a price that won't make anyone flinch. For tables that want bubbles without a discussion about vintages and dosage levels.",
+    pairings:["Aperitivo","Starters","Fried foods","Mild cheeses"],
+    story:"The Grand Reserve sits at the base of the Devaux lineup and is designed purely for accessibility. It's not trying to be complex or age-worthy — it's trying to be delicious right now, easy to pair with anything, and priced fairly. Sometimes that's exactly what a table needs.",
+    trivia:["Devaux's Grand Reserve is one of the few Champagnes at this price point made by a house that also produces serious prestige-level wines — the winemaking infrastructure and quality standards flow down through the entire lineup.","The cooperative model allows Devaux to source from over 800 growers, giving the blending team an unusually wide range of fruit to work with even for their most basic cuvée.","At this price, it competes directly with Prosecco and Cava for casual table pours — but it's made by the traditional méthode champenoise with 15+ months of aging on the lees."]
+  },
+
+  // ── OTHER BUBBLES ──────────────────────────────────────────
+  {
+    id:"105", cat:"Other Bubbles", type:"sparkling",
+    producer:"Hillinger", name:"Hill, Brut Reserve, 2016", region:"Burgenland, Austria", vintage:"2016", abv:"12%", price:85, cert:"",
+    icons:["⚖️","🍞","🌸","🍑"],
+    notes:["Baked apple","Brioche","White peach","Light citrus","Creamy finish"],
+    tableside:"Austrian sparkling wine made by traditional méthode champenoise — same method as Champagne, completely different grape and place. From Burgenland in the east of Austria, near the Hungarian border. Richer and more textured than most Austrian Sekt.",
+    pairings:["Grilled fish","Roast chicken","Mild soft cheeses","Aperitivo"],
+    story:"Leo Hillinger is one of Austria's most internationally recognized wine producers, known for building a stunning hillside winery in Jois overlooking Lake Neusiedl. The Hill Sekt is made by the traditional method — secondary fermentation in bottle, extended lees aging — which gives it the biscuity, textured quality usually associated with Champagne. Burgenland's slightly warmer climate produces a riper, more generous style than the cool-climate Austrian Sekt from further north.",
+    trivia:["Burgenland is home to Lake Neusiedl, a vast shallow lake that creates a unique microclimate — warm summers for ripeness, foggy autumns for botrytis-affected sweet wines. The same conditions that make it ideal for Eiswein also produce unusually ripe sparkling grapes.","Hillinger's winery was built into a hillside and is partially underground, using geothermal cooling rather than mechanical refrigeration.","Austria has a long history of sparkling wine production — the category is called Sekt — but international recognition has only grown significantly in the last 20 years."]
+  },
+  {
+    id:"253", cat:"Other Bubbles", type:"sparkling",
+    producer:"Schloss Gobelsburg", name:"Blanc de Blancs Brut, NV", region:"Niederösterreich, Austria", vintage:"NV", abv:"12%", price:135, cert:"",
+    icons:["☁️","🍋","🧂"],
+    notes:["Lemon blossom","Green apple","Mineral","Fine persistent bubbles","Clean dry finish"],
+    tableside:"From the same estate as several of our top Grüner Veltliners, but in sparkling form. Gobelsburg makes this by the traditional method from estate Grüner Veltliner grapes. It tastes like a great Kamptal white wine with bubbles — which, in the best possible way, is exactly what it is.",
+    pairings:["Oysters","Steamed shellfish","Light starters","Austrian cuisine"],
+    story:"Schloss Gobelsburg has been making wine since 1171. The sparkling program is a more recent addition, but it draws on the same estate philosophy: restraint, precision, and terroir expression over house style. The Blanc de Blancs is made from Grüner Veltliner — not Chardonnay, as the 'blanc de blancs' terminology suggests in France. In Austria, the term simply means 'white wine from white grapes,' which opens it to any white variety.",
+    trivia:["In Champagne, blanc de blancs means 100% Chardonnay by convention. In Austria, it legally means any white grape variety — Grüner Veltliner Sekt qualifies, as does Riesling Sekt.","Gobelsburg's sparkling wine undergoes secondary fermentation in bottle using the traditional method — the same labor-intensive process used in Champagne, rather than the tank method used for Prosecco.","The estate's winemaker Michael Moosbrugger is also a master of still wines — his approach to the sparkling program borrows directly from his white wine philosophy of low intervention and site expression."]
+  },
+  {
+    id:"265", cat:"Other Bubbles", type:"sparkling",
+    producer:"Schloss Gobelsburg", name:"Brut Rosé Sekt Reserve, NV", region:"Niederösterreich, Austria", vintage:"NV", abv:"12%", price:128, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Wild strawberry","Raspberry","Rose petal","Citrus","Delicate mineral finish"],
+    tableside:"Gobelsburg's rosé Sekt — made from Zweigelt, Austria's signature red grape, vinified to show its floral, cherry-driven character in sparkling form. Elegant and precise in the same way all Gobelsburg wines are.",
+    pairings:["Salmon","Charcuterie","Strawberry preparations","Light duck dishes"],
+    story:"Zweigelt is Austria's most widely planted red grape, a crossing of Blaufränkisch and St. Laurent developed in the early 20th century. In still wine it can range from light and fresh to dark and structured. In sparkling form, it shows its most charming side: floral, red-fruited, and light on its feet. Gobelsburg brings their trademark restraint to it.",
+    trivia:["Zweigelt was developed in 1922 by Dr. Fritz Zweigelt at the Klosterneuburg wine research institute — he crossed Blaufränkisch and St. Laurent to create a grape suited to Austria's northern growing conditions.","Rosé Sekt made from Zweigelt is a distinctly Austrian style with no real international equivalent — the grape's floral character gives it a personality unlike any French or Italian rosé sparkling wine.","Gobelsburg's rosé undergoes the same traditional method secondary fermentation as their still white Sekt, with extended lees aging for texture."]
+  },
+  {
+    id:"108", cat:"Other Bubbles", type:"sparkling",
+    producer:"Steininger", name:"Zweigelt Sekt Reserve, 2016", region:"Niederösterreich, Austria", vintage:"2016", abv:"12%", price:58, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Red cherry","Raspberry","Light floral note","Fine bubbles","Clean dry finish"],
+    tableside:"A vintage Austrian rosé Sekt from Zweigelt — our most affordable sparkling option and genuinely one of the most interesting. Serve it to guests who think they know what sparkling wine is. They don't know this.",
+    pairings:["Aperitivo","Charcuterie","Light fish","Mild cheeses"],
+    story:"Steininger is a family estate in Langenlois in Kamptal — the same appellation as several of our top Grüner Veltliners. They've built a reputation for distinctive Sekt, particularly from native Austrian grape varieties. The Zweigelt Sekt is their calling card: a sparkling wine with no real international reference point, made from a grape most guests have never heard of, in a region not associated with sparkling wine. The conversation it generates is worth the pour.",
+    trivia:["Steininger produces several varietal Sekt bottlings — Grüner Veltliner, Riesling, Sauvignon Blanc, Zweigelt — each a completely different expression of the same méthode champenoise process.","Langenlois is Kamptal's main wine town and has been a wine-producing center since at least the 12th century, with documented sales records going back to 1137.","At $58, this is one of the best value traditional-method sparkling wines on the list — comparable in quality to Champagnes costing three times as much."]
+  },
+  {
+    id:"110", cat:"Other Bubbles", type:"sparkling",
+    producer:"Steininger", name:"Riesling Sekt, Heiligenstein, 2018", region:"Niederösterreich, Austria", vintage:"2018", abv:"12%", price:98, cert:"",
+    icons:["☁️","🍋","🧂","🌸"],
+    notes:["Peach blossom","Stone fruit","Beeswax","Vibrant acidity","Mineral persistence"],
+    tableside:"Sparkling Riesling from the Heiligenstein vineyard — one of Austria's most celebrated Riesling sites. The same plot that produces some of our most serious still Rieslings, but with bubbles. The minerality and fruit intensity of the site come through clearly even in sparkling form.",
+    pairings:["Smoked salmon","Oysters","River fish","Delicate shellfish"],
+    story:"Heiligenstein is a volcanic ridge in Kamptal that produces some of Austria's most distinctive Rieslings — mineral, precise, with a beeswax and dried-wildflower complexity that develops over time. Steininger is one of very few producers who makes a single-vineyard sparkling Riesling from this site. The result is something genuinely rare: a bottle where you can taste exactly where it came from, even through the secondary fermentation.",
+    trivia:["The petrol note in aged Riesling — and this shows it even young — comes from a compound called TDN (trimethyl dihydronaphthalene), which develops naturally as the wine ages and is specific to Riesling.","Heiligenstein's volcanic soils are geologically unlike most of the surrounding Kamptal, giving its wines an unusual mineral intensity that's identifiable even to beginning wine drinkers.","Single-vineyard sparkling wines are extraordinarily rare worldwide — the blending required for most sparkling wine production makes site specificity almost impossible."]
+  },
+  {
+    id:"112", cat:"Other Bubbles", type:"sparkling",
+    producer:"Steininger", name:"Sauvignon Blanc Sekt Reserve, 2020", region:"Niederösterreich, Austria", vintage:"2020", abv:"12%", price:65, cert:"",
+    icons:["☁️","🍋","🌿"],
+    notes:["Gooseberry","Lime","Cut grass","White grapefruit","Dry herbal finish"],
+    tableside:"Sparkling Sauvignon Blanc is almost unheard of outside of Austria. This is Steininger doing something genuinely unusual: taking one of the world's most aromatic white grapes and adding bubbles. The herbal, citrus-driven character of the grape comes through vividly.",
+    pairings:["Oysters","Green salads","Goat cheese","Grilled asparagus"],
+    story:"Sauvignon Blanc as a sparkling wine is a curiosity that Austria has largely to itself. In most wine regions, Sauvignon Blanc is made still and dry — the aromatics are considered too intense and too specific for the sparkling format. Steininger disagrees, and makes this Reserve Sekt by the traditional method. It's not for everyone, but for guests who are curious about what sparkling wine can be, it's a fascinating conversation.",
+    trivia:["Austria produces more variety in sparkling wine than almost any other country — Grüner Veltliner, Riesling, Sauvignon Blanc, Zweigelt, Pinot Blanc all appear as varietal Sekt from serious producers.","The traditional method (méthode champenoise) is used for all Steininger Sekt — each bottle undergoes secondary fermentation and is riddled and disgorged by hand.","Sauvignon Blanc's highly aromatic character means it retains varietal identity even through the process of secondary fermentation — something that more neutral grapes often lose."]
+  },
+  {
+    id:"107", cat:"Other Bubbles", type:"sparkling",
+    producer:"Steininger", name:"Grüner Veltliner Sekt Reserve, 2021", region:"Niederösterreich, Austria", vintage:"2021", abv:"12%", price:65, cert:"",
+    icons:["⚖️","🍋","🌿","🧂"],
+    notes:["White pepper","Citrus blossom","Green apple","Herb","Mineral dry finish"],
+    tableside:"Grüner Veltliner with bubbles — and the white pepper character that makes the grape so distinctive comes through even in sparkling form. This is one of the most unusual and fun pours on the list. Guests who love Grüner will be genuinely surprised.",
+    pairings:["Asparagus","Fried schnitzel","White fish","Spring vegetables"],
+    story:"Grüner Veltliner's defining characteristic — the white pepper note from the rotundone compound — is resilient enough to survive the secondary fermentation process and remain clearly identifiable in the finished wine. Steininger's sparkling Grüner is essentially a still GV with fine bubbles added, which means all the things that make still Grüner so food-friendly — the acidity, the savory herb quality, the mineral drive — are present and accounted for.",
+    trivia:["This is the only sparkling Grüner Veltliner in the world available on a restaurant wine list at serious scale — Steininger essentially invented the category commercially.","The Kamptal appellation is better known for still wines, but Steininger's Sekt program has done more to put the region on the international sparkling wine map than almost anything else.","Grüner Veltliner's high natural acidity makes it an excellent base for sparkling wine — the same quality that makes it so food-friendly in still form keeps the sparkling version refreshing rather than flabby."]
+  },
+  {
+    id:"102", cat:"Other Bubbles", type:"sparkling",
+    producer:"Steininger", name:"Cab Rosé Sekt Reserve, 2023", region:"Niederösterreich, Austria", vintage:"2023", abv:"12%", price:65, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Strawberry","Rose hip","Light red cherry","Fine bubbles","Clean dry finish"],
+    tableside:"Cabernet Franc as the base for a sparkling rosé — unusual even by Austrian Sekt standards. The grape's herbaceous, red-fruited character translates into something elegant and slightly savory. Interesting for guests who want something they've genuinely never had before.",
+    pairings:["Salmon","Light duck","Charcuterie","Strawberry desserts"],
+    story:"Cabernet Franc appears occasionally in Austrian Sekt, and Steininger's version is one of the most distinctive. The grape's natural herbaceousness is softened by the sparkling process, leaving a wine that's floral and red-fruited with a slight savory edge. It's the newest addition to Steininger's Sekt portfolio and one of the most conversation-starting bottles in the cellar.",
+    trivia:["Cabernet Franc is increasingly being grown in Austria — originally planted for blending, it's now produced as a varietal wine in several regions and is proving particularly well-suited to the country's climate.","The 2023 vintage in Niederösterreich was warm and ripe, producing Cabernet Franc with more immediate fruit character than cooler years.","Steininger is now one of the world's most comprehensive producers of single-varietal traditional-method sparkling wines — they essentially offer a complete survey of Austrian white and red grapes in Sekt form."]
+  },
+  {
+    id:"257", cat:"Other Bubbles", type:"sparkling",
+    producer:"Família Geisse", name:"Chardonnay Brut, NV", region:"Pinto Bandeira, Brazil", vintage:"NV", abv:"12%", price:56, cert:"",
+    icons:["⚖️","🌸","🍞","🍑"],
+    notes:["Green apple","Lemon cream","Light brioche","Citrus blossom","Fine mousse"],
+    tableside:"Brazilian sparkling wine — and genuinely good. The Geisse family came from Croatia to Brazil in the 1970s and built one of South America's most respected sparkling wine operations in the high-altitude Serra Gaúcha region. This is not a novelty pour; it's a serious wine from an unexpected place.",
+    pairings:["Aperitivo","Light fish","Mild cheeses","Tropical fruit preparations"],
+    story:"Mario Geisse came to Brazil from Croatia in 1975 and recognized that the high-altitude vineyards of Serra Gaúcha — at around 700–800 meters elevation with cool nights — had the conditions needed for fine sparkling wine. He was right. Família Geisse is now considered the benchmark for Brazilian sparkling, and international critics regularly note it favorably against entry-level Champagne. The surprise factor when you tell guests it's Brazilian is genuine every time.",
+    trivia:["The Serra Gaúcha region in southern Brazil shares a latitude with northern Argentina but sits at elevations that create a much cooler, more continental climate than most people associate with Brazil.","Brazil is the 3rd largest sparkling wine producing country in the Americas after the United States and Argentina — almost none of it is exported, which is why it's so unfamiliar internationally.","Mario Geisse's son Manuel now runs the estate and has expanded the portfolio while maintaining his father's traditional-method philosophy."]
+  },
+  {
+    id:"259", cat:"Other Bubbles", type:"sparkling",
+    producer:"Gran Moraine", name:"Brut Rosé, Willamette Valley, NV", region:"Oregon", vintage:"NV", abv:"12%", price:116, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Strawberry","Cranberry","Wild raspberry","Earthy Pinot character","Long dry finish"],
+    tableside:"Oregon Pinot Noir in sparkling form — and it shows. Gran Moraine is one of the Willamette Valley's most dedicated sparkling producers, and the rosé has all the earthiness and red fruit complexity that makes Oregon Pinot so compelling as a still wine.",
+    pairings:["Salmon","Duck breast","Charcuterie","Strawberry tart"],
+    story:"Gran Moraine was established specifically to make high-quality traditional-method sparkling wine from Willamette Valley Pinot Noir — a category that barely existed in Oregon a decade ago. The estate sits in the Yamhill-Carlton AVA, which has become one of the valley's most celebrated sub-appellations for Pinot Noir. Making sparkling wine from Pinot Noir in this climate requires harvesting earlier than for still wine — before full ripeness — to preserve the acidity that makes good sparkling wine.",
+    trivia:["The Willamette Valley's cool, wet climate is frequently compared to Burgundy and Champagne — not California. Rain during harvest is a genuine concern, which has historically pushed some producers toward earlier picking — ideal for sparkling wine.","Gran Moraine is owned by the same family as Archery Summit, one of Oregon's most celebrated Pinot Noir estates — the sparkling program benefits from deep Willamette Valley farming expertise.","Oregon's sparkling wine category is growing rapidly — several dedicated producers have launched in the past decade, all working with Pinot Noir and Chardonnay in a Champagne-influenced style."]
+  },
+  {
+    id:"269", cat:"Other Bubbles", type:"sparkling",
+    producer:"Rappahannock Cellars", name:"Chardonnay 'Prestige,' 2019", region:"Virginia", vintage:"2019", abv:"12%", price:70, cert:"",
+    icons:["⚖️","🍞","🧂"],
+    notes:["Green apple","Toasted brioche","Lemon cream","Chalk-like mineral","Clean Virginia finish"],
+    tableside:"Virginia sparkling wine — and the best on our local list. Rappahannock Cellars has been making traditional-method sparkling from estate Chardonnay for over a decade. A great way to open with something local and genuinely impressive.",
+    pairings:["Local oysters","Crab cakes","Light starters","Virginia country ham"],
+    story:"Rappahannock Cellars is in Huntly, Virginia, about 65 miles from our restaurant. They've been making traditional-method sparkling wine since the early 2000s, when Virginia sparkling was almost unheard of. The Prestige is their flagship — Chardonnay grown on the estate, secondary fermentation in bottle, disgorgement by hand. It's not trying to be Champagne; it's trying to be Virginia, and it succeeds.",
+    trivia:["Virginia has been called 'the next great East Coast wine region' so many times it's become a cliché — but the sparkling category in particular has developed faster than anyone expected, driven by Chardonnay and Viognier grown at elevation in the Blue Ridge foothills.","Thomas Jefferson spent decades trying to grow European wine grapes at Monticello and largely failed — modern Virginia winemakers have solved the disease and humidity problems he faced through better rootstocks, canopy management, and site selection.","Rappahannock Cellars sources fruit from their estate in Huntly, where the Blue Ridge Mountains create a significant rain shadow that reduces the humidity that plagues much of Virginia viticulture."]
+  },
+  {
+    id:"271", cat:"Other Bubbles", type:"sparkling",
+    producer:"Walsh Family Wine", name:"Merlot/Cab Franc 'Plateau' Rosé, 2024", region:"Virginia", vintage:"2024", abv:"12%", price:60, cert:"",
+    icons:["⚖️","🌸","🍋"],
+    notes:["Strawberry","Rose hip","Cranberry","Light herb","Fresh dry finish"],
+    tableside:"A Virginia rosé sparkling from one of Loudoun County's most consistent producers. Walsh Family farms in Purcellville, just inside the Blue Ridge foothills, and this Merlot/Cab Franc blend has the earthy, herbal edge that distinguishes Virginia rosé from California or Provence.",
+    pairings:["Aperitivo","Local seafood","Charcuterie","Light summer dishes"],
+    story:"Walsh Family Wine has been one of Loudoun County's steadiest producers since launching in the 2010s. Their Plateau Rosé sparkling is a blending exercise in classic Bordeaux varieties grown in Virginia conditions — Merlot for roundness and red fruit, Cab Franc for the herbaceous edge and structure. The 2024 vintage was an excellent year in Virginia with warm, dry conditions through harvest.",
+    trivia:["Loudoun County, Virginia, has more licensed wineries than any county in the Eastern United States — over 40 at last count — making it one of the most concentrated wine regions outside of California.","Cabernet Franc performs unusually well in Virginia's climate, retaining the herbaceous, bell pepper character that is often cooked away in warmer regions — it's considered by many to be Virginia's red grape.","Walsh Family's Purcellville operation sits at approximately 500 meters elevation, which provides meaningfully cooler temperatures than the Virginia Piedmont valleys below."]
+  },
+  {
+    id:"254", cat:"Other Bubbles", type:"sparkling",
+    producer:"Barone Pizzini", name:"'Animante' Extra Brut, Franciacorta DOCG, NV", region:"Lombardy, Italy", vintage:"NV", abv:"12.5%", price:94, cert:"",
+    icons:["⚖️","🍞","🧂","🌸"],
+    notes:["Toasted brioche","Green apple","Citrus blossom","Fine persistent mousse","Clean mineral finish"],
+    tableside:"Franciacorta is Italy's most serious sparkling appellation — traditional method, minimum 18 months on the lees, strict production rules. Barone Pizzini is one of the region's top organic producers. Think of it as Italian Champagne made with Italian grapes and Italian discipline.",
+    pairings:["Risotto","White fish","Soft Italian cheeses","Seafood pasta"],
+    story:"Franciacorta sits in Lombardy, just south of Lake Iseo, where the lake's moderating influence and the glacial moraine soils create surprisingly Champagne-like conditions. The DOCG requires traditional-method production, 18+ months lees aging for non-vintage (25+ for vintage), and disgorgement by hand. Barone Pizzini has farmed organically since 1995 — one of the first estates in the appellation to do so — and their wines carry the precision and mineral clarity that comes from healthy soils.",
+    trivia:["Franciacorta received DOCG status in 1995 — Italy's highest wine classification — making it the only Italian sparkling wine to achieve this designation.","The name 'Animante' means 'giving life' or 'animating' in Italian — a reference to the secondary fermentation that creates the bubbles.","Barone Pizzini has been certified organic since 1995 — among the earliest organic certifications in Franciacorta and one of the oldest in Italian wine production."]
+  },
+  {
+    id:"267", cat:"Other Bubbles", type:"sparkling",
+    producer:"Bisol", name:"Prosecco Brut, Veneto, NV", region:"Veneto, Italy", vintage:"NV", abv:"11%", price:45, cert:"",
+    icons:["☁️","🌸","🍋","🍑"],
+    notes:["White peach","Pear","Acacia blossom","Light citrus","Fresh clean finish"],
+    tableside:"The real Prosecco — from one of the Valdobbiadene DOCG's historic family estates, not a mass-market brand. Lighter, more delicate, and more floral than Champagne. For guests who want something beautiful and unbothered.",
+    pairings:["Aperitivo","Prosciutto","Light starters","Fruit-based desserts"],
+    story:"Bisol has been farming in Valdobbiadene since 1542 — one of the oldest wine families in Veneto. The production of Prosecco here uses the Charmat (tank) method, not traditional method: secondary fermentation happens in pressurized tanks rather than individual bottles. This is a deliberate choice that preserves the fresh, floral aromatics of the Glera grape rather than developing the brioche and toasty notes of bottle fermentation. Prosecco is supposed to smell like spring — tanks keep it that way.",
+    trivia:["The Bisol family traces documented winemaking on their land to 1542, making them one of the oldest continuously operating wine families in Italy.","Valdobbiadene Prosecco Superiore DOCG is made from Glera grapes grown on dramatically steep hillsides — the Rive (single-village) and Cartizze (single hill) designations are the pinnacle of the category.","Prosecco's Charmat method — tank secondary fermentation — costs a fraction of the traditional method and produces results quickly. This is why Prosecco is generally priced lower than Champagne or Franciacorta."]
+  },
+  {
+    id:"251", cat:"Other Bubbles", type:"sparkling",
+    producer:"Cleto Chiarli", name:"Lambrusco, Emilia-Romagna, 2022", region:"Emilia-Romagna, Italy", vintage:"2022", abv:"11%", price:42, cert:"",
+    icons:["⚖️","🍋","🌿"],
+    notes:["Black cherry","Blackberry","Dried violet","Earthy","Slightly tannic sparkling finish"],
+    tableside:"Sparkling red wine — and not the sweet, cheap version most people have encountered. Cleto Chiarli makes Lambrusco the way it was made for centuries in Emilia-Romagna: dry, earthy, slightly tannic, and built to cut through the region's rich food. This is one of the most food-friendly wines on the list.",
+    pairings:["Charcuterie","Salumi","Emilian pasta","Pizza","Aged Parmigiano"],
+    story:"Lambrusco has a terrible reputation in the United States thanks to the mass-market sweet versions that flooded the market in the 1970s and 80s. The real thing — the dry, serious Lambrusco made by old families in Modena and Reggio Emilia — is something entirely different. Cleto Chiarli is a historic Modena producer that has resisted the commercial pressures toward sweetness. Their Lambrusco is the wine people in Emilia-Romagna actually drink with their food — with prosciutto di Parma, with tortellini in brodo, with the kind of rich, fatty food that needs an acidic, slightly tannic sparkling wine to cut through it.",
+    trivia:["Emilia-Romagna produces some of Italy's richest food — Parmigiano-Reggiano, Prosciutto di Parma, Mortadella, and tagliatelle al ragù all come from this region. Dry Lambrusco evolved specifically as a foil to this food culture.","The 'Lambrusco' name refers not to one grape but to a family of native Emilian grapes — Lambrusco Grasparossa, Sorbara, and Salamino being the main varieties. Chiarli uses traditional local clones.","Cleto Chiarli was founded in 1860 and is one of the oldest continuously operating Lambrusco producers in existence."]
+  },
+  {
+    id:"250", cat:"Other Bubbles", type:"sparkling",
+    producer:"Ferghettina", name:"Franciacorta Brut, NV", region:"Lombardy, Italy", vintage:"NV", abv:"12.5%", price:111, cert:"",
+    icons:["⚖️","🍞","🌸","🧂"],
+    notes:["Brioche","Lemon cream","White peach","Fine mousse","Mineral finish"],
+    tableside:"Ferghettina is one of Franciacorta's most respected estates — larger than Barone Pizzini but equally serious about quality. Traditional method, minimum lees aging, Chardonnay-dominant. A step up in richness from the Animante, slightly more in the mold of a quality NV Champagne.",
+    pairings:["Lobster","Veal","Mushroom risotto","Aged Italian cheese"],
+    story:"Roberto Gatti founded Ferghettina in 1991 after leaving his position as an agronomist to pursue his own wine project. The estate has grown to over 50 hectares and produces some of Franciacorta's most consistent wines. Their Brut is the entry point to the lineup and represents everything the appellation is supposed to be: traditional method, long lees contact, and the mineral character that comes from the glacial moraine soils of Lombardy.",
+    trivia:["Franciacorta's name is thought to derive from 'Franzacurta' — a medieval designation meaning 'exempt from taxes,' referring to the monastic holdings that once dominated the area.","The glacial moraine soils of Franciacorta were deposited by glaciers retreating from the Alps during the last ice age — they are geologically similar in structure (if not in composition) to the chalky soils of Champagne.","Italy consumes roughly 75% of all Franciacorta produced — it has an intensely domestic market and relatively limited international distribution."]
+  },
+  {
+    id:"256", cat:"Other Bubbles", type:"sparkling",
+    producer:"Medici Ermete", name:"'Concerto' Lambrusco, Emilia-Romagna, 2021", region:"Emilia-Romagna, Italy", vintage:"2021", abv:"11.5%", price:52, cert:"",
+    icons:["⚖️","🍋","🌿"],
+    notes:["Blackberry","Violet","Dried cherry","Earth","Dry tannic finish"],
+    tableside:"The other Lambrusco on the list — from a different producer and subzone than the Chiarli. Medici Ermete's Concerto is considered one of the reference wines for serious dry Lambrusco: earthy, structured, and built to last the entire meal. For guests open to something genuinely unexpected.",
+    pairings:["Prosciutto","Salumi","Tagliatelle","Braised meats","Strong cheeses"],
+    story:"Medici Ermete farms in the Reggio Emilia hills — the Reggiano subzone of Lambrusco, which many consider the most structured and age-worthy of the appellation's sub-designations. The Concerto is their flagship and has won multiple international awards, doing more to rehabilitate Lambrusco's reputation internationally than almost any other wine. It's made from 100% Lambrusco Salamino di Santa Croce, one of the most structured varieties in the family.",
+    trivia:["Medici Ermete's Concerto was listed in Wine Spectator's Top 100 Wines of the Year in 2004 — a moment that single-handedly changed many American wine professionals' perception of Lambrusco.","Lambrusco Reggiano — from the Reggio Emilia hills — is generally considered more structured and age-worthy than the flatter Modena versions, due to elevation and limestone soils.","The Medici family has been farming in Reggio Emilia since 1890, but the estate's international reputation was built largely by Alberto Medici, who took over in the 1980s."]
+  },
+
+  // ── GRÜNER VELTLINER ──────────────────────────────────────
+  {
+    id:"707", cat:"Grüner Veltliner", type:"white",
+    producer:"Bründlmayer", name:"Ried Loiserberg", region:"Kamptal DAC, Austria", vintage:"2022", abv:"13.5%", price:103, cert:"PR",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Green apple","Lime zest","Crushed limestone","White pepper","Dried herbs"],
+    tableside:"The entry point to serious Austrian Grüner — a single vineyard, high-elevation Kamptal white with snappy acidity, a stony mineral thread, and that signature white pepper finish. Clean, precise, built for food.",
+    pairings:["Wiener schnitzel","Grilled asparagus","Roast chicken","Dover sole"],
+    story:"Bründlmayer is the estate you point to when a guest asks why Austrian wine matters. Their whole philosophy is restraint — no chasing ripeness, no flattering the wine with oak, just letting the vineyard speak. The Loiserberg site sits at elevation on primary rock, which is why the wine has that chiseled, almost stony quality. It's the kind of bottle that makes Chardonnay fans reconsider everything.",
+    trivia:["The white pepper note in Grüner Veltliner comes from rotundone — the same compound that makes Syrah peppery. You can't add it, you can't fake it.","Kamptal DAC rules require the wine to be completely dry and made only from Grüner Veltliner or Riesling — the appellation is built around purity.","Bründlmayer also makes one of Austria's best sparkling Rieslings from the same soils — a completely different expression worth mentioning to curious guests."]
+  },
+  {
+    id:"733", cat:"Grüner Veltliner", type:"white",
+    producer:"Bründlmayer", name:"Ried Berg Vogelsang – 1ÖTW", region:"Kamptal DAC, Austria", vintage:"2022", abv:"13%", price:91, cert:"PR",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Ripe pear","Green apple","Sea salt","Citrus peel","Warm spice"],
+    tableside:"Same producer as the Loiserberg, but this is their premier cru — a classified single vineyard recognized as exceptional for centuries. More texture, more depth, more to say.",
+    pairings:["Veal with herb jus","Pork tenderloin","Roasted root vegetables","Aged Comté"],
+    story:"Berg Vogelsang — 'mountain birdsong' — is one of Kamptal's 1ÖTW classified vineyards, Austria's equivalent of premier cru. Southwest-facing at 260 to 380 meters on primary rock, it ripens slowly and builds complexity the way only elevation and poor soils can.",
+    trivia:["The 1ÖTW classification is awarded to vineyards that have maintained exceptional quality for at least 25 consecutive years — fewer than 100 qualify in all of Austria.","Berg Vogelsang has been named in historical documents since the Middle Ages — predating the United States by several centuries.","Primary rock soils force vine roots deep, producing wines more mineral and tightly wound than those from richer loess soils."]
+  },
+  {
+    id:"750", cat:"Grüner Veltliner", type:"white",
+    producer:"Bründlmayer", name:"Ried Berg Vogelsang – 1ÖTW", region:"Kamptal DAC, Austria", vintage:"2023", abv:"13%", price:96, cert:"PR",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Tart green apple","Lemon pith","Wet chalk","White pepper","Grapefruit zest"],
+    tableside:"Same vineyard as the 733, one year younger — sharper edges, higher tension, more electric. For guests who want their wine to wake them up rather than settle them in.",
+    pairings:["Raw shellfish","Fried fish","Goat cheese","Spring vegetables"],
+    story:"Same vineyard, same producer, different vintage character. 2023 was brighter and more energetic than 2022 across Kamptal. Where the 733 has settled, this is still coiled. Not better or worse — younger and more aggressive.",
+    trivia:["Kamptal's diurnal temperature shifts can exceed 20°C — that swing keeps acidity alive even in warm vintages.","2023 was challenging across Europe, but Austria's northern vineyards retained freshness that warmer southern regions lost.","Grüner Veltliner at the premier cru level genuinely improves with age — most people drink it too young."]
+  },
+  {
+    id:"723", cat:"Grüner Veltliner", type:"white",
+    producer:"Schloss Gobelsburg", name:"Ried Renner – 1ÖTW", region:"Kamptal DAC, Austria", vintage:"2016", abv:"13%", price:176, cert:"",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Yellow apple","Preserved lemon","Toasted almond","Gentle spice","Long mineral finish"],
+    tableside:"This is what Austrian Grüner becomes with age — the pepper softens, the fruit deepens, the acidity integrates. From one of Austria's oldest estates, on a vineyard documented since the 12th century. Eight years in bottle and still very much alive.",
+    pairings:["Roast veal","Mushroom risotto","Aged mountain cheese","Duck with root vegetables"],
+    story:"Schloss Gobelsburg has been making wine since 1171 — that's documented history, not marketing. At nearly a decade of age, this 2016 shows what Austrian Grüner does with time: sharp edges round off, fruit shifts from fresh to layered, and the acidity now feels like structure rather than tension.",
+    trivia:["Schloss Gobelsburg was originally a Cistercian monastic estate — monks farmed these vineyards for 600 years before secularization in the late 18th century.","Michael Moosbrugger took over in 1996 and is largely credited with returning the estate to international prominence.","Loess soils give wines a slightly rounder, more generous texture compared to primary rock sites — this is part of why Renner feels softer than Berg Vogelsang."]
+  },
+  {
+    id:"732", cat:"Grüner Veltliner", type:"white",
+    producer:"Schloss Gobelsburg", name:"Ried Steinsetz", region:"Kamptal DAC, Austria", vintage:"2019", abv:"13%", price:118, cert:"",
+    icons:["⚖️","🍋","🧂"],
+    notes:["Crisp apple","Pear skin","River stone","White pepper","Clean citrus finish"],
+    tableside:"Gobelsburg's calling card for serious everyday drinking — terraced, steep, hand-harvested, rocky soils. The 2019 is in a sweet spot right now: past its youthful sharpness, not yet into the mellow territory of the aged Renner.",
+    pairings:["Wiener schnitzel","Grilled white fish","Pork with mustard","Vegetable tart"],
+    story:"The name Steinsetz means 'stone setting' — a reference to the dry stone walls holding the terraces in place. On terrain like this, tractors are useless. Everything is done by hand, the same way it's been done for centuries. The 2019 vintage gave Kamptal wines real structure and balance — not the most showy, but one of the most reliable.",
+    trivia:["Terraced vineyard harvesters pick 200–400kg per day by hand versus several tons per hour mechanically — the labor cost is built into the bottle price.","The dry stone walls store heat by day and release it at night, acting as a thermal buffer for the vines.","Gobelsburg produces wines at every level of the Austrian classification — useful for explaining the system to curious guests."]
+  },
+
+  // RIESLING
+  {id:"611",cat:"Riesling",type:"white",producer:"Bründlmayer",name:"Heiligenstein 1ÖTW 'Lyra' Reserve",region:"Kamptal, Austria",vintage:"2015",abv:"13%",price:150,cert:"PR",icons:["⚖️","🍋","🧂"],notes:["White peach","Apricot","Beeswax","Lime zest","Volcanic mineral"],tableside:"A decade-old Riesling from the Heiligenstein — Austria's most celebrated Riesling site, grown on volcanic basalt. The 2015 has developed the deep, honeyed complexity that marks great aged Riesling — beeswax, dried wildflowers, ripe stone fruit, and a finish that won't quit.",pairings:["Aged mountain cheeses","Roasted pork","Grilled trout","Mushroom-based dishes"],story:"The Heiligenstein is a volcanic basalt anomaly in Kamptal — a dark, heat-retaining rock formation surrounded by the region's typical primary rock and loess. The dark soils absorb heat during the day and release it slowly at night, extending the ripening season in a way no other site in the region can replicate. Bründlmayer's 'Lyra' designation refers to the unusual vine training system used — a wide, lyre-shaped canopy that increases sun exposure while reducing yields. This 2015 is now in its prime: the aged complexity has arrived — beeswax, dried wildflowers, concentrated stone fruit — and the volcanic mineral quality runs through every sip.",trivia:["The complex, waxy, dried-wildflower character that develops in aged Riesling comes from a compound called TDN (trimethyl-dihydronaphthalene). Wine professionals sometimes call it 'petrol' — a term worth knowing but not worth using at a table. Tell guests it's the signature of age in great Riesling.","The Lyra training system was developed in Bordeaux in the 1980s — Bründlmayer adopted it for the Heiligenstein to control the volcanic soil's natural exuberance.","The Heiligenstein has been a recognized quality site since the 18th century — one of the few Austrian vineyards with a documented historical reputation predating the modern classification system."]},
+  {id:"649",cat:"Riesling",type:"white",producer:"Bründlmayer",name:"Heiligenstein 1ÖTW 'Lyra' Reserve",region:"Kamptal, Austria",vintage:"2021",abv:"13%",price:253,cert:"PR",icons:["⚖️","🍋","🧂"],notes:["Lime","Green peach","Volcanic stone","Citrus blossom","Tight mineral finish"],tableside:"The younger vintage of Bründlmayer's Heiligenstein flagship — same volcanic site, but 2021 is wound tighter and needs time. For guests who want to taste where great Austrian Riesling is going, not where it's been.",pairings:["Oysters","Sashimi","River fish","Delicate white meat"],story:"This is the same wine as the 2015 — same vineyard, same producer, same meticulous farming — but caught much earlier in its life. The 2021 vintage was cool and precise in Kamptal, producing Rieslings with high acidity and a taut, almost severe mineral quality that needs years to integrate. If the 2015 is the arrival, the 2021 is the departure.",trivia:["2021 was one of the coolest growing seasons in Kamptal in recent memory — the wines are built for the long term, not for immediate pleasure.","Bründlmayer ages their reserve Rieslings in large neutral oak casks — a traditional approach that adds subtle texture without oak flavors.","The Heiligenstein's volcanic basalt is geologically unrelated to the surrounding rock — believed to be the remnant of ancient volcanic activity millions of years old."]},
+  {id:"643",cat:"Riesling",type:"white",producer:"Hiedler",name:"Ried Heiligenstein 1ÖTW",region:"Kamptal, Austria",vintage:"2022",abv:"13%",price:134,cert:"",icons:["⚖️","🍋","🧂"],notes:["Grapefruit","Lime leaf","Wet stone","White peach","Long dry finish"],tableside:"A second producer on the Heiligenstein — Hiedler's interpretation is a little more approachable than Bründlmayer's, slightly earlier-drinking, but with the same unmistakable volcanic mineral backbone the site always delivers.",pairings:["Grilled river fish","Shellfish","Veal with citrus sauce","Light vegetable preparations"],story:"The Heiligenstein is farmed by multiple producers — Bründlmayer, Hiedler, Hirsch, and Schloss Gobelsburg among the most notable. Comparing their wines is one of the great exercises in understanding how the same site expresses itself differently through different hands. Hiedler's style tends toward earlier accessibility and slightly more generous fruit than Bründlmayer's more austere approach.",trivia:["The Heiligenstein is officially classified 1ÖTW — premier cru — but was recognized as exceptional long before the modern system existed.","Hiedler has farmed Kamptal since the 1980s — young by Austrian standards but quickly established as a serious producer.","Having multiple quality producers on the same vineyard is relatively unusual in Austria — the Heiligenstein is one of the few sites where the comparison is genuinely instructive."]},
+  {id:"645",cat:"Riesling",type:"white",producer:"Hirsch",name:"Ried Zobinger Heiligenstein 1ÖTW DAC",region:"Kamptal, Austria",vintage:"2022",abv:"13%",price:186,cert:"",icons:["⚖️","🍋","🧂"],notes:["Stone fruit","Smoke","Citrus zest","Volcanic mineral","Precise long finish"],tableside:"Hirsch is the most biodynamically serious producer on the Heiligenstein — and it shows. There's a depth and precision here that reflects not just the volcanic terroir but a winemaker who has spent decades understanding exactly what this site wants to say.",pairings:["Steamed fish","Light game birds","Aged hard cheeses","Clean vegetable preparations"],story:"Johannes Hirsch converted his estate to biodynamic farming before it was fashionable and has been refining his approach for decades. His Heiligenstein is widely considered one of the benchmark expressions of the site: not the most immediately generous, but the most site-true. The volcanic character is stark and uncompromising.",trivia:["Johannes Hirsch converted to biodynamic farming in the early 2000s and has since become one of Austria's most vocal advocates for the practice.","The Zobinger Heiligenstein designation specifies the Heiligenstein parcels within the village of Zöbing — further geographic precision within an already specific site.","Hirsch's wines are consistently cited in international blind tastings as among the most distinctive expressions of Austrian Riesling."]},
+  {id:"639",cat:"Riesling",type:"white",producer:"Schloss Gobelsburg",name:"Heiligenstein 1ÖTW, Zöbing",region:"Kamptal, Austria",vintage:"2015",abv:"13%",price:140,cert:"CS",icons:["⚖️","🍋","🧂"],notes:["Apricot","Honeyed complexity beginning","Lime","Spice","Mineral backbone"],tableside:"A decade-old Gobelsburg Heiligenstein in a beautiful drinking window right now: the honeyed, waxy complexity of age is arriving, the fruit is still vivid, and the mineral structure from the volcanic soils frames the whole thing. For guests who want to experience aged Austrian Riesling without waiting.",pairings:["Roasted pork belly","Aged Comté","Grilled trout","Duck confit"],story:"Schloss Gobelsburg holds multiple vintages of their Heiligenstein, and the 2015 is the one ready to drink right now. Their interpretation tends toward more richness and generosity than Hirsch's more austere style — same volcanic rock, but centuries of estate tradition bring a rounder, more integrated character.",trivia:["Certified Sustainable (CS) means the estate has met third-party verified standards for water use, biodiversity, and energy management.","2015 was a warm vintage in Kamptal — the wines have aged more quickly than cool vintages and are drinking at their peak now.","Schloss Gobelsburg's sustainability certification was awarded by the Austrian wine association."]},
+  {id:"613",cat:"Riesling",type:"white",producer:"Schloss Gobelsburg",name:"Heiligenstein 1ÖTW",region:"Kamptal, Austria",vintage:"2019",abv:"13%",price:187,cert:"",icons:["⚖️","🍋","🧂"],notes:["White peach","Grapefruit","Smoke","Wet stone","Long mineral finish"],tableside:"The 2019 Gobelsburg Heiligenstein — less evolved than the 2015, more energetic, the volcanic mineral front and center. A wine that's just starting to open up. For guests who want to taste potential.",pairings:["Shellfish","Steamed white fish","Light poultry","Herb-forward preparations"],story:"2019 was a warm vintage in Kamptal, but the Heiligenstein's volcanic soils and elevation kept the acidity alive. The Gobelsburg Heiligenstein at this stage shows the volcanic mineral quality most clearly — before the beeswax and dried-flower complexity of age softens it. It rewards undivided attention.",trivia:["The 2019 vintage was one of the warmest on record — but the Heiligenstein's volcanic soils and elevation moderated temperatures where flat sites couldn't.","Schloss Gobelsburg holds back multiple vintages of Heiligenstein simultaneously — giving the ability to show guests the wine's evolution across a decade.","Gobelsburg's approach to Riesling is deliberately lower-intervention than their Grüner Veltliner program."]},
+  {id:"623",cat:"Riesling",type:"white",producer:"Schloss Gobelsburg",name:"Heiligenstein 1ÖTW",region:"Kamptal, Austria",vintage:"2021",abv:"13%",price:183,cert:"",icons:["⚖️","🍋","🧂"],notes:["Lime zest","Citrus blossom","Chalk","Stone fruit","Precise dry finish"],tableside:"The youngest of three Gobelsburg Heiligensteins on the list — 2021, tight and precise. The volcanic mineral is already evident but the wine is still gathering itself. Three vintages of the same wine on one list: the 2021 is all tension, the 2019 is opening up, the 2015 is at its peak.",pairings:["Oysters","Raw shellfish","Delicate white fish","Light starters"],story:"Having three vintages of the same Gobelsburg Heiligenstein on the list is a live demonstration of what bottle age does to Riesling. Walking a curious guest through all three is one of the most instructive tasting experiences available.",trivia:["Three vintages of the same wine in one list is unusual — most restaurants turn over inventory too quickly to offer this kind of vertical.","Vertical tastings — same wine, multiple vintages — are considered one of the most educational formats in fine wine.","The cool 2021 vintage is expected to age more slowly than the warm 2019 — they may be at similar development in 10 years despite the two-year gap."]},
+  {id:"641",cat:"Riesling",type:"white",producer:"Nigl",name:"Trocken, Senftenberger Pellingen Privat",region:"Kremstal, Austria",vintage:"2015",abv:"13%",price:135,cert:"Co/b",icons:["⚖️","🍋","🧂"],notes:["Lime","Beeswax","Apricot","Smoked stone","Long focused finish"],tableside:"A decade-old biodynamic Riesling from Nigl — one of Kremstal's most celebrated estates. The beeswax and dried wildflower complexity is in full development, the stone fruit is concentrated, and the acidity is still very much alive. One of the great aged Austrian Rieslings on the list.",pairings:["Aged hard cheeses","Roast pork","Smoked fish","Mushroom dishes"],story:"Martin Nigl is widely considered one of Austria's finest Riesling producers — his biodynamic estate in Kremstal produces wines of extraordinary precision. The Senftenberger Pellingen is his top Riesling site: a steep, rocky slope where yields are naturally low and concentration is high. At a decade, this is showing everything that makes serious Austrian Riesling so compelling.",trivia:["Nigl holds Demeter certification — the same certification used for the most rigorous biodynamic wines worldwide.","The Senftenberger Pellingen is classified in Nigl's range as 'Privat' — his designation for his top single-vineyard expressions.","Kremstal, which borders Kamptal to the east along the Krems River, produces Rieslings generally considered slightly riper and more accessible than Kamptal expressions."]},
+  {id:"637",cat:"Riesling",type:"white",producer:"Nigl",name:"Trocken, Hochäcker",region:"Kremstal, Austria",vintage:"2015",abv:"13%",price:125,cert:"Co/b",icons:["⚖️","🍋","🧂"],notes:["Lime zest","Dried wildflowers","Mineral","Citrus peel","Clean long finish"],tableside:"A more accessible aged Nigl Riesling — the Hochäcker is a step below the Pellingen in concentration but still a decade-old biodynamic Kremstal from one of Austria's best producers. A great entry point for guests curious about Nigl without committing to the top tier.",pairings:["Grilled fish","Pork dishes","Soft cheeses","Vegetable preparations"],story:"Nigl makes Rieslings at multiple quality levels — the Hochäcker shares the same biodynamic farming and winemaker as the Privat Pellingen. It's the kind of wine that makes you understand why Austrian wine enthusiasts talk about Nigl the way Burgundy lovers talk about their favorite domains: every level of the range is worth drinking.",trivia:["The name Hochäcker translates roughly as 'high fields' — referring to the elevated position above the Krems Valley floor.","Biodynamic farming prohibits all synthetic inputs and adds homeopathic preparations developed by philosopher Rudolf Steiner in the 1920s.","Nigl's wines consistently appear in international best-of-Austrian-Riesling lists."]},
+  {id:"653",cat:"Riesling",type:"white",producer:"Alzinger",name:"Trocken, Ried Höhereck Smaragd",region:"Wachau, Austria",vintage:"2022",abv:"13.5%",price:163,cert:"",icons:["💪","🍋","🧂"],notes:["Ripe peach","Apricot","Granite","Lime zest","Vinous long finish"],tableside:"Smaragd — the Wachau's top ripeness classification. Alzinger is one of the Wachau's most celebrated estates. Big, structured, age-worthy Austrian Riesling from a region that treats the grape with the same seriousness as Burgundy treats Pinot Noir.",pairings:["Roasted pork","Veal","Cream sauces","Aged hard cheeses"],story:"The Wachau is Austria's most dramatic wine landscape — steep granite terraces carved by the Danube gorge, where vines have been planted since the Romans. Alzinger is a small family estate that quietly produces some of the region's finest wines. The Smaragd classification — named after the emerald-green lizard that sunbathes on the terrace walls — indicates the ripest, most age-worthy style.",trivia:["The Smaragd classification is named after the Emerald Lizard (Lacerta viridis) that lives on the warm stone terrace walls of Wachau vineyards.","The Wachau's terraced vineyards are among the steepest in the world — some slopes exceed 45 degrees, making all work manual.","Alzinger consistently wins top ratings from international critics while maintaining a deliberately low profile."]},
+  {id:"625",cat:"Riesling",type:"white",producer:"Alzinger",name:"Trocken, Ried Loibenberg Smaragd",region:"Wachau, Austria",vintage:"2022",abv:"13.5%",price:163,cert:"",icons:["💪","🍋","🧂"],notes:["Ripe stone fruit","Orange zest","Granite","Spice","Rich textured finish"],tableside:"A second Alzinger Smaragd — the Loibenberg faces south, is slightly warmer, and produces Rieslings with more richness and spice than the Höhereck. For guests who want to understand how different aspects within the same village produce different wines.",pairings:["Roasted fish","Pork belly","Duck","Rich mushroom dishes"],story:"The Loibenberg faces directly south — unusual in Wachau where most premium sites face east or northeast. This gives it a level of ripeness that neighboring vineyards can't match. Comparing the Höhereck and Loibenberg is a masterclass in how aspect shapes wine character even within the same appellation.",trivia:["Loiben has been continuously inhabited for over 7,000 years — one of the oldest settlements in the Wachau.","South-facing slopes in the Wachau receive significantly more solar radiation than north-facing slopes.","Alzinger farms the Loibenberg biodynamically."]},
+  {id:"653c",cat:"Riesling",type:"white",producer:"Alzinger",name:"Trocken, Ried Steinertal Smaragd",region:"Wachau, Austria",vintage:"2023",abv:"13.5%",price:183,cert:"",icons:["💪","🍋","🧂"],notes:["Peach","Grapefruit","Volcanic mineral","Spice","Long dry finish"],tableside:"Alzinger's third Smaragd — the Steinertal, their most mineral and site-expressive vineyard. The 2023 is young, showing the freshness of a new Smaragd. This needs time, but the foundation is extraordinary.",pairings:["Grilled lobster","Rich white fish","Pork with fruit","Complex vegetable dishes"],story:"The Steinertal is Alzinger's most distinctive site — a steep, rocky parcel with volcanic influences giving a smoky, flinty mineral quality different from their granite-driven sites. Three Alzinger Smaragds on the same list is a rare opportunity: the Höhereck, Loibenberg, and Steinertal represent three different aspects and soil types within the same small estate.",trivia:["The Steinertal is the steepest and most difficult to farm of Alzinger's main sites.","2023 was a warm, early vintage in the Wachau — the wines have more immediate richness than the cooler 2022.","Alzinger releases Smaragd wines only after extended cellar aging."]},
+  {id:"619",cat:"Riesling",type:"white",producer:"F.X. Pichler",name:"Trocken, Ried Klostersatz",region:"Wachau, Austria",vintage:"2023",abv:"13.5%",price:137,cert:"Co/b",icons:["💪","🍋","🧂"],notes:["White peach","Lime","Granite mineral","Almond blossom","Precise long finish"],tableside:"F.X. Pichler is the most famous name in the Wachau — their wines have set the benchmark for the region for decades. The Klostersatz is their most accessible Smaragd: full Wachau power and precision, a little earlier-drinking. Biodynamic farming adds purity.",pairings:["Grilled fish","Light veal","White asparagus","Delicate shellfish"],story:"Lucas Pichler took over from his legendary father F.X. in 2012 and has maintained the estate's position at the very top of Austrian wine. The Klostersatz sits on primary rock below the monastery walls of Dürnstein — 'Klostersatz' means 'monastery seat.' The biodynamic certification, achieved recently, has added a further dimension of purity.",trivia:["F.X. Pichler — Franz Xaver Pichler — is widely considered the greatest living Austrian winemaker of his generation.","The monastery in Klostersatz is the Augustinian monastery of Dürnstein — established in the 12th century, its ruins dominate the hillside above the vineyard.","Lucas Pichler converted the estate to biodynamic farming gradually between 2015 and 2020."]},
+  {id:"603",cat:"Riesling",type:"white",producer:"Nikolaihof",name:"Trocken, Jungfernlese Steiner Hund",region:"Wachau, Austria",vintage:"2005",abv:"13%",price:275,cert:"Co/b",icons:["💪","🧂","🌸"],notes:["Honey","Dried apricot","Beeswax","Beeswax","Astonishing mineral length"],tableside:"A 20-year-old biodynamic Riesling from the Wachau's oldest estate. This is not a wine for sipping — it's a wine for paying attention. The beeswax and dried-wildflower complexity is deep, the fruit concentrated and dried, and the mineral backbone from the Steiner Hund is still running clean through the whole thing.",pairings:["Aged hard cheeses","Foie gras","Rich pâté","Honey-glazed poultry"],story:"Nikolaihof is Austria's oldest winery — built on Roman foundations in the first century AD — and the first estate in the world to receive Demeter biodynamic certification, in 1971. The Saahs family farms with an almost philosophical commitment to the land: no chemicals of any kind for over 50 years, and wines released only when the family believes they're ready. The 2005 Steiner Hund at 20 years is still alive, complex, and nowhere near finished.",trivia:["Nikolaihof was built on the site of a Roman military outpost — archaeological excavations have found wine vessels dating to the first century AD.","The estate received Demeter biodynamic certification in 1971 — before biodynamic farming was known outside a small circle of Austrian agriculture specialists.","The Steiner Hund ('Stone Dog') vineyard is classified grand cru equivalent by the Vinea Wachau."]},
+  {id:"621",cat:"Riesling",type:"white",producer:"Nikolaihof",name:"Trocken, Klause am Berg Privat",region:"Wachau, Austria",vintage:"2012",abv:"13%",price:300,cert:"Co/b",icons:["💪","🧂","🌸"],notes:["Dried stone fruit","Beeswax","Honey","Smoked mineral","Extraordinary length"],tableside:"Thirteen years old and still unfolding — Nikolaihof's Privat designation means this is the estate's top expression, made only in exceptional years. The 2012 vintage's warmth adds a glycerous richness that makes this unforgettable. One of the most profound wines on the list.",pairings:["Foie gras","Aged Parmigiano","Truffle-based dishes","Glazed poultry"],story:"Nikolaihof releases 'Privat' wines only when they believe a specific vintage and site combination merits it. 2012 was a warm, exceptional vintage in the Wachau. The Saahs family maintains a strict no-compromise policy: wines are only released when they're ready, regardless of market pressure. At 13 years, this is one of the most complex wines on the list.",trivia:["The Privat designation carries enormous weight among Austrian wine enthusiasts — it has no legal definition but is self-imposed with absolute seriousness.","The Saahs family has resisted every acquisition offer — they consider the estate an ongoing philosophical project.","2012 in the Wachau produced some of the most celebrated wines of the decade."]},
+  {id:"635",cat:"Riesling",type:"white",producer:"Nikolaihof",name:"Trocken, Steiner Hund",region:"Wachau, Austria",vintage:"2015",abv:"13%",price:160,cert:"Co/b",icons:["💪","🍋","🧂"],notes:["Peach","Beeswax and dried wildflowers arriving","Citrus","Honey beginning","Volcanic mineral"],tableside:"The Steiner Hund at ten years — the Nikolaihof mineral signature is fully present and the beeswax and aged complexity is just arriving. A wine at the beginning of something great. Compare it to the 2005 if you want to understand what awaits.",pairings:["Rich fish","Aged cheeses","Roasted pork","Complex vegetable preparations"],story:"Having the Steiner Hund in both 2005 and 2015 on the list is an extraordinary opportunity — ten years apart, same site, same biodynamic farming, completely different phases of development. The 2005 shows the destination; the 2015 shows the journey.",trivia:["The Steiner Hund has been farmed continuously for over 1,200 years — its history is documented in monastic records from the 9th century.","Nikolaihof prunes by hand using tools that have barely changed in centuries.","The Wachau's Vinea Wachau association, which administers the Smaragd classification system, was established in 1983."]},
+  {id:"615",cat:"Riesling",type:"white",producer:"Nikolaihof",name:"Trocken 'Vinotek' Im Weingebirge Smaragd",region:"Wachau, Austria",vintage:"1997",abv:"13%",price:320,cert:"Co/b",icons:["💪","🧂","🌸"],notes:["Deep honey","Dried apricot","Beeswax","Beeswax","Extraordinary mineral persistence"],tableside:"A 28-year-old biodynamic Riesling. Very few wines remain alive and compelling at this age — this is one of them. The Vinotek designation means it was released from Nikolaihof's own library. This is a once-in-a-career pour for most guests.",pairings:["Aged hard cheeses","Foie gras","Truffles","On its own"],story:"The Vinotek series is Nikolaihof's library release program — wines held back for extended aging, released only when the family believes they've reached a peak of expressiveness. The 1997 Im Weingebirge at 28 years is showing what biodynamic winemaking in the Wachau can achieve: deeply complex, honeyed, mineral, and still technically alive in a way that defies expectation.",trivia:["1997 was a warm, early vintage — initially considered good but not exceptional. 28 years of bottle aging has proved that assessment spectacularly wrong.","The Im Weingebirge ('In the wine mountains') is a historic Wachau designation that predates the modern classification system.","Nikolaihof's cellar maintains a constant 12°C year-round — naturally, without refrigeration."]},
+  {id:"617",cat:"Riesling",type:"white",producer:"Nikolaihof",name:"Trocken 'Vinotek' Im Weingebirge Smaragd",region:"Wachau, Austria",vintage:"2002",abv:"13%",price:420,cert:"Co/b",icons:["💪","🧂","🌸"],notes:["Honey","Beeswax","Deep beeswax","Dried fig","Transcendent mineral finish"],tableside:"Twenty-three years old and the most expensive bottle in the Riesling section. The 2002 Vinotek is Nikolaihof at their most profound. If a guest asks what to pair it with, the honest answer is: their full attention.",pairings:["Nothing, or everything","Aged cheeses","Truffles","Foie gras"],story:"2002 is considered one of the greatest Riesling vintages of the modern era in both Austria and Germany. The Nikolaihof 2002, held in their Vinotek library for over two decades, has become something that requires no food pairing, no context, and no explanation. It is one of the most profound wines we offer.",trivia:["2002 is widely considered alongside 1999, 2007, and 2015 as one of the four great Riesling vintages of the last quarter century.","The Vinotek aging program depends entirely on the natural cellar temperature — no technology, no manipulation, just stone walls and patience.","At $420, this is the most expensive white wine on the list. For Riesling of this age and provenance, it is also arguably the best value."]},
+  {id:"601",cat:"Riesling",type:"white",producer:"Prager",name:"Trocken, Ried Klaus Smaragd",region:"Wachau, Austria",vintage:"2017",abv:"13.5%",price:126,cert:"PR",icons:["💪","🍋","🧂"],notes:["White peach","Apricot","Granite","Lime","Structured long finish"],tableside:"Prager is one of the Wachau's foundational estates — making serious Smaragd before the classification existed. The Ried Klaus is their most approachable top vineyard: full Wachau power and mineral, but a little earlier-drinking. The 2017 is beautiful right now.",pairings:["Rich fish","Roasted white meats","Mushroom dishes","Cream sauces"],story:"Toni and Ilse Bodenstein — Prager by inheritance — built one of the Wachau's great estates over decades of meticulous farming. The Ried Klaus is a granite-dominated site producing Rieslings with the combination of power, richness, and mineral backbone that defines the best Wachau Smaragd.",trivia:["Prager was one of the founding members of the Vinea Wachau association in 1983 — the organization that created the Smaragd classification system.","The Klaus vineyard name appears in monastic records from the 14th century.","Toni Bodenstein is widely credited with helping establish the Wachau's international reputation in the 1980s."]},
+  {id:"607",cat:"Riesling",type:"white",producer:"Anton Bauer",name:"Feuersbrunn",region:"Wagram, Austria",vintage:"2021",abv:"13%",price:50,cert:"",icons:["☁️","🍋","🌸"],notes:["Lime","Green apple","Light mineral","Citrus blossom","Crisp clean finish"],tableside:"The most approachable Riesling on the list — Anton Bauer's entry-level Wagram expression. Lighter, less complex than the Wachau or Kamptal bottles, but fresh, precise, and well-made at a price that makes it an easy recommendation.",pairings:["Oysters","Light fish","Salads","Aperitif"],story:"Anton Bauer is a Wagram estate that consistently over-delivers at its price point. Wagram — the plateau region north of Vienna — is less celebrated than Kamptal or Wachau, but produces wines with genuine character from its distinctive loess and sand soils.",trivia:["Wagram is named after the Battle of Wagram (1809), where Napoleon defeated the Austrian Empire.","Loess soils in Wagram are found in some of the deepest deposits in Austria, up to 20 meters thick in some areas.","Anton Bauer is one of the most prominent advocates for the Wagram appellation internationally."]},
+
+  // SAUVIGNON BLANC
+  {id:"330",cat:"Sauvignon Blanc",type:"white",producer:"Strauss",name:"Ried Gamlitzberg, Südsteiermark",region:"Styria, Austria",vintage:"2022",abv:"13%",price:55,cert:"",icons:["☁️","🍋","🌿"],notes:["Grapefruit","Cut grass","Gooseberry","White currant","Clean herbal finish"],tableside:"Styrian Sauvignon Blanc — the Austrian version of this grape most people don't know exists. Where New Zealand is tropical and the Loire is flinty, Styrian Sauvignon is herbaceous, precise, and intensely mineral. This Gamlitzberg is the entry point: approachable, aromatic, built for food.",pairings:["Goat cheese","Grilled asparagus","Shellfish","Light herb-forward dishes"],story:"Südsteiermark — South Styria — is Austria's southernmost wine region, tucked against the Slovenian border in a landscape of rolling hills. The Sauvignon Blanc grown here is dramatically different from both the Loire and New Zealand styles: more herbal than tropical, more mineral than fruity. Strauss is a reliable, quality-focused producer in the Gamlitz area, the heart of Styrian Sauvignon.",trivia:["Südsteiermark is geographically closer to Zagreb than to Vienna — a border region with both Austrian and Slovenian cultural heritage.","The rolling hills of Styria are covered almost entirely in vines — one of the most visually dramatic wine regions in Central Europe.","Sauvignon Blanc was brought to Styria in the 19th century by Archduke Johann of Austria."]},
+  {id:"309",cat:"Sauvignon Blanc",type:"white",producer:"Strauss/Tscherne",name:"'18,' Südsteiermark DAC",region:"Styria, Austria",vintage:"2024",abv:"13%",price:40,cert:"",icons:["☁️","🍋","🌿"],notes:["Lime","Green herbs","Citrus zest","Gooseberry","Bright dry finish"],tableside:"The most affordable Sauvignon Blanc on the list — a joint project between two Styrian producers, made for immediate pleasure. The right answer when someone wants a glass of something clean, bright, and not expensive.",pairings:["Aperitif","Salads","Light fish","Fresh goat cheese"],story:"'18' is a collaborative cuvée between producers Strauss and Tscherne, both based in the Gamlitz area. The name refers to the collaboration number. The 2024 is the freshest wine in the Sauvignon section: primary, aromatic, built for drinking now.",trivia:["Collaborative cuvées between independent producers are relatively uncommon in Austria.","Südsteiermark DAC requires wines to be made from Sauvignon Blanc or Welschriesling.","The 2024 vintage in Styria was warm and abundant — wines with generous fruit and early accessibility."]},
+  {id:"317",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"Ried Zieregg, Südsteiermark",region:"Styria, Austria",vintage:"2018",abv:"14%",price:140,cert:"Co/b",icons:["💪","🧂","🌿"],notes:["White peach","Grapefruit pith","Smoked herb","Limestone mineral","Long textured finish"],tableside:"The Zieregg is Tement's grand cru — and arguably Austria's most celebrated Sauvignon Blanc vineyard. The 2018 is now at six years and showing the development that makes this one of the most serious expressions of the grape anywhere in the world. Nothing like New Zealand. Nothing like the Loire. Entirely its own thing.",pairings:["Raw oysters","Grilled fish","Aged goat cheese","Complex vegetable preparations"],story:"Manfred Tement is one of Austria's most celebrated winemakers, and the Zieregg is his crown jewel — a single south-facing slope above Gamlitz producing Sauvignon Blanc of extraordinary intensity and mineral depth. At 14% alcohol and six years of age, this is a completely different wine from what most people think of when they think Sauvignon Blanc.",trivia:["The Zieregg is consistently ranked among the top five Sauvignon Blanc vineyards in the world.","Tement converted the Zieregg to biodynamic farming in the early 2000s.","The Zieregg faces directly south — unusual in Styria where most premium sites have east or southeast exposure."]},
+  {id:"323",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"Ried Zieregg, Südsteiermark",region:"Styria, Austria",vintage:"2020",abv:"14%",price:177,cert:"Co/b",icons:["💪","🧂","🌿"],notes:["Grapefruit","Smoked stone","White peach","Herb","Monumental mineral finish"],tableside:"The 2020 Zieregg — two years younger than the 2018, slightly more wound up, built on a cooler vintage's higher acidity. If the 2018 is Zieregg at its most generous, this is Zieregg at its most precise.",pairings:["Oysters","Delicate fish","Aged goat cheese","Herb-forward preparations"],story:"The 2020 vintage in Styria was cooler and more precise than 2018, giving the Zieregg a different character: tighter, more mineral-driven, built for longer aging. Comparing the 2018 and 2020 Zieregg side by side is one of the most instructive tastings on the list.",trivia:["2020 was significantly cooler than 2018 in Styria — the wines have a tighter, more nervous energy.","Tement holds back significant quantities of each Zieregg vintage for library release.","The Zieregg appeared in Jancis Robinson's list of the world's 100 greatest vineyards."]},
+  {id:"333",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"Ried Grassnitzberg, Südsteiermark",region:"Styria, Austria",vintage:"2018",abv:"13.5%",price:116,cert:"Co/b",icons:["⚖️","🧂","🌿"],notes:["Citrus blossom","Herb","Grapefruit","Limestone","Clean mineral finish"],tableside:"The Grassnitzberg is Tement's second great single-vineyard Sauvignon — less concentrated than the Zieregg, more elegant, earlier-drinking. The 2018 is in a beautiful place right now: mature, open, showing the Tement house style at its most accessible.",pairings:["Grilled fish","Goat cheese","Shellfish","Herb-crusted chicken"],story:"The Grassnitzberg faces southeast rather than south — a subtle difference in exposure that produces a lighter, more aromatic style. Same biodynamic farming as the Zieregg; what differs is purely the site. The right recommendation when a guest wants the Tement quality but isn't ready for the Zieregg's weight.",trivia:["The Grassnitzberg has been farmed by the Tement family for three generations.","Southeast exposure gives longer morning sun and less intense afternoon heat compared to true south-facing sites.","Tement also produces wines from the Slovenian side of the border — one of the few genuinely cross-border wine estates in Europe."]},
+  {id:"305",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"Ried Grassnitzberg, Südsteiermark",region:"Styria, Austria",vintage:"2019",abv:"13.5%",price:95,cert:"Co/b",icons:["⚖️","🧂","🌿"],notes:["Grapefruit","Green herb","Citrus","Mineral","Dry precise finish"],tableside:"The 2019 Grassnitzberg — a year younger than the 2018, slightly more energetic, showing the same Tement precision with a bit more grip. The most affordable Tement single-vineyard wine on the list.",pairings:["Oysters","Grilled fish","Asparagus","Goat cheese"],story:"Having both the 2018 and 2019 Grassnitzberg on the list gives the same comparative opportunity as the Zieregg — same site, different vintage character. The 2019 was warm and precise in Styria, producing Sauvignon Blancs with more body than the 2018 but excellent sustained acidity.",trivia:["The 2019 vintage was one of the warmest in Styrian history — but the Grassnitzberg's southeast exposure and elevation helped retain freshness.","Tement exports primarily to Germany, Switzerland, Austria, and the United States.","The Tement family converted to biodynamic certification for both the Zieregg and Grassnitzberg simultaneously."]},
+  {id:"321",cat:"Sauvignon Blanc",type:"white",producer:"Blackbird Vineyards",name:"'Dissonance,' Napa Valley",region:"Napa Valley, California",vintage:"2020",abv:"14%",price:45,cert:"",icons:["⚖️","🧈","🌸","🍑"],notes:["Melon","White peach","Vanilla","Guava","Creamy texture"],tableside:"California-style Sauvignon Blanc — barrel-fermented, rich, and tropical. This is Sauvignon Blanc for guests who usually drink Chardonnay. Smooth, generous, no sharp edges.",pairings:["Lobster","Crab","Rich fish preparations","Soft cheeses"],story:"Blackbird Vineyards is a Napa estate better known for their red Bordeaux blends, but the Dissonance has built its own following among guests who want something white but richer than most Sauvignon Blanc delivers. Barrel fermentation adds the creamy, vanilla texture; Napa fruit brings the tropical richness.",trivia:["Sauvignon Blanc barrel fermentation fundamentally changes the wine's character, adding weight and texture while suppressing herbal aromatics.","Blackbird Vineyards was founded in 2003 specifically to make Bordeaux-variety wines.","Napa Valley's warm climate produces Sauvignon Blanc with tropical fruit dominance."]},
+  {id:"335",cat:"Sauvignon Blanc",type:"white",producer:"Cloisonné",name:"Russian River Valley",region:"Sonoma County, California",vintage:"2022",abv:"13.5%",price:54,cert:"",icons:["⚖️","🌿","🍋"],notes:["Grapefruit","Passionfruit","Lemon grass","Cut grass","Clean fresh finish"],tableside:"A cooler-climate California Sauvignon Blanc from Russian River — more herbal and precise than Napa Sauvignon, closer to the Loire in spirit. A good middle ground for guests who want California freshness without the tropical richness of a warmer-climate bottle.",pairings:["Shellfish","Light fish","Goat cheese","Salads"],story:"Russian River Valley is one of California's coolest growing regions — morning fog from the Pacific keeps temperatures low and ripening slow, producing wines with higher acidity and more herbal character. Cloisonné is a small-production project focused on this style of Sauvignon Blanc.",trivia:["Russian River Valley's morning fog is caused by the Petaluma Wind Gap — a natural gap in the coastal mountains.","The region is far better known for Pinot Noir and Chardonnay than Sauvignon Blanc.","Russian River Valley received its own AVA designation in 1983."]},
+  {id:"329",cat:"Sauvignon Blanc",type:"white",producer:"Peju",name:"Napa Valley",region:"Napa Valley, California",vintage:"2022",abv:"14%",price:49,cert:"",icons:["⚖️","🌸","🍋","🍑"],notes:["Citrus blossom","White peach","Light herb","Melon","Smooth finish"],tableside:"Peju is one of Napa's most guest-friendly estates — their Sauvignon Blanc is approachable, floral, and easy to recommend to anyone who wants something white, crisp, and California without being heavy.",pairings:["Aperitif","Light fish","Mild cheeses","Salads"],story:"Peju Province Winery was founded by Tony and Herta Peju in 1982 and remains family-owned — a rarity in Napa Valley. Their Sauvignon Blanc is made in a clean, un-oaked style that emphasizes the grape's natural freshness.",trivia:["Peju Province is one of the few Napa Valley estates still fully family-owned after four decades.","The 'Province' in the name refers to Tony Peju's Provençal French heritage.","Napa Valley's Sauvignon Blanc is typically harvested in August — one of the earliest harvests in the valley calendar."]},
+  {id:"334",cat:"Sauvignon Blanc",type:"white",producer:"Quintessa",name:"'Illumination,' North Coast",region:"North Coast, California",vintage:"2024",abv:"14%",price:72,cert:"",icons:["⚖️","🌸","🍋","🍑"],notes:["White peach","Citrus blossom","Light herb","Melon","Rounded finish"],tableside:"Illumination is the second label of Quintessa — one of Napa's most prestigious estates. All the quality and care of the Quintessa approach, applied to Sauvignon Blanc. A step up from most California Sauvignon in terms of depth and texture.",pairings:["Crab","Lobster","Rich fish","Brie"],story:"Quintessa is the creation of Valeria and Augustin Huneeus — Chilean wine royalty who built one of Napa's most organically farmed estates. Illumination is sourced from the cooler North Coast AVA, giving it more freshness than a straight Napa Sauvignon.",trivia:["Quintessa is one of Napa's most philosophically committed organic producers.","Illumination includes Sauvignon Musqué — a more aromatic clone that adds floral lift.","The North Coast AVA is one of California's broadest designations, encompassing Napa, Sonoma, and several cooler coastal appellations."]},
+  {id:"117",cat:"Sauvignon Blanc",type:"white",producer:"Château de Cruzeau",name:"Bordeaux Blanc",region:"Pessac-Léognan, Bordeaux",vintage:"2020",abv:"13%",price:63,cert:"",icons:["⚖️","🌿","🌸"],notes:["Grapefruit","White peach","Herb","Chalk","Clean long finish"],tableside:"White Bordeaux — Sauvignon Blanc as the French do it in the left bank. Drier and more mineral than California, more textured than Sancerre, with a Sémillon component that adds body and breadth. A useful wine for guests who think they don't like Sauvignon Blanc.",pairings:["Grilled fish","Shellfish","Chicken with herb sauce","Goat cheese"],story:"White Bordeaux is made from Sauvignon Blanc blended with Sémillon — the Sauvignon provides freshness and aromatics; the Sémillon adds body, texture, and longevity. Château de Cruzeau is a Pessac-Léognan estate whose white consistently over-delivers.",trivia:["Pessac-Léognan is the only Bordeaux appellation that classifies both its red and white wines.","Sémillon develops honey, beeswax, and lanolin complexity with age — completely unlike any other white grape.","White Bordeaux is one of the most undervalued wine categories in the world."]},
+  {id:"118",cat:"Sauvignon Blanc",type:"white",producer:"Château La Louvière",name:"Bordeaux Blanc",region:"Pessac-Léognan, Bordeaux",vintage:"2018",abv:"13%",price:84,cert:"",icons:["⚖️","🧈","🌿"],notes:["White peach","Herb","Light toast","Waxy texture","Mineral"],tableside:"La Louvière is a classified Pessac-Léognan estate — their white is aged in oak, giving it a toasty, textured character closer to white Burgundy than anything New World. A wine for guests who take their whites seriously.",pairings:["Turbot","Scallops","Veal","Aged cheeses"],story:"The blend at La Louvière is approximately 85% Sauvignon Blanc and 15% Sémillon — a ratio that emphasizes freshness while the Sémillon adds the characteristic waxy texture. The 2018 vintage in Bordeaux was warm and generous, producing whites with unusual richness and depth.",trivia:["Château La Louvière is classified as a historical monument — the 18th century château itself is considered architecturally significant.","André Lurton is credited with reviving Pessac-Léognan's white wine reputation in the 1960s and 70s.","Sémillon's characteristic waxy texture is unique among white grapes — nothing else tastes quite like it."]},
+  {id:"331",cat:"Sauvignon Blanc",type:"white",producer:"Henri Bourgeois",name:"Pouilly-Fumé, Loire Valley",region:"Loire Valley, France",vintage:"2023",abv:"13%",price:70,cert:"",icons:["☁️","🍋","🧂"],notes:["Flint","Grapefruit","White currant","Chalk","Smoky mineral finish"],tableside:"Classic Pouilly-Fumé from one of the Loire's most respected estates. The 'fumé' — smoky — in the name comes from the gunflint soils, and you can taste it: Sauvignon Blanc at its most mineral and precise.",pairings:["Oysters","Grilled fish","Chèvre","Clean shellfish preparations"],story:"Henri Bourgeois is a multi-generational Loire family that farms both in Sancerre and Pouilly-Fumé — the two great Sauvignon Blanc appellations on opposite banks of the Loire River. Pouilly-Fumé tends toward more immediate accessibility and a more pronounced smoky, flinty mineral quality from the region's famous silex (flint) soils.",trivia:["The 'Fumé' in Pouilly-Fumé refers to the smoke-like character of the wine, which comes from the silex (flint) soils rather than any winemaking technique.","Pouilly-Fumé and Sancerre face each other across the Loire River — only a few kilometers apart but with different soil compositions.","Henri Bourgeois also makes wines in Marlborough, New Zealand under the Clos Henri label."]},
+  {id:"337",cat:"Sauvignon Blanc",type:"white",producer:"Lauverjat",name:"Sancerre, Loire Valley",region:"Loire Valley, France",vintage:"2025",abv:"13%",price:69,cert:"",icons:["☁️","🍋","🧂"],notes:["Lime","White currant","Chalk","Citrus blossom","Precise mineral finish"],tableside:"Sancerre — the world's most famous Sauvignon Blanc appellation. Lauverjat is a reliable, quality-focused producer, and the 2025 is the freshest vintage on the list: all primary citrus, chalk mineral, and the clean precision that made Sancerre famous.",pairings:["Raw oysters","Goat cheese","Grilled fish","Light vegetable preparations"],story:"Sancerre sits on the eastern Loire where the hills rise sharply from the floodplain. The soils here — primarily Kimmeridgian limestone and silex — produce Sauvignon Blanc with a precision and mineral clarity that no other region can replicate.",trivia:["Sancerre has been made famous in part by its association with Crottin de Chavignol — the aged goat cheese from the village of Chavignol within the appellation. One of the great French regional food-and-wine pairings.","The 2025 vintage is the most recent on the entire list — these wines were harvested barely months before landing on the table.","Sancerre's reputation was built almost entirely in the second half of the 20th century."]},
+  {id:"327",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"'Fosilni Berg,' Ciringa",region:"Ciringa, Slovenia",vintage:"2021",abv:"13.5%",price:48,cert:"",icons:["☁️","🌿","🧂"],notes:["Lime","Herb","Light mineral","Citrus zest","Clean dry finish"],tableside:"Tement's Slovenian expression — their vineyards cross the border and this comes from the Slovenian side. Same biodynamic farming, same producer, completely different appellation. A remarkable value for a Tement wine and a great conversation piece.",pairings:["Light fish","Goat cheese","Salads","Aperitif"],story:"Tement's vineyards don't stop at the Austrian border — the Ciringa appellation in Slovenia sits directly adjacent to their Südsteiermark parcels, and Manfred Tement farms both sides with the same biodynamic approach. The Fosilni Berg ('Fossil Hill') is named after the marine fossils in the limestone soils. At $48, it's the most affordable Tement wine on the list.",trivia:["The Austrian-Slovenian wine border is one of the most unusual in the world — the same producer can hold certified organic vineyards in two countries.","Ciringa sits in the Brda region, home to some of Slovenia's most celebrated producers.","The fossilized marine sediments in Ciringa's soils date from when the area was covered by the ancient Tethys Sea."]},
+  {id:"H1",cat:"Sauvignon Blanc",type:"white",producer:"Tement",name:"'Pruh,' Ciringa",region:"Ciringa, Slovenia",vintage:"2018",abv:"14%",price:117,cert:"",icons:["⚖️","🧂","🌿"],notes:["Stone fruit","Herbs","Limestone mineral","Smoked","Long textured finish"],tableside:"Tement's top Slovenian bottling — the Pruh is to Ciringa what the Zieregg is to Südsteiermark. Six years of age, biodynamic farming, and the same meticulous approach that defines everything Tement makes.",pairings:["Rich fish","Aged goat cheese","Grilled white meats","Complex vegetable dishes"],story:"The Pruh is Tement's premier cru expression from their Slovenian parcels — a single-vineyard wine from the best site on the Ciringa side. At six years, it's showing the same development that makes the Grassnitzberg and Zieregg so compelling.",trivia:["'Pruh' means 'stripe' in Slovenian — referring to the distinctive bands of limestone and marl in the vineyard's soil profile.","Manfred Tement is one of very few winemakers considered a reference point for the same grape variety in two different countries simultaneously.","The Brda region of Slovenia was part of the Austro-Hungarian Empire until 1918, then Italian territory until 1947."]},
+  {id:"319",cat:"Sauvignon Blanc",type:"white",producer:"Elena Walch",name:"Alto Adige",region:"Alto Adige, Italy",vintage:"2023",abv:"13%",price:59,cert:"",icons:["☁️","🍋","🌸"],notes:["Grapefruit","Passionfruit","White peach","Citrus blossom","Crisp clean finish"],tableside:"Alto Adige Sauvignon Blanc — Italian in address, Austrian in soul. Elena Walch is one of the region's most celebrated producers: aromatic, precise, with the altitude-driven freshness that makes Alto Adige wines so distinctive.",pairings:["Aperitif","Shellfish","Light fish","Fresh cheeses"],story:"Elena Walch is a remarkable story: a Vienna-born architect who married into one of Alto Adige's great wine families and transformed the estate into one of the region's leading producers. Alto Adige sits in the northern Italian Alps, where vineyards at 300 to 900 meters produce whites with an Alpine freshness that no warmer Italian region can match.",trivia:["Alto Adige is Italy's most Germanic wine region — German is an official language and the wine culture reflects both Italian and Austrian influences.","Each 100 meters of altitude reduces average temperature by approximately 0.6°C — giving winemakers extraordinary flexibility.","The region was part of the Austro-Hungarian Empire until 1919."]},
+
+  // ROSÉ
+  {id:"381",cat:"Rosé",type:"rosé",producer:"Argyle",name:"Willamette Valley Rosé, 2022",region:"Willamette Valley, Oregon",vintage:"2022",abv:"13%",price:42,cert:"",icons:["☁️","🍋","🌸"],notes:["Raspberry","Watermelon","Citrus","Light herb","Dry crisp finish"],tableside:"Oregon Pinot Noir rosé — light, precise, dry. Argyle is one of Willamette Valley's most reliable producers and this is exactly what you want rosé to be: nothing heavy, nothing sweet, just clean red-fruit freshness with the kind of acidity that makes you reach for another glass.",pairings:["Grilled fish","Light salads","Goat cheese","Summer starters"],story:"Argyle was founded in 1987 with an explicit focus on sparkling wine and cool-climate varieties. Their still rosé program emerged from the same philosophy: Pinot Noir grown in cool Willamette conditions, harvested early, handled gently. The 2022 vintage was warm and generous in Oregon, producing rosés with slightly more body than cooler years while retaining the acidity that defines Willamette wine.",trivia:["Argyle was one of the first Oregon wineries to focus specifically on traditional method sparkling wine.","Willamette Valley rosé is almost exclusively made from Pinot Noir — giving it a different character from Provençal rosés made from Grenache and Mourvèdre.","Oregon's wine country sits between the Coast Range and the Cascades — the two ranges create a rain shadow producing a drier, sunnier growing season than Pacific Coast averages would suggest."]},
+  {id:"383",cat:"Rosé",type:"rosé",producer:"Clementine Carter",name:"Rosé of Grenache, Santa Barbara County, 2022",region:"Santa Barbara County, California",vintage:"2022",abv:"13%",price:98,cert:"",icons:["⚖️","🌸","🧂"],notes:["Strawberry","Watermelon","Herbs de Provence","White pepper","Dry mineral finish"],tableside:"Clementine Carter makes some of the most thoughtful wines in Santa Barbara — small production, site-specific. This Grenache rosé is closer to Bandol than anything from Provence: more structured, more mineral, with a savory herb quality that makes it genuinely food-versatile.",pairings:["Grilled fish","Lamb chops","Ratatouille","Soft ripened cheeses"],story:"Clementine Carter is a winemaker working across small vineyards in Santa Barbara County — she sources from some of the best sites in the region. The Grenache rosé comes from old-vine material in a warm, rocky vineyard that produces the kind of concentrated, mineral-driven Grenache you find in southern France.",trivia:["Grenache is the most planted red grape in the world by volume — the foundation of Châteauneuf-du-Pape, Priorat, and many of Spain's most celebrated wines.","Bandol, in Provence, is considered the gold standard for serious dry rosé — made primarily from Mourvèdre, it can age for decades.","Santa Barbara County's east-west mountain orientation is unique in California — it allows cold Pacific air to penetrate directly inland, creating some of the coolest growing conditions in the state."]},
+  {id:"385",cat:"Rosé",type:"rosé",producer:"Morgante",name:"Rosé of Nero d'Avola, Sicily, 2021",region:"Sicily, Italy",vintage:"2021",abv:"13%",price:44,cert:"",icons:["⚖️","🌸","🌿"],notes:["Pomegranate","Dried cherry","Mediterranean herbs","Orange zest","Dry savory finish"],tableside:"Sicilian rosé from Nero d'Avola — the island's signature red grape. Not the pale, delicate Provence style: this is bolder, more Mediterranean, with a sun-baked savory quality that makes it feel like a trip to Agrigento. Interesting and different at a very easy price.",pairings:["Grilled octopus","Arancini","Caponata","Grilled fish"],story:"Morgante is a family estate in Agrigento province, in Sicily's hot, arid interior. Nero d'Avola in rosé form translates those dark fruit and Mediterranean herb qualities into something savory and slightly rustic in the best possible way: a wine that tastes like the food it was made to accompany.",trivia:["Nero d'Avola — 'black grape of Avola' — is named after the town of Avola in Syracuse province. It's been grown on the island for at least 2,000 years.","Sicily historically sold most of its production in bulk to northern Italian and French producers — a practice that has largely ended as the island built its own reputation.","The volcanic soils around Mount Etna have attracted enormous international investment — but Morgante's inland Agrigento region represents a more traditional face of Sicilian wine."]},
+  {id:"HILL-SECCO",cat:"Other Bubbles",type:"sparkling",producer:"Hillinger",name:"Secco Pinot Noir Rosé, NV",region:"Burgenland, Austria",vintage:"NV",abv:"11.5%",price:56,cert:"PR",icons:["☁️","🌸","🍑"],notes:["Strawberry","Raspberry","Light cream","Rose petal","Refreshing dry finish"],tableside:"Hillinger's Secco is the lightest, most approachable sparkling on the list — lightly fizzy, strawberry-forward, bone dry. Made the same way as Prosecco but from Austrian Pinot Noir. The right pour when someone wants something pink, festive, and effortless.",pairings:["Aperitif","Charcuterie","Light starters","Strawberry desserts"],story:"Secco is the Austrian term for lightly sparkling wines made by the tank method — CO2 is introduced after fermentation rather than through a secondary fermentation in bottle, producing a softer, more immediately approachable fizz than traditional method sparkling. Hillinger farms organically in Burgenland and this is their most casual, crowd-friendly bottle: a rosé fizz built entirely for pleasure. The Pinot Noir brings genuine red fruit rather than the neutral base you'd find in a lot of light sparkling rosés.",trivia:["The tank method — also called the Charmat method — was developed by Frédéric Charmat in France in 1907 and is the same process used for Prosecco. It preserves fresh, primary fruit flavors better than traditional method but produces softer, less persistent bubbles.","Hillinger's organic certification means no synthetic pesticides, herbicides, or fertilizers — unusual for a producer at this price and volume level.","Burgenland's warm Pannonian climate makes it one of Austria's most reliable regions for ripe, fruit-forward wines — the same warmth that produces great Blaufränkisch reds gives this rosé its generous strawberry character."]},
+  {id:"MITT-ROSE",cat:"Rosé",type:"rosé",producer:"Tegernseerhof",name:"Zweigelt Rosé, 2024",region:"Wachau, Austria",vintage:"2024",abv:"12.5%",price:56,cert:"CS",icons:["☁️","🌸","🍋"],notes:["Cherry","Red currant","Watermelon","Fresh herbs","Bright dry finish"],tableside:"A Wachau rosé from the Mittelbach family — six generations farming the same stone terraces that produce some of Austria's greatest Riesling and Grüner. Made from Zweigelt, Austria's signature red grape. Bright, dry, and genuinely refreshing. The most food-friendly rosé on the list.",pairings:["Grilled fish","Charcuterie","Light salads","Local oysters"],story:"Tegernseerhof is run by Martin Mittelbach — the sixth generation of his family to farm these steep Wachau terraces, which means his family has been tending these vines since before the American Civil War. The estate is a member of Vinea Wachau, the association that administers the region's strict Codex — a set of rules about farming, yields, and winemaking that goes significantly beyond what Austrian law requires. That same precision applied to Riesling and Grüner Veltliner is applied here to a simple, beautiful dry rosé from Zweigelt. It's the kind of wine that makes you realize how seriously Austrians take every bottle they make.",trivia:["Zweigelt is Austria's most planted red grape — a cross of Blaufränkisch and St. Laurent created by Fritz Zweigelt at the Klosterneuburg institute in 1922.","The Vinea Wachau Codex is a voluntary but rigorous set of standards that member estates commit to — it prohibits chapitalization (adding sugar to boost alcohol), limits yields, and requires estate-grown fruit. It's one of the strictest self-regulatory codes in European wine.","The Wachau is better known for white wine, but Zweigelt rosé is a regional tradition — the grape's natural acidity and red fruit character translate beautifully into the style."]}
+];
+
+const CATS = ["All","Champagne","Other Bubbles","Grüner Veltliner","Riesling","Sauvignon Blanc","Chardonnay","Natural & Orange","Rosé","Pinot Noir","Cabernet","Austrian Reds","Virginia Wines"];
+const ICONS = ["⚖️","☁️","💪","🍋","🧂","🌸","🌿","🪵","🍞","🧈","🍊","🍑","🍒"];
+const ICON_LABELS = {"⚖️":"Medium","☁️":"Light","💪":"Full","🍋":"Acidic","🧂":"Mineral","🌸":"Floral","🌿":"Herbal","🪵":"Oak","🍞":"Toasty","🧈":"Creamy","🍊":"Natural","🍑":"Fruit-forward","🍒":"Red fruit"};
+const PRICE_MAX = 900;
+let activeCat = "All", activeIcons = new Set(), openId = null, priceMin = 0, priceMax = PRICE_MAX, activePreset = null;
+
+function buildFilters() {
+  document.getElementById('cat-filters').innerHTML = CATS.map(c =>
+    `<button class="filter-btn${activeCat===c?' active':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+  document.getElementById('icon-filters').innerHTML = ICONS.map(ic =>
+    `<button class="icon-btn${activeIcons.has(ic)?' active':''}" onclick="toggleIcon('${ic}')">${ic} ${ICON_LABELS[ic]}</button>`).join('');
+  updateSliderUI(); buildSummary();
+}
+
+function setCat(c) { activeCat=c; openId=null; buildFilters(); render(); }
+function toggleIcon(ic) { activeIcons.has(ic)?activeIcons.delete(ic):activeIcons.add(ic); buildFilters(); render(); }
+
+function setPreset(btn) {
+  const min=parseInt(btn.dataset.min), max=parseInt(btn.dataset.max);
+  if (activePreset===btn) { activePreset=null; priceMin=0; priceMax=PRICE_MAX; document.getElementById('range-min').value=0; document.getElementById('range-max').value=PRICE_MAX; }
+  else { activePreset=btn; priceMin=min; priceMax=max; document.getElementById('range-min').value=Math.min(min,PRICE_MAX); document.getElementById('range-max').value=Math.min(max,PRICE_MAX); }
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.toggle('active',b===activePreset));
+  updateSliderUI(); buildSummary(); render();
+}
+
+function onSlider() {
+  let minVal=parseInt(document.getElementById('range-min').value), maxVal=parseInt(document.getElementById('range-max').value);
+  if(minVal>maxVal-10){minVal=maxVal-10; document.getElementById('range-min').value=minVal;}
+  priceMin=minVal; priceMax=maxVal; activePreset=null;
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  updateSliderUI(); buildSummary(); render();
+}
+
+function updateSliderUI() {
+  const minPct=(priceMin/PRICE_MAX)*100, maxPct=(priceMax/PRICE_MAX)*100;
+  document.getElementById('slider-fill').style.left=minPct+'%';
+  document.getElementById('slider-fill').style.width=(maxPct-minPct)+'%';
+  const isDefault=priceMin===0&&priceMax===PRICE_MAX;
+  document.getElementById('price-display').textContent=isDefault?'All prices':priceMax>=PRICE_MAX?`$${priceMin}+`:`$${priceMin} — $${priceMax}`;
+}
+
+function buildSummary() {
+  const tags=[];
+  if(activeCat!=='All') tags.push({label:activeCat,clear:()=>{activeCat='All';buildFilters();render();}});
+  activeIcons.forEach(ic=>tags.push({label:`${ic} ${ICON_LABELS[ic]}`,clear:()=>{activeIcons.delete(ic);buildFilters();render();}}));
+  const isPriceActive=priceMin>0||priceMax<PRICE_MAX;
+  if(isPriceActive){const pl=priceMax>=PRICE_MAX?`$${priceMin}+`:`$${priceMin}–$${priceMax}`;tags.push({label:pl,clear:()=>{priceMin=0;priceMax=PRICE_MAX;activePreset=null;document.getElementById('range-min').value=0;document.getElementById('range-max').value=PRICE_MAX;document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));updateSliderUI();buildSummary();render();}});}
+  const s=document.getElementById('active-summary');
+  if(!tags.length){s.innerHTML='';return;}
+  s.innerHTML=tags.map(t=>`<span class="active-tag">${t.label}<button onclick="(${t.clear.toString()})()">✕</button></span>`).join('')+`<button class="clear-all" onclick="clearAll()">Clear all</button>`;
+}
+
+function clearAll(){activeCat='All';activeIcons.clear();priceMin=0;priceMax=PRICE_MAX;activePreset=null;openId=null;document.getElementById('range-min').value=0;document.getElementById('range-max').value=PRICE_MAX;document.getElementById('search').value='';document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));buildFilters();render();}
+
+function render() {
+  const q=document.getElementById('search').value.toLowerCase();
+  const filtered=WINES.filter(w=>{
+    if(activeCat!=='All'&&w.cat!==activeCat)return false;
+    if(activeIcons.size>0){for(const ic of activeIcons){if(!w.icons.includes(ic))return false;}}
+    if(w.price<priceMin||(priceMax<PRICE_MAX&&w.price>priceMax))return false;
+    if(q){const blob=[w.producer,w.name,w.cat,w.region,w.notes.join(' '),w.tableside,w.story,(w.trivia||[]).join(' ')].join(' ').toLowerCase();if(!blob.includes(q))return false;}
+    return true;
+  });
+  document.getElementById('result-count').textContent=filtered.length===WINES.length?`${WINES.length} wines`:`${filtered.length} of ${WINES.length} wines`;
+  const list=document.getElementById('wine-list');
+  if(!filtered.length){list.innerHTML=`<div class="empty">No wines match your selection.</div>`;return;}
+  const grouped={};
+  filtered.forEach(w=>{if(!grouped[w.cat])grouped[w.cat]=[];grouped[w.cat].push(w);});
+  let html='';
+  for(const[cat,wines]of Object.entries(grouped)){
+    html+=`<div class="section-head"><span class="section-name">${cat}</span>${SECTION_INTROS[cat]?`<div class="section-intro">${SECTION_INTROS[cat]}</div>`:''}</div>`;
+    wines.forEach(w=>{
+      const isOpen=openId===w.id;
+      const dc=w.type==='red'?'#8b2020':w.cat==='Champagne'||w.cat==='Other Bubbles'?'#5a8fa8':w.cat==='Rosé'?'#b85a7a':w.cat==='Natural & Orange'?'#5a8a5a':'#c9a96e';
+      html+=`<div class="wine-card${isOpen?' open':''}" id="card-${w.id}" onclick="toggleCard('${w.id}')">
+        <div class="wine-card-top">
+          <div class="wine-dot" style="background:${dc}"></div>
+          <div class="wine-main">
+            <div class="wine-number">${w.id} · ${w.vintage} · ${w.abv}</div>
+            <div class="wine-producer">${w.producer}</div>
+            <div class="wine-name-line">${w.name}</div>
+            <div class="wine-name-line" style="font-size:11px;margin-top:1px;">${w.region}</div>
+            <div class="wine-icons">${w.icons.map(i=>`<span class="wine-icon-badge">${i}</span>`).join('')}${w.cert?`<span class="cert-badge">${w.cert==='Co/b'?'Organic/Bio':w.cert==='CS'?'Sustainable':'Practicing'}</span>`:''}</div>
+          </div>
+          <div class="wine-right"><div class="wine-price">$${w.price}</div><div class="chevron">▾</div></div>
+        </div>
+        ${isOpen?`<div class="wine-expand">
+          <div class="tableside-line">${w.tableside}</div>
+          <div class="detail-grid">
+            <div class="detail-block full"><div class="detail-label">Tasting Notes</div><div class="note-pills">${w.notes.map(n=>`<span class="note-pill">${n}</span>`).join('')}</div></div>
+            <div class="detail-block full"><div class="detail-label">Food Pairings</div><div class="pairing-tags">${w.pairings.map(p=>`<span class="pairing-tag">${p}</span>`).join('')}</div></div>
+          </div>
+          <div class="expand-section"><div class="expand-section-title" onclick="toggleSec(event,'${w.id}-story')">The Story <span id="arr-${w.id}-story">▾</span></div><div class="expand-section-body" id="sec-${w.id}-story"><p>${w.story}</p></div></div>
+          <div class="expand-section"><div class="expand-section-title" onclick="toggleSec(event,'${w.id}-trivia')">Trivia & Context <span id="arr-${w.id}-trivia">▾</span></div><div class="expand-section-body" id="sec-${w.id}-trivia">${(w.trivia||[]).map(t=>`<div class="trivia-item"><span class="trivia-bullet">◆</span><span>${t}</span></div>`).join('')}</div></div>
+        </div>`:''}
+      </div>`;
+    });
+  }
+  list.innerHTML=html;
+}
+
+function toggleCard(id){openId=openId===id?null:id;render();if(openId)setTimeout(()=>{const el=document.getElementById('card-'+id);if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
+function toggleSec(e,secId){e.stopPropagation();const sec=document.getElementById('sec-'+secId),arr=document.getElementById('arr-'+secId);if(!sec)return;const hidden=sec.style.display==='none';sec.style.display=hidden?'':'none';if(arr)arr.textContent=hidden?'▾':'▸';}
+
+buildFilters(); render();
+</script>
+</body>
+</html>
