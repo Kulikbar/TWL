@@ -115,6 +115,7 @@
     background: var(--gold); border: 2px solid var(--bg); cursor: pointer; }
   .price-slider-label { font-size: 11px; color: var(--gold); white-space: nowrap;
     font-family: 'Outfit', sans-serif; min-width: 52px; text-align: right; }
+  [id^='sec-'] { scroll-margin-top: 220px; }
 </style>
 </head>
 <body>
@@ -374,14 +375,7 @@ function scrollToHash() {
   const id = window.location.hash.slice(1);
   const el = document.getElementById(id);
   if (!el) return;
-  // Jump to top first so pageYOffset is 0, then calculate clean
-  window.scrollTo(0, 0);
-  setTimeout(() => {
-    const controls = document.querySelector('.controls');
-    const controlsH = controls ? controls.offsetHeight : 140;
-    const elTop = el.getBoundingClientRect().top;
-    window.scrollTo({ top: elTop - controlsH - 16, behavior: 'smooth' });
-  }, 50);
+  setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
 }
 fetch('wines.json')
   .then(r => r.json())
