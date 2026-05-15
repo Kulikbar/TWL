@@ -270,7 +270,7 @@ fetch('wines.json')
   .then(data => {
     ALL_WINES = data;
     const meta = document.getElementById('search-meta');
-    if(meta && !meta.textContent) meta.textContent = ALL_WINES.length + ' wines ready to search';
+    if(meta) meta.textContent = ALL_WINES.length + ' wines ready to search';
     setTimeout(() => { if(meta && meta.textContent.includes('ready')) meta.textContent = ''; }, 2000);
   })
   .catch(err => {
@@ -338,7 +338,6 @@ function handleSearch() {
       </div>
     </a>`;
   }).join('');
-}
 }
 </script>
 </body>
