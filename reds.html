@@ -373,12 +373,13 @@ function scrollToHash() {
   if (!window.location.hash) return;
   const id = window.location.hash.slice(1);
   const el = document.getElementById(id);
-  if (el) setTimeout(() => {
+  if (!el) return;
+  setTimeout(() => {
     const controls = document.querySelector('.controls');
-    const offset = controls ? controls.getBoundingClientRect().height + 16 : 140;
-    const rect = el.getBoundingClientRect();
-    window.scrollBy({ top: rect.top - offset, behavior: 'smooth' });
-  }, 100);
+    const controlsH = controls ? controls.offsetHeight : 140;
+    const elTop = el.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: elTop - controlsH - 16, behavior: 'smooth' });
+  }, 150);
 }
 fetch('wines.json')
   .then(r => r.json())
