@@ -213,7 +213,7 @@ const CAT_ANCHORS = {
 };
 const ICONS = ["☁️","⚖️","💪","🍋","🍑","🌿","🧂","🍄","🪵","🧈","🌸","🍊","🏺"];
 const ICON_LABELS = {"☁️":"Light-bodied","⚖️":"Medium-bodied","💪":"Full-bodied","🍋":"High acidity","🍑":"Fruit-forward","🌿":"Herbal/savory","🧂":"Mineral","🍄":"Earthy","🪵":"Oak/toasty","🧈":"Creamy/rich","🌸":"Floral","🍊":"Natural/orange","🏺":"Large format"};
-const PRICE_MAX = 900;
+const PRICE_MAX = 600;
 let activeCat = "All", activeIcons = new Set(), openId = null, btgOnly = false;
 let priceMin = 0, priceMax = PRICE_MAX, activePreset = null;
 
@@ -255,8 +255,10 @@ function toggleIcon(ic) { activeIcons.has(ic)?activeIcons.delete(ic):activeIcons
 function setPreset(btn) {
   const min=parseInt(btn.dataset.min), max=parseInt(btn.dataset.max);
   if (activePreset===btn) { activePreset=null; priceMin=0; priceMax=PRICE_MAX; }
-  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.toggle('active',b===activePreset));
-  buildSummary(); render();
+  else { priceMin=min; priceMax=max>=9999?PRICE_MAX:max; activePreset=btn; }
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  if(activePreset) activePreset.classList.add('active');
+  updateSliderUI(); buildSummary(); render();
 }
 
 function buildSummary() {
@@ -275,6 +277,7 @@ function clearAll(){activeCat='All';activeIcons.clear();priceMin=0;priceMax=PRIC
 function render() {
   const q=normalize(document.getElementById('search').value);
   const filtered=WINES.filter(w=>{
+    if(btgOnly&&!w.btg)return false;
     if(activeCat!=='All'&&w.cat!==activeCat)return false;
     if(activeIcons.size>0){for(const ic of activeIcons){if(!w.icons.includes(ic))return false;}}
     if(w.price<priceMin||(priceMax<PRICE_MAX&&w.price>priceMax))return false;

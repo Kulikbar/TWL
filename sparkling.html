@@ -94,6 +94,7 @@
   .expand-section-body p:last-child { margin-bottom: 0; }
   .trivia-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--muted); line-height: 1.6; }
   .trivia-bullet { color: var(--gold-dim); flex-shrink: 0; }
+  .result-count { font-size: 11px; color: var(--muted); padding: 0.6rem 1.25rem 0; font-style: italic; font-family: 'Cormorant Garamond', serif; }
   .loading { display: flex; flex-direction: column; align-items: center;
     justify-content: center; padding: 4rem 2rem; gap: 16px; }
   .loading-spinner { width: 28px; height: 28px; border: 2px solid var(--border2);
@@ -157,7 +158,7 @@
       <div class="price-slider-wrap">
         <div class="price-slider-row">
           <input type="range" class="price-slider" id="price-max-slider"
-            min="0" max="600" step="10" value="600" oninput="onMaxSlider(this.value)">
+            min="0" max="800" step="10" value="800" oninput="onMaxSlider(this.value)">
           <span class="price-slider-label" id="price-max-label">All</span>
         </div>
       </div>
@@ -201,7 +202,7 @@ const CAT_ANCHORS = {
 };
 const ICONS = ["☁️","⚖️","💪","🦴","🍋","🍑","🥐","🧈","🌸","🧂","🏺"];
 const ICON_LABELS = {"☁️":"Light/delicate","⚖️":"Medium-bodied","💪":"Rich/full","🦴":"Bone dry","🍋":"Citrus/crisp","🍑":"Fruit-forward","🥐":"Toasty/brioche","🧈":"Creamy mousse","🌸":"Floral","🧂":"Mineral","🏺":"Large format"};
-const PRICE_MAX = 900;
+const PRICE_MAX = 800;
 let activeCat = "All", activeIcons = new Set(), openId = null, btgOnly = false;
 let priceMin = 0, priceMax = PRICE_MAX, activePreset = null;
 
@@ -213,7 +214,7 @@ function normalize(str) {
 
 function onMaxSlider(val) {
   const v = parseInt(val);
-  priceMax = v >= 600 ? PRICE_MAX : v;
+  priceMax = v >= 800 ? PRICE_MAX : v;
   activePreset = null;
   document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('price-max-label').textContent = v >= 600 ? 'All' : 'Under $' + v;
@@ -223,7 +224,7 @@ function updateSliderUI() {
   const slider = document.getElementById('price-max-slider');
   const label = document.getElementById('price-max-label');
   if (!slider) return;
-  const val = priceMax >= PRICE_MAX ? 600 : priceMax;
+  const val = priceMax >= PRICE_MAX ? 800 : priceMax;
   slider.value = val;
   label.textContent = priceMax >= PRICE_MAX ? 'All' : 'Under $' + priceMax;
 }
@@ -243,8 +244,10 @@ function toggleIcon(ic) { activeIcons.has(ic)?activeIcons.delete(ic):activeIcons
 function setPreset(btn) {
   const min=parseInt(btn.dataset.min), max=parseInt(btn.dataset.max);
   if (activePreset===btn) { activePreset=null; priceMin=0; priceMax=PRICE_MAX; }
-  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.toggle('active',b===activePreset));
-  buildSummary(); render();
+  else { priceMin=min; priceMax=max>=9999?PRICE_MAX:max; activePreset=btn; }
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  if(activePreset) activePreset.classList.add('active');
+  updateSliderUI(); buildSummary(); render();
 }
 
 function buildSummary() {
@@ -263,6 +266,7 @@ function clearAll(){activeCat='All';activeIcons.clear();priceMin=0;priceMax=PRIC
 function render() {
   const q=normalize(document.getElementById('search').value);
   const filtered=WINES.filter(w=>{
+    if(btgOnly&&!w.btg)return false;
     if(activeCat!=='All'&&w.cat!==activeCat)return false;
     if(activeIcons.size>0){for(const ic of activeIcons){if(!w.icons.includes(ic))return false;}}
     if(w.price<priceMin||(priceMax<PRICE_MAX&&w.price>priceMax))return false;
