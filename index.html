@@ -322,13 +322,7 @@ function handleSearch() {
 
   meta.textContent = matches.length + ' wine' + (matches.length !== 1 ? 's' : '') + ' found';
 
-  // Exact match for pure numeric queries (bin number search)
-  const isNumeric = /^\d+$/.test(q.trim());
-
-  results.innerHTML = matches.filter(w => {
-    if (isNumeric) return w.id === q.trim() || w.id === q.trim().replace(/^0+/, '');
-    return true;
-  }).map(w => {
+  results.innerHTML = matches.map(w => {
     const url = FILE_URLS[w.file] + '#card-' + w.id;
     return `<a class="result-card" href="${url}">
       <div class="result-top">
@@ -343,7 +337,8 @@ function handleSearch() {
         <span class="result-file">${FILE_LABELS[w.file]}</span>
       </div>
     </a>`;
-  }).join('') || '<div class="no-results">No wines found for "' + q + '"</div>';
+  }).join('');
+}
 }
 </script>
 </body>
