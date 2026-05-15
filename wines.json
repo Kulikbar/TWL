@@ -672,45 +672,6 @@
     "file": "sparkling"
   },
   {
-    "id": "224",
-    "cat": "Champagne",
-    "type": "sparkling",
-    "producer": "Veuve A. Devaux",
-    "name": "Brut 'Cuvée D,' NV",
-    "region": "Champagne, France",
-    "vintage": "NV",
-    "abv": "12%",
-    "price": 125,
-    "cert": "",
-    "icons": [
-      "⚖️",
-      "🥐",
-      "🌸",
-      "🍑"
-    ],
-    "notes": [
-      "White peach",
-      "Brioche",
-      "Citrus blossom",
-      "Light honey",
-      "Clean finish"
-    ],
-    "tableside": "Devaux's entry point — fresh, well-made, balanced, and fairly priced for the quality. An honest crowd-pleaser from an underrated house. Good for tables that want something approachable without paying prestige prices.",
-    "pairings": [
-      "Aperitivo",
-      "Fried calamari",
-      "Mild fish",
-      "Brie"
-    ],
-    "story": "The Cuvée D is Devaux's standard non-vintage expression — a Pinot Noir-dominant blend designed for immediate enjoyment. It's not the most complex bottle on the list, but it's consistent, well-made, and offers genuine value relative to more famous house names at similar price points. A useful tool for tables that want Champagne without ceremony.",
-    "trivia": [
-      "The 'Veuve' in Veuve A. Devaux means 'widow' in French — a common designation in Champagne that refers to a widow who took over a house after her husband's death. The most famous is Veuve Clicquot.",
-      "Devaux sources fruit from across the Aube, which is why the Pinot Noir character tends to be more prominent and earthy than Marne Valley Champagnes.",
-      "Despite being cooperative-produced, Devaux has won multiple international awards and is frequently cited by critics as one of France's best-value luxury sparkling wines."
-    ],
-    "file": "sparkling"
-  },
-  {
     "id": "219",
     "cat": "Champagne",
     "type": "sparkling",
@@ -1644,7 +1605,7 @@
     "region": "Champagne, France",
     "vintage": "NV",
     "abv": "12.5%",
-    "price": 750,
+    "price": 550,
     "cert": "",
     "btg": false,
     "icons": [
@@ -2791,45 +2752,6 @@
     "file": "whites"
   },
   {
-    "id": "839",
-    "cat": "Grüner Veltliner",
-    "type": "white",
-    "producer": "Sighardt Donabaum",
-    "name": "Donabaum",
-    "region": "Wachau, Austria",
-    "vintage": "2018",
-    "abv": "12.5%",
-    "price": 53,
-    "cert": "",
-    "icons": [
-      "☁️",
-      "🍋",
-      "🌿",
-      "🍑"
-    ],
-    "notes": [
-      "Green apple",
-      "White pepper",
-      "Light citrus",
-      "Herb",
-      "Fresh dry finish"
-    ],
-    "tableside": "Sighardt Donabaum's entry-level Wachau Grüner — light, fresh, and honest. Eight years of age has added a little roundness without losing the freshness. A solid value from a quality-focused Wachau producer.",
-    "pairings": [
-      "Aperitif",
-      "Light fish",
-      "Salads",
-      "Light starters"
-    ],
-    "story": "Sighardt Donabaum is a small family estate in Spitz, at the western and coolest end of the Wachau gorge. His entry-level Grüner is made from younger vines and his flatter parcels, designed for approachable everyday drinking rather than aging. The fact that an eight-year-old entry-level white still drinks well is a testament to the natural acidity of Wachau Grüner.",
-    "trivia": [
-      "Spitz is considered the coolest sub-zone of the Wachau — its position at the western end of the gorge means it receives less of the warming Pannonian air that benefits the eastern parts of the region.",
-      "Donabaum is a relatively young estate by Wachau standards — the current generation has been building the estate's reputation since the 1990s.",
-      "An eight-year-old entry-level Grüner is unusual — most are consumed within two or three years. The fact that this one still drinks well says something about the natural acidity of Wachau Grüner."
-    ],
-    "file": "whites"
-  },
-  {
     "id": "843",
     "cat": "Grüner Veltliner",
     "type": "white",
@@ -3132,44 +3054,6 @@
       "2021 was one of the coolest growing seasons in Kamptal in recent memory — the wines are built for the long term, not for immediate pleasure.",
       "Bründlmayer ages their reserve Rieslings in large neutral oak casks — a traditional approach that adds subtle texture without oak flavors.",
       "The Heiligenstein's volcanic basalt is geologically unrelated to the surrounding rock — believed to be the remnant of ancient volcanic activity millions of years old."
-    ],
-    "file": "whites"
-  },
-  {
-    "id": "643",
-    "cat": "Riesling",
-    "type": "white",
-    "producer": "Hiedler",
-    "name": "Ried Heiligenstein 1ÖTW",
-    "region": "Kamptal, Austria",
-    "vintage": "2022",
-    "abv": "13%",
-    "price": 134,
-    "cert": "",
-    "icons": [
-      "⚖️",
-      "🍋",
-      "🧂"
-    ],
-    "notes": [
-      "Grapefruit",
-      "Lime leaf",
-      "Wet stone",
-      "White peach",
-      "Long dry finish"
-    ],
-    "tableside": "Another producer working the Heiligenstein — Hiedler's interpretation is a little more approachable than Bründlmayer's, slightly earlier-drinking, but with the same unmistakable volcanic mineral backbone the site always delivers.",
-    "pairings": [
-      "Grilled river fish",
-      "Shellfish",
-      "Veal with citrus sauce",
-      "Light vegetable preparations"
-    ],
-    "story": "The Heiligenstein is farmed by multiple producers — Bründlmayer, Hiedler, Hirsch, and Schloss Gobelsburg among the most notable. Comparing their wines is one of the great exercises in understanding how the same site expresses itself differently through different hands. Hiedler's style tends toward earlier accessibility and slightly more generous fruit than Bründlmayer's more austere approach.",
-    "trivia": [
-      "The Heiligenstein is officially classified 1ÖTW — premier cru — but was recognized as exceptional long before the modern system existed.",
-      "Hiedler has farmed Kamptal since the 1980s — young by Austrian standards but quickly established as a serious producer.",
-      "Having multiple quality producers on the same vineyard is relatively unusual in Austria — the Heiligenstein is one of the few sites where the comparison is genuinely instructive."
     ],
     "file": "whites"
   },
@@ -4171,45 +4055,6 @@
     "file": "whites"
   },
   {
-    "id": "334",
-    "cat": "Sauvignon Blanc",
-    "type": "white",
-    "producer": "Quintessa",
-    "name": "'Illumination,' North Coast",
-    "region": "North Coast, California",
-    "vintage": "2024",
-    "abv": "14%",
-    "price": 72,
-    "cert": "",
-    "icons": [
-      "⚖️",
-      "🌸",
-      "🍋",
-      "🍑"
-    ],
-    "notes": [
-      "White peach",
-      "Citrus blossom",
-      "Light herb",
-      "Melon",
-      "Rounded finish"
-    ],
-    "tableside": "Illumination is the second label of Quintessa — one of Napa's most prestigious estates. All the quality and care of the Quintessa approach, applied to Sauvignon Blanc. A step up from most California Sauvignon in terms of depth and texture.",
-    "pairings": [
-      "Crab",
-      "Lobster",
-      "Rich fish",
-      "Brie"
-    ],
-    "story": "Quintessa is the creation of Valeria and Augustin Huneeus — Chilean wine royalty who built one of Napa's most organically farmed estates. Illumination is sourced from the cooler North Coast AVA, giving it more freshness than a straight Napa Sauvignon.",
-    "trivia": [
-      "Quintessa is one of Napa's most philosophically committed organic producers.",
-      "Illumination includes Sauvignon Musqué — a more aromatic clone that adds floral lift.",
-      "The North Coast AVA is one of California's broadest designations, encompassing Napa, Sonoma, and several cooler coastal appellations."
-    ],
-    "file": "whites"
-  },
-  {
     "id": "117",
     "cat": "Sauvignon Blanc",
     "type": "white",
@@ -4218,7 +4063,7 @@
     "region": "Pessac-Léognan, Bordeaux",
     "vintage": "2020",
     "abv": "13%",
-    "price": 63,
+    "price": 162,
     "cert": "",
     "icons": [
       "⚖️",
@@ -5719,44 +5564,6 @@
       "Neuburger is believed to have originated as a natural crossing in the Wachau — the same gorge where Donabaum farms today.",
       "The variety is rich in glycerol, which gives it its characteristic round, almost oily texture — quite different from the crisp, mineral character of Grüner Veltliner from the same region.",
       "Biodynamic certification (Co/b) from Donabaum is notable — Demeter-certified estates in the Wachau are still relatively rare despite the region's quality focus."
-    ],
-    "file": "whites"
-  },
-  {
-    "id": "709",
-    "cat": "Other Whites",
-    "type": "white",
-    "producer": "Schloss Gobelsburg",
-    "name": "Cuvée 3, Grüner Veltliner/Riesling",
-    "region": "Burgenland, Austria",
-    "vintage": "2022",
-    "abv": "13%",
-    "price": 118,
-    "cert": "",
-    "icons": [
-      "⚖️",
-      "🍋",
-      "🧂"
-    ],
-    "notes": [
-      "Green apple",
-      "Grapefruit",
-      "White pepper",
-      "Mineral",
-      "Dry precise finish"
-    ],
-    "tableside": "Gobelsburg's Cuvée 3 is a blend of Grüner Veltliner and Riesling — the two varieties that define Kamptal, combined into a single wine. It's not a compromise between the two but something that has its own character: the pepper of Grüner, the precision of Riesling, and the mineral backbone of both.",
-    "pairings": [
-      "Grilled fish",
-      "Shellfish",
-      "Mild vegetable dishes",
-      "Light poultry"
-    ],
-    "story": "Blending Grüner Veltliner and Riesling is unusual — most producers treat them as separate varieties with separate identities. Gobelsburg's Cuvée 3 argues that the two together can produce something more interesting than either alone: the Grüner brings body and white pepper; the Riesling brings tension and mineral precision. The result is one of the more distinctive and food-friendly wines in the entire white wine lineup.",
-    "trivia": [
-      "The Austrian classification system technically prohibits blended wines from using the Kamptal DAC designation — which is why Cuvée 3 carries the broader Burgenland appellation despite being made from Kamptal fruit.",
-      "Grüner Veltliner and Riesling share many of the same soil preferences and climatic requirements, which is why they coexist so naturally in Kamptal.",
-      "Gobelsburg's decision to number rather than name this cuvée reflects a deliberately understated approach — the wine sells itself on what's in the bottle, not the label."
     ],
     "file": "whites"
   },
@@ -7984,44 +7791,6 @@
     "file": "reds"
   },
   {
-    "id": "7007",
-    "cat": "Austrian Reds",
-    "producer": "Glatzer",
-    "name": "Zweigelt 'Dornenvogel,' Göttlesbrunn DAC",
-    "region": "Carnuntum, Austria",
-    "vintage": "2020",
-    "abv": "12.5%",
-    "price": 56,
-    "cert": "Co/b",
-    "btg": false,
-    "icons": [
-      "☁️",
-      "🍒",
-      "🌿"
-    ],
-    "notes": [
-      "Sour cherry",
-      "Raspberry",
-      "Fresh herbs",
-      "Light body",
-      "Juicy easy finish"
-    ],
-    "tableside": "The 'Thornbird' — Glatzer's entry-level Zweigelt, organic, and one of the better-value reds on the list. Light, fresh, and food-friendly. Recommend it for tables that want something interesting at a fair price.",
-    "pairings": [
-      "Salads",
-      "Grilled fish",
-      "Light pasta",
-      "Charcuterie"
-    ],
-    "story": "'Dornenvogel' — 'thornbird' — references the old Germanic legend of the bird that sings its most beautiful song while impaling itself on a thorn. The wine itself is genuinely lovely: light, aromatic, and versatile in the way that Beaujolais is versatile. Organic fruit, minimal intervention, drink-now pleasure.",
-    "trivia": [
-      "At 12.5% alcohol, this is one of the lower-ABV reds on the list — notable as global warming pushes levels higher across most wine regions.",
-      "Zweigelt is planted on more hectares than any other red grape in Austria, yet remains barely known outside the country — creating genuine value for informed buyers.",
-      "The legend of the Dornenvogel was later popularized internationally by Colleen McCullough's 1977 Australian novel of the same name."
-    ],
-    "file": "reds"
-  },
-  {
     "id": "7001",
     "cat": "Austrian Reds",
     "producer": "Glatzer",
@@ -9385,47 +9154,6 @@
       "The Dijon clones arrived in Oregon partly through the work of viticulture researchers who convinced French scientists that American Pinot producers deserved access to the same plant material available in Burgundy.",
       "Brick House was Oregon's first certified biodynamic vineyard. Doug Tunnel's commitment helped establish biodynamic viticulture's credibility in the Pacific Northwest.",
       "Oregon's Tillamook County, where many serious Pinot producers farm, is also famous for the Tillamook Creamery — making dairy products since 1909."
-    ],
-    "file": "reds"
-  },
-  {
-    "id": "1505",
-    "cat": "Pinot Noir",
-    "producer": "Domaine Serene",
-    "name": "Evenstad Reserve, Willamette Valley",
-    "region": "Willamette Valley, Oregon",
-    "vintage": "2018",
-    "abv": "14%",
-    "price": 222,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "💪",
-      "🍒",
-      "🍑",
-      "🪵",
-      "🧈"
-    ],
-    "notes": [
-      "Dark cherry",
-      "Plum",
-      "Vanilla",
-      "Mocha",
-      "Rich texture",
-      "Long oak finish"
-    ],
-    "tableside": "Domaine Serene is one of Oregon's most celebrated Pinot estates — the Evenstad Reserve has represented Oregon in international comparative tastings where it has held its own against top Burgundy. Rich, full, and built for the table.",
-    "pairings": [
-      "Duck confit",
-      "Beef tenderloin",
-      "Short rib",
-      "Aged cheddar"
-    ],
-    "story": "Ken and Grace Evenstad built Domaine Serene with the explicit goal of making Oregon Pinot that could compete with the best in the world. The Evenstad Reserve is aged in 100% French oak and draws from the estate's best blocks — rich and structured in ways traditional Oregon Pinot was once criticized for lacking.",
-    "trivia": [
-      "Domaine Serene was the first American winery to be acquired by a Burgundian family — the Faiveley family purchased a stake in 2022, validating the quality comparison Oregon producers had been making for decades.",
-      "The Evenstad Reserve has appeared in multiple international comparative tastings alongside Premier and Grand Cru Burgundy, consistently ranking at the top of its price tier.",
-      "Oregon's wine industry grew from essentially zero in the 1960s to over 800 wineries today — one of the fastest winery growth rates of any region in the world."
     ],
     "file": "reds"
   },
@@ -10981,46 +10709,6 @@
     "file": "reds"
   },
   {
-    "id": "2033",
-    "cat": "Cabernet",
-    "producer": "Swanson Vineyards",
-    "name": "Napa Valley",
-    "region": "Napa Valley, California",
-    "vintage": "2022",
-    "abv": "14.5%",
-    "price": 65,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "⚖️",
-      "🍒",
-      "🪵",
-      "🧈"
-    ],
-    "notes": [
-      "Cherry",
-      "Plum",
-      "Vanilla",
-      "Soft tannins",
-      "Medium-full body",
-      "Accessible finish"
-    ],
-    "tableside": "Swanson is a Rutherford estate with decades of experience — this is their entry-level expression, made to be enjoyed tonight rather than cellared. For tables that want genuine Napa Cabernet without committing to a serious bottle.",
-    "pairings": [
-      "Beef",
-      "Burgers",
-      "Pizza",
-      "Short rib"
-    ],
-    "story": "Swanson Vineyards is based in Oakville and has been one of Napa's reliable mid-range producers since the 1980s. The Napa Valley Cabernet uses fruit from across the valley to produce a consistent, approachable style. As a BTG option, it gives guests access to legitimate Napa terroir at a glass price.",
-    "trivia": [
-      "Swanson's entry-level price reflects a deliberate decision to make their Rutherford heritage accessible alongside their more serious tier.",
-      "Rutherford's reputation was built largely by Beaulieu Vineyard in the mid-20th century, whose legendary winemaker André Tchelistcheff identified the region's distinctive dusty, earthy Cabernet character.",
-      "The 2022 vintage in Napa was clean and well-structured — early reports suggest it will be a good cellaring vintage, but the wine drinks well now."
-    ],
-    "file": "reds"
-  },
-  {
     "id": "2049",
     "cat": "Cabernet",
     "producer": "The Vice",
@@ -11824,46 +11512,6 @@
     "file": "reds"
   },
   {
-    "id": "2707",
-    "cat": "Other Red Blends",
-    "producer": "St. Supery",
-    "name": "'Elu,' Napa Valley",
-    "region": "Napa Valley, California",
-    "vintage": "2016",
-    "abv": "14.5%",
-    "price": 180,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "💪",
-      "🍑",
-      "🪵",
-      "🌿"
-    ],
-    "notes": [
-      "Cassis",
-      "Dark plum",
-      "Cedar",
-      "Dark herbs",
-      "Full body",
-      "Classic Napa finish"
-    ],
-    "tableside": "Elu — 'chosen' in French — is St. Supery's prestige Meritage blend from their Rutherford estate. The 2016 is now a decade old and entering its prime drinking window. A classic, polished Napa blend at a fair price for the age and provenance.",
-    "pairings": [
-      "Beef tenderloin",
-      "Lamb",
-      "Short rib",
-      "Aged hard cheeses"
-    ],
-    "story": "Elu is the flagship expression of St. Supery's Rutherford winemaking program — a blend of Cab Sauv, Merlot, Malbec, Cab Franc, and Petit Verdot assembled to represent the best the estate's Dollarhide and Rutherford vineyards can produce. The 2016 vintage was excellent, and the wine has had time to develop the complexity that only comes with age.",
-    "trivia": [
-      "'Elu' means 'chosen' or 'elected' in French — a reference to the rigorous selection process that goes into choosing which lots make the final blend.",
-      "The 2016 Napa vintage is one of the most consistent quality years of the decade — not as heralded as 2013 or 2015, but producing wines that age gracefully and reward patience.",
-      "St. Supery was acquired by Chanel in 2015 — the same luxury house that owns Rauzan-Ségla in Bordeaux. Their involvement brought additional resources and a Bordeaux-influenced approach to the Napa program."
-    ],
-    "file": "reds"
-  },
-  {
     "id": "073",
     "cat": "Virginia Reds",
     "producer": "Delaplane Cellars",
@@ -12421,46 +12069,6 @@
       "Toro is one of the few wine regions in the world with a significant number of ungrafted pre-phylloxera vines — the sandy soils here repelled the phylloxera louse that devastated European viticulture in the late 19th century.",
       "The Tempranillo grown in Toro is often called Tinta de Toro — some ampelographers believe it's a distinct biotype that has adapted over centuries to the region's extreme conditions.",
       "Toro wines are known for their deep, almost opaque color — the combination of old vines, extreme heat, and limited irrigation produces some of Spain's most concentrated red wines."
-    ],
-    "file": "reds"
-  },
-  {
-    "id": "8031",
-    "cat": "Spanish Reds",
-    "producer": "Isaac Fernandez",
-    "name": "Tempranillo, Reserva, Ribera del Duero",
-    "region": "Ribera del Duero, Spain",
-    "vintage": "2021",
-    "abv": "14%",
-    "price": 105,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "💪",
-      "🍒",
-      "🪵",
-      "🌶️"
-    ],
-    "notes": [
-      "Dark cherry",
-      "Cassis",
-      "Vanilla",
-      "Spice",
-      "Cedar",
-      "Structured long finish"
-    ],
-    "tableside": "Isaac Fernandez is a celebrated winemaker who made his name at Aalto before going solo. This Reserva — minimum 12 months in oak, another year in bottle — is serious Ribera del Duero at a fair price. For guests who want to understand why the appellation has become Spain's most prestigious red wine region.",
-    "pairings": [
-      "Roast lamb",
-      "Beef tenderloin",
-      "Game meats",
-      "Aged Manchego"
-    ],
-    "story": "Isaac Fernandez worked as the winemaker at Aalto, one of Ribera del Duero's most celebrated estates, before founding his own label. His wines reflect a modern approach to the appellation: ripe fruit, judicious oak, and the structure that comes from high-altitude Tempranillo. The Reserva is his benchmark expression — made to cellar but accessible within a few years of release.",
-    "trivia": [
-      "Isaac Fernandez trained under Mariano García, the legendary winemaker of Vega Sicilia — giving him a direct connection to the most prestigious lineage in Spanish wine.",
-      "Ribera del Duero's Reserva classification requires a minimum of 36 months aging, including at least 12 months in oak — significantly longer than the basic Crianza requirement.",
-      "The Duero River, which flows through the appellation, is the same river that becomes the Douro in Portugal — where it produces Port and some of Portugal's finest table wines. The contrast between Spanish Tempranillo and Portuguese Touriga Nacional from the same river system is a useful tasting conversation."
     ],
     "file": "reds"
   },
@@ -13726,46 +13334,6 @@
     "file": "reds"
   },
   {
-    "id": "3027",
-    "cat": "French Reds",
-    "producer": "Château La Louvière",
-    "name": "Cab Sauv/Merlot, Pessac-Léognan",
-    "region": "Bordeaux, France",
-    "vintage": "2018",
-    "abv": "13.5%",
-    "price": 125,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "💪",
-      "🍑",
-      "🌿",
-      "🧂"
-    ],
-    "notes": [
-      "Cassis",
-      "Dark cherry",
-      "Cedar",
-      "Tobacco",
-      "Mineral",
-      "Classic Graves length"
-    ],
-    "tableside": "Pessac-Léognan is Bordeaux's most intellectual appellation — the only one that produces serious red and white wine side by side, and the location of Haut-Brion, Bordeaux's only First Growth outside the Médoc. La Louvière is one of the appellation's most reliable estates. The 2018 is structured and age-worthy.",
-    "pairings": [
-      "Beef tenderloin",
-      "Lamb",
-      "Game meats",
-      "Aged hard cheeses"
-    ],
-    "story": "Château La Louvière is one of the leading estates of Pessac-Léognan, producing both red and white wine in the Graves tradition. The appellation's gravelly, well-drained soils produce Cabernet Sauvignon with a distinctly mineral, almost smoky character — different from Pauillac's power or St-Émilion's roundness. La Louvière's reds are consistently precise and age-worthy.",
-    "trivia": [
-      "Pessac-Léognan was created as its own appellation in 1987, carved out of the larger Graves appellation to recognize the superior quality of wines from the communes immediately south of Bordeaux city.",
-      "Château Haut-Brion, the only First Growth outside the Médoc, sits in Pessac — now effectively a suburb of Bordeaux city. Its urban location makes it one of wine's more surreal great estates.",
-      "The 2018 Bordeaux vintage was warm and produced wines of excellent concentration, particularly in Pessac-Léognan where the drainage of the gravel soils prevented overripening."
-    ],
-    "file": "reds"
-  },
-  {
     "id": "3030",
     "cat": "French Reds",
     "producer": "Château La Louvière",
@@ -14748,5 +14316,749 @@
       "The 2023 Santa Barbara vintage was characterized by consistent, moderate temperatures — producing wines with natural freshness and excellent structure that will age gracefully in any format."
     ],
     "file": "reds"
+  },
+  {
+    "id": "213",
+    "cat": "Champagne",
+    "type": "sparkling",
+    "file": "sparkling",
+    "producer": "Delamotte",
+    "name": "Blanc de Blancs, 2014",
+    "region": "Champagne, France",
+    "vintage": "2014",
+    "abv": "12%",
+    "price": 240,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🥐",
+      "🌸"
+    ],
+    "notes": [
+      "Blanc de Blancs",
+      "Vintage Champagne",
+      "Chardonnay only"
+    ],
+    "tableside": "A vintage Blanc de Blancs from Delamotte — the sister house of Salon, making wine at Le Mesnil-sur-Oger since 1760. The 2014 is a serious vintage expression: leaner and more mineral than the NV, with a decade of age giving it texture and depth that the non-vintage can't match.",
+    "pairings": [
+      "Oysters",
+      "Seafood",
+      "Aged comté"
+    ],
+    "story": "Delamotte and Salon share the same cellar, the same winemaking team, and the same grand cru Chardonnay grapes from Le Mesnil-sur-Oger. In years when Salon is not produced, the finest lots go into the Delamotte vintage. The 2014 is one of those bottles — a wine made to last.",
+    "trivia": [
+      "Delamotte is the oldest Blanc de Blancs house in Champagne, founded in 1760 — predating most of the great houses by decades.",
+      "The 2014 Champagne vintage was initially overlooked in favor of the flashier 2012 and 2015, but has proven itself as a wine of precision and longevity.",
+      "Le Mesnil-sur-Oger grand cru is widely considered the greatest terroir for Chardonnay in Champagne — the chalk here is deeper and purer than almost anywhere else in the appellation."
+    ]
+  },
+  {
+    "id": "220",
+    "cat": "Champagne",
+    "type": "sparkling",
+    "file": "sparkling",
+    "producer": "Delamotte",
+    "name": "Brut, NV",
+    "region": "Champagne, France",
+    "vintage": "NV",
+    "abv": "12%",
+    "price": 145,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🌸"
+    ],
+    "notes": [
+      "Blanc de Blancs",
+      "Brut",
+      "Non-vintage"
+    ],
+    "tableside": "Delamotte's entry-level Brut — the most accessible expression from one of Champagne's finest houses. Primarily Chardonnay, with small additions of Pinot Noir and Pinot Meunier for body. Clean, precise, and genuinely elegant at the price. For guests who want a step up from the obvious choices.",
+    "pairings": [
+      "Shellfish",
+      "Light starters",
+      "Celebration"
+    ],
+    "story": "Delamotte sits in the shadow of its more famous sibling Salon, but that shadow is misleading — the house makes exceptional Champagne in its own right, drawing on grand cru vineyards in the Côte des Blancs. The Brut NV is their approachable face, but the winemaking philosophy is identical throughout.",
+    "trivia": [
+      "Delamotte and Salon share the same cellar and winemaking team — the Brut NV is made with the same rigorous attention that goes into one of Champagne's rarest prestige cuvées.",
+      "The house was founded in 1760 by Charles-Henri Delamotte, making it one of the oldest Champagne houses still in operation.",
+      "Primarily Chardonnay-dominant, the Brut NV reflects the same Le Mesnil-sur-Oger grand cru philosophy that defines all Delamotte wines."
+    ]
+  },
+  {
+    "id": "Q1",
+    "cat": "Champagne",
+    "type": "sparkling",
+    "file": "sparkling",
+    "producer": "Salon",
+    "name": "Blanc de Blancs, Le Mesnil, 2015",
+    "region": "Champagne, France",
+    "vintage": "2015",
+    "abv": "12%",
+    "price": 2750,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🦴",
+      "🍋",
+      "🧂",
+      "🥐"
+    ],
+    "notes": [
+      "Blanc de Blancs",
+      "Prestige cuvée",
+      "Grand Cru Le Mesnil"
+    ],
+    "tableside": "One of the rarest bottles in Champagne. Salon produces a single wine from a single vineyard — Le Mesnil-sur-Oger grand cru — in a single vintage, only when conditions are perfect. It hasn't been produced in some years at all. The 2015 is their first release in several vintages and one of the most anticipated bottles in recent Champagne history.",
+    "pairings": [
+      "Caviar",
+      "Fine oysters",
+      "Lobster"
+    ],
+    "story": "Salon was founded in 1911 with a radical philosophy: one wine, one vineyard, one vintage, one grape variety. No blending across years, no Pinot Noir or Meunier, no compromise. In the hundred-plus years since, fewer than 50 vintages have been produced. The 2015 joins a list of bottles that define what Champagne can be at its absolute apex.",
+    "trivia": [
+      "Salon has only produced approximately 45 vintages since its founding in 1911 — in years that don't meet the standard, no wine is released at all.",
+      "The Le Mesnil-sur-Oger grand cru chalk soils are among the deepest in Champagne — vines here access water from dozens of meters below the surface, maintaining freshness in warm years.",
+      "Salon and Delamotte share a cellar and ownership — when Salon is not produced, the finest Le Mesnil lots go into the Delamotte vintage Blanc de Blancs instead."
+    ]
+  },
+  {
+    "id": "627",
+    "cat": "Chardonnay",
+    "type": "white",
+    "file": "whites",
+    "producer": "Elk Cove",
+    "name": "Willamette Valley, 2024",
+    "region": "Willamette Valley, Oregon",
+    "vintage": "2024",
+    "abv": "13%",
+    "price": 48,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "☁️",
+      "🍋",
+      "🌸",
+      "🍑"
+    ],
+    "notes": [
+      "Unoaked style",
+      "Willamette Valley",
+      "Oregon Chardonnay"
+    ],
+    "tableside": "Elk Cove's entry-level Chardonnay from the Willamette Valley — lean, fresh, and much closer to Chablis than California. The cool Oregon climate keeps the wine bright and food-friendly. For guests who want Chardonnay without the oak and butter.",
+    "pairings": [
+      "Shellfish",
+      "White fish",
+      "Light pasta"
+    ],
+    "story": "Elk Cove is one of Oregon's pioneering estates, farming in the Chehalem Mountains since 1974. Their Willamette Valley Chardonnay is made in a restrained style that reflects the region's natural acidity — a deliberate counterpoint to the richer California expressions.",
+    "trivia": [
+      "Elk Cove was founded in 1974, making it one of Oregon's original wave of serious wine estates — established just after Eyrie and Ponzi pioneered the region.",
+      "The Willamette Valley's volcanic and sedimentary soils produce Chardonnay with a mineral precision that distinguishes Oregon from California's richer styles.",
+      "Oregon Chardonnay has historically been overshadowed by Oregon Pinot Noir, but producers like Elk Cove are increasingly making the case that it deserves equal attention."
+    ]
+  },
+  {
+    "id": "751",
+    "cat": "Other Whites",
+    "type": "white",
+    "file": "whites",
+    "producer": "Elk Cove",
+    "name": "Pinot Blanc, Willamette Valley, 2024",
+    "region": "Willamette Valley, Oregon",
+    "vintage": "2024",
+    "abv": "13%",
+    "price": 48,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "☁️",
+      "🍋",
+      "🌸",
+      "🍑"
+    ],
+    "notes": [
+      "Pinot Blanc",
+      "Oregon",
+      "Willamette Valley"
+    ],
+    "tableside": "Pinot Blanc from Elk Cove — a variety that Oregon does quietly well, producing wines that sit between Pinot Gris and Chardonnay in character. Light, floral, and very food-friendly. For guests who want something genuinely different from the usual white wine conversation.",
+    "pairings": [
+      "Charcuterie",
+      "Soft cheese",
+      "Salmon"
+    ],
+    "story": "Pinot Blanc is a natural mutation of Pinot Gris, which is itself a mutation of Pinot Noir — making it genetically very close to Oregon's most celebrated red variety. Elk Cove has farmed this variety for decades, producing a style that emphasizes freshness and delicacy over richness.",
+    "trivia": [
+      "Pinot Blanc is genetically almost identical to Pinot Gris — the difference in color and style comes from a single gene mutation affecting pigmentation in the grape skin.",
+      "Oregon's cool climate is particularly well-suited to Pinot Blanc, preserving the variety's natural acidity in a way that warmer regions cannot.",
+      "Elk Cove is one of the few Oregon producers to maintain a significant Pinot Blanc program — most wineries focus almost exclusively on Pinot Noir and Chardonnay."
+    ]
+  },
+  {
+    "id": "753",
+    "cat": "Other Whites",
+    "type": "white",
+    "file": "whites",
+    "producer": "Elk Cove",
+    "name": "Pinot Gris, Yamhill-Carlton, 2024",
+    "region": "Yamhill-Carlton, Oregon",
+    "vintage": "2024",
+    "abv": "13.5%",
+    "price": 48,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🍑",
+      "🌸"
+    ],
+    "notes": [
+      "Pinot Gris",
+      "Yamhill-Carlton",
+      "Oregon"
+    ],
+    "tableside": "Oregon Pinot Gris at its best is nothing like Italian Pinot Grigio — fuller, richer, and with more character. Elk Cove's Yamhill-Carlton expression has texture and stone fruit weight that makes it work across a wide range of food. For guests who dismiss Pinot Gris based on the Italian version.",
+    "pairings": [
+      "Pork",
+      "Roasted chicken",
+      "Spiced dishes"
+    ],
+    "story": "Yamhill-Carlton is one of the Willamette Valley's most respected sub-appellations, known for its ancient marine sedimentary soils that produce wines of distinctive weight and mineral character. Elk Cove has farmed here for decades, and their Pinot Gris shows what the variety can do when grown in the right place.",
+    "trivia": [
+      "Yamhill-Carlton received its own AVA designation in 2005, recognizing the distinctive Willakenzie soil series — an ancient marine sedimentary deposit that produces wines of unusual richness.",
+      "Oregon Pinot Gris has its own identity distinct from both Alsatian and Italian versions — fuller than Grigio, drier than many Alsatian examples.",
+      "Elk Cove was among the first Oregon producers to take Pinot Gris seriously as a variety capable of fine wine production rather than easy everyday drinking."
+    ]
+  },
+  {
+    "id": "1541",
+    "cat": "Pinot Noir",
+    "type": "red",
+    "file": "reds",
+    "producer": "Elk Cove",
+    "name": "'Five Mountain,' Chehalem Mountains, 2023",
+    "region": "Chehalem Mountains, Oregon",
+    "vintage": "2023",
+    "abv": "13.5%",
+    "price": 112,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🌸",
+      "🧂"
+    ],
+    "notes": [
+      "Single vineyard",
+      "Chehalem Mountains",
+      "Oregon Pinot Noir"
+    ],
+    "tableside": "Elk Cove's Five Mountain vineyard in the Chehalem Mountains — one of their top single-site expressions. The Chehalem Mountains AVA sits at elevation with a mix of volcanic and marine sedimentary soils that give wines both fruit intensity and mineral precision. Classic Oregon Pinot — perfumed, silky, and food-focused.",
+    "pairings": [
+      "Duck",
+      "Salmon",
+      "Mushroom dishes"
+    ],
+    "story": "The Five Mountain vineyard is one of Elk Cove's flagship sites, planted at elevation in the Chehalem Mountains where cooler temperatures and complex soils produce Pinot Noir of genuine distinction. The estate has farmed this land since the 1970s, giving them a depth of site knowledge that shows in the wine.",
+    "trivia": [
+      "The Chehalem Mountains AVA encompasses three distinct soil types — volcanic Jory, ancient marine Willakenzie, and Laurelwood loess — each producing Pinot Noir with different character from the same appellation.",
+      "Elk Cove was founded in 1974, making it one of the pioneering estates of the Oregon wine industry — the current generation of winemakers works with vine material their parents planted.",
+      "Single-vineyard Pinot Noir from established Oregon estates like Elk Cove typically outperforms wines at twice the price from younger California producers simply by virtue of vine age and site knowledge."
+    ]
+  },
+  {
+    "id": "1551",
+    "cat": "Pinot Noir",
+    "type": "red",
+    "file": "reds",
+    "producer": "Elk Cove",
+    "name": "'Clay Court,' Chehalem Mountains, 2024",
+    "region": "Chehalem Mountains, Oregon",
+    "vintage": "2024",
+    "abv": "13.5%",
+    "price": 112,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🌸",
+      "🧂"
+    ],
+    "notes": [
+      "Single vineyard",
+      "Chehalem Mountains",
+      "Clay soils"
+    ],
+    "tableside": "The Clay Court vineyard — named for the distinctive clay-rich Willakenzie soils that define this particular block. Clay retains water and moderates temperature, giving the grapes a longer, more even ripening season. The result is Pinot Noir with more structure and earthiness than the volcanic soil sites.",
+    "pairings": [
+      "Duck confit",
+      "Mushroom risotto",
+      "Aged cheese"
+    ],
+    "story": "Clay Court sits on Willakenzie soil — ancient marine sedimentary deposits laid down when this part of Oregon was an inland sea. These soils drain poorly compared to volcanic Jory, forcing vines to work harder and producing wines of unusual intensity and mineral character.",
+    "trivia": [
+      "Willakenzie soil is named for the Willamette Valley and the McKenzie River — a portmanteau that reflects the complex geological history of the region.",
+      "Clay soils moderate vine stress during hot spells by retaining moisture — in warm vintages like 2024, this can be the difference between an elegant wine and an overripe one.",
+      "Elk Cove produces several single-vineyard Pinot Noirs simultaneously, allowing a genuine comparison of how soil type shapes flavor from the same producer and vintage."
+    ]
+  },
+  {
+    "id": "2038",
+    "cat": "Cabernet",
+    "type": "red",
+    "file": "reds",
+    "producer": "Adobe Road",
+    "name": "'Blue Dog,' Dry Creek Valley, Sonoma, 2021",
+    "region": "Dry Creek Valley, Sonoma County, California",
+    "vintage": "2021",
+    "abv": "14.5%",
+    "price": 185,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🍑",
+      "🪵",
+      "🌿"
+    ],
+    "notes": [
+      "Dry Creek Valley",
+      "Sonoma Cabernet",
+      "Full-bodied"
+    ],
+    "tableside": "Sonoma Cabernet rather than Napa — Dry Creek Valley produces a slightly leaner, more structured style than the valley floor wines across the mountains. Adobe Road's Blue Dog is a serious bottle at a reasonable price: concentrated, structured, and built to age.",
+    "pairings": [
+      "Ribeye",
+      "Lamb",
+      "Hard aged cheese"
+    ],
+    "story": "Dry Creek Valley has long been known for Zinfandel, but its Cabernet Sauvignon program is increasingly attracting attention. The valley's warm days and cool nights — moderated by fog from the Petaluma Gap — produce Cabernet with more freshness and structure than many Napa counterparts.",
+    "trivia": [
+      "Dry Creek Valley was California's first AVA, established in 1983 — recognized before many of the appellations that are now more famous.",
+      "Adobe Road was founded by Kevin Buckler, a professional race car driver who brings the same precision-focused approach to winemaking.",
+      "Sonoma Cabernet typically shows more herbal, savory character than Napa — the result of cooler temperatures and the influence of the Pacific."
+    ]
+  },
+  {
+    "id": "2062",
+    "cat": "Cabernet",
+    "type": "red",
+    "file": "reds",
+    "producer": "Pahlmeyer",
+    "name": "'The Bench,' Napa Valley, 2023",
+    "region": "Napa Valley, California",
+    "vintage": "2023",
+    "abv": "14.5%",
+    "price": 140,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍑",
+      "🪵",
+      "🍒"
+    ],
+    "notes": [
+      "Napa Valley",
+      "Entry-level Pahlmeyer",
+      "Accessible"
+    ],
+    "tableside": "Pahlmeyer's entry point — The Bench is their most accessible Cabernet, sourced from across Napa Valley rather than from the estate's most prestigious blocks. More immediate, more generous, and considerably more approachable than the Jayson or the flagship. For guests who want genuine Napa quality without the commitment.",
+    "pairings": [
+      "Prime rib",
+      "Burgers",
+      "Grilled vegetables"
+    ],
+    "story": "Pahlmeyer built its reputation on powerful, structured Napa Cabernet, but The Bench fills a different role — an introduction to the house style at a price that makes it genuinely accessible. The 2023 vintage was warm and generous in Napa, producing wines of immediate appeal.",
+    "trivia": [
+      "Pahlmeyer was founded by Jayson Pahlmeyer in 1986 and became one of the first 'cult' Napa Cabernets — wines produced in small quantities that developed a waiting list before they were ever released.",
+      "The Bench designation refers to the elevated benchland terraces that run along the hillsides of Napa Valley — not as prestigious as hillside sites but producing wines of more consistency than valley floor vineyards.",
+      "Napa Valley's 2023 vintage was marked by good winter rains ending a prolonged drought, producing wines of generous fruit and good structural balance."
+    ]
+  },
+  {
+    "id": "2706",
+    "cat": "Other Red Blends",
+    "type": "red",
+    "file": "reds",
+    "producer": "L'Aventure",
+    "name": "'Optimus,' Syrah/Cab Sauv/Petit Verdot, Paso Robles, 2022",
+    "region": "Paso Robles, California",
+    "vintage": "2022",
+    "abv": "15%",
+    "price": 140,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🍑",
+      "🌶️",
+      "🪵"
+    ],
+    "notes": [
+      "Rhône/Bordeaux blend",
+      "Paso Robles",
+      "Full-bodied"
+    ],
+    "tableside": "L'Aventure is a French producer who came to Paso Robles and immediately understood what the region could do. Optimus blends Syrah, Cabernet Sauvignon, and Petit Verdot in a way that reflects both Rhône and Bordeaux traditions — but tastes like neither. Paso Robles with serious winemaking behind it.",
+    "pairings": [
+      "Grilled red meat",
+      "Lamb",
+      "Aged cheese"
+    ],
+    "story": "Stephan Asseo left Bordeaux in the late 1990s, frustrated by the AOC restrictions on what he could plant and blend. He found in Paso Robles the freedom to work with Syrah, Cabernet, Grenache, and Petit Verdot simultaneously — producing wines that don't fit any European category but stand on their own terms.",
+    "trivia": [
+      "Stephan Asseo left France specifically because Bordeaux regulations prohibited him from blending Rhône varieties like Syrah with Bordeaux varieties like Cabernet — something he considered essential to his vision.",
+      "Paso Robles sits on a similar latitude to the southern Rhône but has a continental climate rather than Mediterranean — the diurnal temperature swings can exceed 50°F, preserving freshness in very ripe grapes.",
+      "L'Aventure — French for 'the adventure' — references Asseo's decision to leave the certainty of French winemaking tradition for the unknown of California."
+    ]
+  },
+  {
+    "id": "2710",
+    "cat": "Other Red Blends",
+    "type": "red",
+    "file": "reds",
+    "producer": "Jolie-Laide",
+    "name": "'Glou d\\'État,' Valdiguié/Mourvèdre/Grenache, Sonoma, 2023",
+    "region": "Sonoma County, California",
+    "vintage": "2023",
+    "abv": "12.5%",
+    "price": 56,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "☁️",
+      "🍒",
+      "🌿",
+      "🌸"
+    ],
+    "notes": [
+      "Natural style",
+      "Light-bodied",
+      "Obscure varieties"
+    ],
+    "tableside": "Glou d'État — a pun on 'Glou Glou' (easy-drinking) and coup d'état — is exactly what it sounds like: a fun, light, gulpable red made from varieties almost nobody else in California grows. Valdiguié, Mourvèdre, Grenache. Natural winemaking, low alcohol, chillable. For guests who want something genuinely different.",
+    "pairings": [
+      "Charcuterie",
+      "Pizza",
+      "Light fish dishes"
+    ],
+    "story": "Jolie-Laide makes wines from obscure French varieties grown in California — the name means 'unconventionally attractive' in French, which describes both the wines and the philosophy. Scott Schultz sources from old California vineyards planted with varieties most producers have never heard of.",
+    "trivia": [
+      "Valdiguié was once widely planted in California under the mistaken name 'Napa Gamay' — DNA testing in the 1990s revealed it was actually a southern French variety unrelated to Beaujolais Gamay.",
+      "At 12.5% alcohol, Glou d'État is one of the lowest-alcohol reds on the list — a deliberate choice that makes it exceptionally versatile with food.",
+      "Jolie-Laide takes its name from the French concept of beauty found in unconventional places — the winery's entire philosophy is built around varieties and styles that mainstream California ignores."
+    ]
+  },
+  {
+    "id": "2716",
+    "cat": "Other Red Blends",
+    "type": "red",
+    "file": "reds",
+    "producer": "Orin Swift",
+    "name": "'8 Years in the Desert,' Zinfandel/Petite Sirah/Syrah, California, 2023",
+    "region": "California",
+    "vintage": "2023",
+    "abv": "14.9%",
+    "price": 90,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🍑",
+      "🌶️",
+      "🍒"
+    ],
+    "notes": [
+      "California red blend",
+      "Zinfandel-based",
+      "Bold style"
+    ],
+    "tableside": "Orin Swift's most accessible wine — a California red blend built around old-vine Zinfandel with Petite Sirah and Syrah adding structure and depth. Dark, rich, and generous. Dave Phinney's calling card before he sold The Prisoner: wines that prioritize pleasure over contemplation. Hard to argue with the result.",
+    "pairings": [
+      "BBQ",
+      "Pizza",
+      "Dark chocolate"
+    ],
+    "story": "Dave Phinney founded Orin Swift after the success of The Prisoner, building a portfolio of wines designed for immediate enjoyment. 8 Years in the Desert references the time Phinney spent developing his winemaking philosophy before the wines started attracting attention — the desert metaphor for a period of struggle before recognition.",
+    "trivia": [
+      "Dave Phinney is one of California's most prolific winemakers — he simultaneously manages multiple labels including Orin Swift, Locations, and joint ventures with European producers.",
+      "Old-vine Zinfandel from California's Lodi and Amador County regions can be over 100 years old — these gnarly, head-trained vines produce concentrated, intensely flavored fruit unlike any younger vineyard.",
+      "The name references Phinney's own account of spending nearly a decade developing his skills before achieving commercial success — a period he describes as his time in the desert."
+    ]
+  },
+  {
+    "id": "975",
+    "cat": "Pinot Noir",
+    "type": "red",
+    "file": "reds",
+    "producer": "Adobe Road",
+    "name": "Petaluma Gap, Sonoma County, 2022",
+    "region": "Petaluma Gap, Sonoma County, California",
+    "vintage": "2022",
+    "abv": "13.5%",
+    "price": 194,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🌸",
+      "🧂"
+    ],
+    "notes": [
+      "Petaluma Gap",
+      "Cool climate",
+      "Sonoma Pinot"
+    ],
+    "tableside": "The Petaluma Gap AVA is one of California's coolest Pinot Noir regions — a break in the Coast Ranges that funnels cold Pacific wind directly into the vineyards. Adobe Road's expression shows what that wind does: high natural acidity, red fruit rather than dark, and a savory quality that makes it exceptional with food.",
+    "pairings": [
+      "Salmon",
+      "Duck",
+      "Mushroom dishes"
+    ],
+    "story": "The Petaluma Gap was designated its own AVA in 2017 specifically because of the wind — afternoon gusts regularly exceed 30mph, dramatically cooling the vineyards and extending the growing season. The result is Pinot Noir with a distinctly cool-climate character that sets it apart from warmer Sonoma expressions.",
+    "trivia": [
+      "The Petaluma Gap AVA is named for the geographic gap in the Coast Ranges that allows Pacific Ocean winds to funnel directly into the wine country — the only California AVA named for a wind phenomenon.",
+      "Adobe Road was founded by Kevin Buckler, a professional endurance racing driver who applies the same data-driven precision to winemaking as to motorsport.",
+      "Wind speeds in the Petaluma Gap during harvest can exceed 35mph — some producers use wind machines not to prevent frost but to manage canopy temperature during the growing season."
+    ]
+  },
+  {
+    "id": "5027",
+    "cat": "Italian Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Argiano",
+    "name": "Brunello di Montalcino, Sangiovese, DOCG, 2020",
+    "region": "Montalcino, Tuscany, Italy",
+    "vintage": "2020",
+    "abv": "14.5%",
+    "price": 150,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🍒",
+      "🧂",
+      "🌿",
+      "☕"
+    ],
+    "notes": [
+      "Brunello di Montalcino",
+      "DOCG",
+      "Sangiovese Grosso"
+    ],
+    "tableside": "Argiano is one of Montalcino's oldest estates — a 16th-century property with vineyards in some of the appellation's finest positions. Their Brunello is made in a more modern style than some producers: approachable earlier but with the structure to age for decades. The 2020 is a warm, generous vintage that shows beautifully now.",
+    "pairings": [
+      "Wild boar",
+      "Bistecca alla Fiorentina",
+      "Aged pecorino"
+    ],
+    "story": "Argiano has been making wine in Montalcino since the 16th century, predating the modern Brunello appellation by several hundred years. The estate was acquired by Brazilian industrialist Andrés Sotomayor in 1992 and subsequently modernized — new cellars, new vineyard management, and a more international approach to winemaking while maintaining the traditional variety.",
+    "trivia": [
+      "Brunello di Montalcino requires a minimum of five years aging before release — two years in oak and at least four months in bottle. The 2020 vintage will have aged for this minimum before reaching the list.",
+      "Argiano's vineyards sit at elevations between 250 and 350 meters on the southwest slopes of Montalcino — a position that provides excellent sun exposure while maintaining fresh afternoon breezes.",
+      "The 2020 Brunello vintage was widely praised for producing wines of excellent ripeness with good natural acidity — the combination of warm days and cool nights preserved freshness in what could have been an overripe year."
+    ]
+  },
+  {
+    "id": "5029",
+    "cat": "Italian Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Castello di Verduno",
+    "name": "'Basadone,' Pelaverga, Verduno, 2023",
+    "region": "Verduno, Piedmont, Italy",
+    "vintage": "2023",
+    "abv": "13%",
+    "price": 78,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "☁️",
+      "🍒",
+      "🌸",
+      "🌿"
+    ],
+    "notes": [
+      "Pelaverga",
+      "Rare variety",
+      "Verduno"
+    ],
+    "tableside": "Pelaverga is one of the rarest varieties in Piedmont — grown almost exclusively in the tiny commune of Verduno, where Castello di Verduno is the benchmark producer. Light-bodied, wildly perfumed with rose and white pepper, and unlike anything else on the list. For guests who want to taste something they can't find anywhere else.",
+    "pairings": [
+      "Antipasti",
+      "Vitello tonnato",
+      "White truffle dishes"
+    ],
+    "story": "Verduno Pelaverga is protected by its own DOC designation — a recognition of the variety's unique character and its near-exclusive geographic concentration in this small commune adjacent to Barolo. Castello di Verduno has championed this grape for generations, producing a wine that is simultaneously one of Piedmont's most obscure and most distinctive.",
+    "trivia": [
+      "Pelaverga Piccolo — the specific clone grown in Verduno — is genetically distinct from the Pelaverga grown elsewhere in Piedmont and is considered the finer of the two varieties.",
+      "Verduno is the smallest of the Barolo communes, producing wines that are consistently lighter and more perfumed than those from La Morra, Serralunga, or Castiglione Falletto.",
+      "The characteristic white pepper aroma of Verduno Pelaverga comes from a compound called rotundone — the same molecule responsible for the peppery character in Syrah and some Grüner Veltliner."
+    ]
+  },
+  {
+    "id": "8005",
+    "cat": "Spanish Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Bodegas Ontañon",
+    "name": "Tempranillo, Gran Reserva, 2011",
+    "region": "La Rioja, Spain",
+    "vintage": "2011",
+    "abv": "13.5%",
+    "price": 131,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🪵",
+      "🌿",
+      "🍄"
+    ],
+    "notes": [
+      "Rioja Gran Reserva",
+      "Aged",
+      "Tempranillo"
+    ],
+    "tableside": "A 2011 Rioja Gran Reserva — fifteen years old and in a beautiful drinking window. Gran Reserva requires a minimum of five years aging before release, and Ontañon holds their wines longer than the minimum. The 2011 vintage was excellent in Rioja: structured wines with the acidity to carry all this time. Tobacco, dried cherry, leather, and cedary oak.",
+    "pairings": [
+      "Lamb",
+      "Roasted pork",
+      "Aged Manchego"
+    ],
+    "story": "Bodegas Ontañon is a family estate in the Rioja Alta, making wines in a traditional style that emphasizes extended aging over immediate fruit. Their Gran Reserva spends a minimum of two years in American oak and several more in bottle before release — a commitment to patience that produces wines of genuine complexity.",
+    "trivia": [
+      "Rioja Gran Reserva requires a minimum of five years aging — at least two in oak and two in bottle — before release. Ontañon typically holds their wines considerably longer than this minimum.",
+      "The 2011 Rioja vintage was marked by excellent growing conditions and is now considered one of the finest of the decade — the wines are drinking beautifully with a decade of additional bottle age.",
+      "American oak, traditionally used in Rioja, imparts vanilla, coconut, and dill notes that are distinctly different from the subtler influence of French oak — it's an acquired taste that divides wine drinkers sharply."
+    ]
+  },
+  {
+    "id": "8017",
+    "cat": "Spanish Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Bodegas Emilio Moro",
+    "name": "Tempranillo, 'Malleolus,' Ribera del Duero, 2022",
+    "region": "Ribera del Duero, Spain",
+    "vintage": "2022",
+    "abv": "14.5%",
+    "price": 120,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "💪",
+      "🍑",
+      "🪵",
+      "🧂"
+    ],
+    "notes": [
+      "Ribera del Duero",
+      "Old vine Tempranillo",
+      "Single vineyard"
+    ],
+    "tableside": "Emilio Moro's flagship — Malleolus comes from old-vine Tempranillo in the Ribera del Duero, where the variety produces darker, richer wines than in Rioja. High altitude, extreme continental climate, and old vines give this wine a concentration and structure that rewards patience. More muscular than Rioja, more mineral than you'd expect.",
+    "pairings": [
+      "Roast lamb",
+      "Cochinillo",
+      "Aged cheese"
+    ],
+    "story": "Bodegas Emilio Moro is a family estate that has farmed the Ribera del Duero for three generations, with the Malleolus vineyard being their most prized holding. The name comes from the Latin for 'hammer' — a reference to the rounded river stones that characterize the vineyard's soils.",
+    "trivia": [
+      "Ribera del Duero sits at elevations of 750-900 meters above sea level — significantly higher than Rioja, producing wines with higher natural acidity and more mineral character despite the extreme continental heat.",
+      "The Tempranillo clone grown in Ribera del Duero is called Tinto Fino — genetically identical to Rioja's Tempranillo but producing noticeably different wines due to climate and soil differences.",
+      "Emilio Moro pioneered single-vineyard Tempranillo in Ribera del Duero at a time when most producers blended across multiple vineyards — Malleolus was one of the first single-site wines to achieve international recognition from the appellation."
+    ]
+  },
+  {
+    "id": "311",
+    "cat": "French Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Château de Cruzeau",
+    "name": "Cab Sauv/Merlot, Pessac-Léognan, 2020",
+    "region": "Pessac-Léognan, Bordeaux, France",
+    "vintage": "2020",
+    "abv": "13.5%",
+    "price": 63,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🌿",
+      "🧂"
+    ],
+    "notes": [
+      "Pessac-Léognan",
+      "Entry-level Bordeaux",
+      "Graves"
+    ],
+    "tableside": "An accessible entry point into Pessac-Léognan — the appellation that sits immediately south of the city of Bordeaux and produces the Left Bank's most food-friendly reds. Château de Cruzeau is owned by the same family as Smith Haut Lafitte, giving them access to expertise far beyond what the price suggests. The 2020 is generous and approachable now.",
+    "pairings": [
+      "Roast chicken",
+      "Lamb",
+      "Soft cheese"
+    ],
+    "story": "Pessac-Léognan was carved out of the broader Graves appellation in 1987, recognizing the superior quality of the wines from this northern sector immediately adjacent to Bordeaux. Château de Cruzeau benefits from the same gravelly, well-drained soils that define the appellation but at a price point accessible to everyday consumption.",
+    "trivia": [
+      "Pessac-Léognan is the only Left Bank Bordeaux appellation where both red and white wines can receive grand cru classé status — the white wines of Haut-Brion and Domaine de Chevalier are among France's finest whites.",
+      "Château de Cruzeau is owned by the Cathiard family, who also own the prestigious Château Smith Haut Lafitte — the operational knowledge flows between the two estates.",
+      "The 2020 Bordeaux vintage is one of the great modern vintages — consistently praised for wines of exceptional ripeness and structure that will age for decades while drinking well young."
+    ]
+  },
+  {
+    "id": "7013",
+    "cat": "Austrian Reds",
+    "type": "red",
+    "file": "reds",
+    "producer": "Hillinger",
+    "name": "'Hillside,' Syrah/Zweigelt/Merlot, Leithaberg DAC, 2022",
+    "region": "Leithaberg DAC, Burgenland, Austria",
+    "vintage": "2022",
+    "abv": "13.5%",
+    "price": 47,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "⚖️",
+      "🍑",
+      "🌶️",
+      "🍒"
+    ],
+    "notes": [
+      "Leithaberg DAC",
+      "Austrian red blend",
+      "Hillinger"
+    ],
+    "tableside": "Hillinger's Hillside is their entry-level red — a blend of Syrah, Zweigelt, and Merlot from the Leithaberg DAC on the western shore of Lake Neusiedl. Hillinger is better known for their premium Hill 1 bottling, but this gives you the same terroir at a fraction of the price. Accessible, food-friendly, and a genuine introduction to what Burgenland can do with red varieties.",
+    "pairings": [
+      "Grilled pork",
+      "Schnitzel",
+      "Light pasta"
+    ],
+    "story": "Leo Hillinger built his estate in the Leithaberg DAC into one of Burgenland's most modern and design-forward operations — the winery itself is an architectural statement. The Hillside blend reflects his philosophy of making wines that appeal beyond the traditional Austrian red wine audience, using international varieties alongside native Zweigelt.",
+    "trivia": [
+      "The Leithaberg DAC designation was created specifically for wines from the limestone and schist soils on the western shore of Lake Neusiedl — a distinct terroir that produces more mineral, structured reds than the eastern lake shore.",
+      "Leo Hillinger is one of Austria's most internationally recognized wine producers, as much for his design aesthetic and marketing as for the wines themselves.",
+      "Lake Neusiedl — Europe's largest steppe lake — moderates temperatures across the entire Burgenland wine region, reducing the risk of frost and enabling consistent ripening even in difficult vintages."
+    ]
   }
 ]
