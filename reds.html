@@ -297,7 +297,7 @@ function buildSummary() {
   if(btgOnly) tags.push({label:'🍷 By the Glass',clear:()=>{btgOnly=false;buildFilters();render();}});
   const s=document.getElementById('active-summary');
   if(!tags.length){s.innerHTML='';return;}
-  s.innerHTML=tags.map(t=>`<span class="active-tag">${t.label}<button onclick="(${t.clear.toString()})()">✕</button></span>`).join('')+`<button class="clear-all" onclick="clearAll()">Clear all</button>`;
+  s.innerHTML=tags.map((t,i)=>{window._clearTag=window._clearTag||[];window._clearTag[i]=t.clear;return `<span class="active-tag">${t.label}<button onclick="window._clearTag[${i}]()">✕</button></span>`;}).join('')+`<button class="clear-all" onclick="clearAll()">Clear all</button>`;
 }
 
 function clearAll(){activeCat='All';btgOnly=false;activeIcons.clear();priceMin=0;priceMax=PRICE_MAX;activePreset=null;openId=null;document.getElementById('search').value='';document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));updateSliderUI();buildFilters();render();}
@@ -327,7 +327,7 @@ function render() {
   let html='';
   for(const[cat,wines]of Object.entries(grouped)){
     const anchor=CAT_ANCHORS[cat]||'';
-    html+=`<div class="section-head">${anchor?`<span id="${anchor}" style="display:block;position:relative;top:-80px;visibility:hidden;"></span>`:''}
+    html+=`<div class="section-head">${anchor?`<span id="${anchor}" style="display:block;position:relative;top:0;visibility:hidden;"></span>`:''}
       <span class="section-name">${cat}</span>
       ${SECTION_INTROS[cat]?`<div class="section-intro">${SECTION_INTROS[cat]}</div>`:''}
     </div>`;
@@ -373,7 +373,11 @@ function scrollToHash() {
   if (!window.location.hash) return;
   const id = window.location.hash.slice(1);
   const el = document.getElementById(id);
-  if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  if (el) setTimeout(() => {
+    const rect = el.getBoundingClientRect();
+    const offset = 120; // account for sticky filter bar
+    window.scrollBy({ top: rect.top - offset, behavior: 'smooth' });
+  }, 100);
 }
 fetch('wines.json')
   .then(r => r.json())
