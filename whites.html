@@ -28,9 +28,9 @@
   #search:focus { border-color: var(--gold-dim); }
   .filter-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; margin-bottom: 6px; }
   .filter-row::-webkit-scrollbar { display: none; }
-  .icon-grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 6px; }
+  .icon-grid-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
   @media (min-width: 600px) {
-    .icon-grid-row { display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+    .icon-grid-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
     .icon-grid-row::-webkit-scrollbar { display: none; }
     .icon-grid-row .icon-btn { flex-shrink: 0; }
   }
