@@ -28,6 +28,12 @@
   #search:focus { border-color: var(--gold-dim); }
   .filter-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; margin-bottom: 6px; }
   .filter-row::-webkit-scrollbar { display: none; }
+  .icon-grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 6px; }
+  @media (min-width: 600px) {
+    .icon-grid-row { display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+    .icon-grid-row::-webkit-scrollbar { display: none; }
+    .icon-grid-row .icon-btn { flex-shrink: 0; }
+  }
   .filter-btn { flex-shrink: 0; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
   .filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--bg); }
@@ -144,8 +150,7 @@
     <input id="search" type="text" placeholder="Search producer, grape, region, descriptor…" oninput="render()">
   </div>
   <div class="filter-row" id="cat-filters"></div>
-  <div class="filter-row" id="icon-filters"></div>
-  <div class="filter-row"><button id="btg-filter" class="icon-btn" onclick="toggleBtg()">🍷 By the glass</button></div>
+  <div class="icon-grid-row" id="icon-filters"></div>
   <div class="price-section">
     <div class="price-header">
       <span class="price-label">Price Range</span>
@@ -235,6 +240,16 @@ function buildFilters() {
     `<button class="filter-btn${activeCat===c?' active':''}" onclick="setCat(CATS[${idx}])">${c}</button>`).join('');
   document.getElementById('icon-filters').innerHTML = ICONS.map(ic =>
     `<button class="icon-btn${activeIcons.has(ic)?' active':''}" onclick="toggleIcon('${ic}')">${ic} ${ICON_LABELS[ic]}</button>`).join('');
+  const iconGrid = document.getElementById('icon-filters');
+  let btgBtn = document.getElementById('btg-filter');
+  if(!btgBtn) {
+    btgBtn = document.createElement('button');
+    btgBtn.id = 'btg-filter';
+    btgBtn.onclick = toggleBtg;
+    btgBtn.textContent = '🍷 By the glass';
+    iconGrid.appendChild(btgBtn);
+  }
+  btgBtn.className = 'icon-btn' + (btgOnly ? ' active' : '');
     const btgBtn = document.getElementById('btg-filter'); if(btgBtn) btgBtn.className = 'icon-btn' + (btgOnly ? ' active' : '');
   buildSummary();
 }
