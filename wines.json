@@ -4056,41 +4056,40 @@
   },
   {
     "id": "117",
-    "cat": "Sauvignon Blanc",
-    "type": "white",
-    "producer": "Château de Cruzeau",
-    "name": "Bordeaux Blanc",
-    "region": "Pessac-Léognan, Bordeaux",
-    "vintage": "2020",
-    "abv": "13%",
+    "cat": "Other Red Blends",
+    "type": "red",
+    "producer": "Adobe Road",
+    "name": "'The 24,' Grenache/Syrah/Mourvèdre, Sonoma, 2021",
+    "region": "Sonoma County, California",
+    "vintage": "2021",
+    "abv": "14%",
     "price": 162,
     "cert": "",
     "icons": [
-      "⚖️",
-      "🌿",
-      "🌸"
+      "💪",
+      "🍑",
+      "🌶️",
+      "🌿"
     ],
     "notes": [
-      "Grapefruit",
-      "White peach",
-      "Herb",
-      "Chalk",
-      "Clean long finish"
+      "GSM blend",
+      "Sonoma",
+      "Grenache-dominant"
     ],
-    "tableside": "White Bordeaux — Sauvignon Blanc as the French do it in the left bank. Drier and more mineral than California, more textured than Sancerre, with a Sémillon component that adds body and breadth. A useful wine for guests who think they don't like Sauvignon Blanc.",
+    "tableside": "Adobe Road's flagship red blend — Grenache, Syrah, and Mourvèdre from Sonoma County in the southern Rhône tradition. The 24 is named for the race car number of Kevin Buckler, Adobe Road's founder. Rich, spiced, and generously fruited. For guests who want something bold and Rhône-inspired without going to France.",
     "pairings": [
-      "Grilled fish",
-      "Shellfish",
-      "Chicken with herb sauce",
-      "Goat cheese"
+      "Lamb",
+      "Grilled pork",
+      "Herb-roasted dishes"
     ],
-    "story": "White Bordeaux is made from Sauvignon Blanc blended with Sémillon — the Sauvignon provides freshness and aromatics; the Sémillon adds body, texture, and longevity. Château de Cruzeau is a Pessac-Léognan estate whose white consistently over-delivers.",
+    "story": "Adobe Road is built around Kevin Buckler's dual passions — motorsport and wine. The 24 references his race car number and his approach to winemaking: precision, performance, and no compromise. The GSM blend draws on Grenache for fruit and body, Syrah for structure and spice, and Mourvèdre for depth and earthy complexity.",
     "trivia": [
-      "Pessac-Léognan is the only Bordeaux appellation that classifies both its red and white wines.",
-      "Sémillon develops honey, beeswax, and lanolin complexity with age — completely unlike any other white grape.",
-      "White Bordeaux is one of the most undervalued wine categories in the world."
+      "Kevin Buckler is a professional endurance racing driver who has competed at Le Mans multiple times — the same discipline and attention to detail that defines elite motorsport is applied to every aspect of Adobe Road's winemaking.",
+      "The GSM blend — Grenache, Syrah, Mourvèdre — is the backbone of southern Rhône wines like Châteauneuf-du-Pape and Gigondas. California producers have embraced the combination as a natural fit for the state's warm, Mediterranean-influenced climate.",
+      "Sonoma County's diversity of sub-appellations — from the cool Petaluma Gap to the warmer Dry Creek Valley — allows Adobe Road to source GSM components from the ideal climate for each variety."
     ],
-    "file": "whites"
+    "file": "reds",
+    "btg": false
   },
   {
     "id": "118",
@@ -14431,43 +14430,6 @@
     ]
   },
   {
-    "id": "627",
-    "cat": "Chardonnay",
-    "type": "white",
-    "file": "whites",
-    "producer": "Elk Cove",
-    "name": "Willamette Valley, 2024",
-    "region": "Willamette Valley, Oregon",
-    "vintage": "2024",
-    "abv": "13%",
-    "price": 48,
-    "cert": "",
-    "btg": false,
-    "icons": [
-      "☁️",
-      "🍋",
-      "🌸",
-      "🍑"
-    ],
-    "notes": [
-      "Unoaked style",
-      "Willamette Valley",
-      "Oregon Chardonnay"
-    ],
-    "tableside": "Elk Cove's entry-level Chardonnay from the Willamette Valley — lean, fresh, and much closer to Chablis than California. The cool Oregon climate keeps the wine bright and food-friendly. For guests who want Chardonnay without the oak and butter.",
-    "pairings": [
-      "Shellfish",
-      "White fish",
-      "Light pasta"
-    ],
-    "story": "Elk Cove is one of Oregon's pioneering estates, farming in the Chehalem Mountains since 1974. Their Willamette Valley Chardonnay is made in a restrained style that reflects the region's natural acidity — a deliberate counterpoint to the richer California expressions.",
-    "trivia": [
-      "Elk Cove was founded in 1974, making it one of Oregon's original wave of serious wine estates — established just after Eyrie and Ponzi pioneered the region.",
-      "The Willamette Valley's volcanic and sedimentary soils produce Chardonnay with a mineral precision that distinguishes Oregon from California's richer styles.",
-      "Oregon Chardonnay has historically been overshadowed by Oregon Pinot Noir, but producers like Elk Cove are increasingly making the case that it deserves equal attention."
-    ]
-  },
-  {
     "id": "751",
     "cat": "Other Whites",
     "type": "white",
@@ -14732,7 +14694,7 @@
     "type": "red",
     "file": "reds",
     "producer": "Jolie-Laide",
-    "name": "'Glou d\\'État,' Valdiguié/Mourvèdre/Grenache, Sonoma, 2023",
+    "name": "Glou d'État, Valdiguié/Mourvèdre/Grenache, Sonoma, 2023",
     "region": "Sonoma County, California",
     "vintage": "2023",
     "abv": "12.5%",
@@ -14881,7 +14843,7 @@
     "type": "red",
     "file": "reds",
     "producer": "Castello di Verduno",
-    "name": "'Basadone,' Pelaverga, Verduno, 2023",
+    "name": "'Basadone' Pelaverga, Verduno, 2023",
     "region": "Verduno, Piedmont, Italy",
     "vintage": "2023",
     "abv": "13%",
@@ -15059,6 +15021,43 @@
       "The Leithaberg DAC designation was created specifically for wines from the limestone and schist soils on the western shore of Lake Neusiedl — a distinct terroir that produces more mineral, structured reds than the eastern lake shore.",
       "Leo Hillinger is one of Austria's most internationally recognized wine producers, as much for his design aesthetic and marketing as for the wines themselves.",
       "Lake Neusiedl — Europe's largest steppe lake — moderates temperatures across the entire Burgenland wine region, reducing the risk of frost and enabling consistent ripening even in difficult vintages."
+    ]
+  },
+  {
+    "id": "627",
+    "cat": "Chardonnay",
+    "type": "white",
+    "file": "whites",
+    "producer": "Elk Cove",
+    "name": "Willamette Valley, 2024",
+    "region": "Willamette Valley, Oregon",
+    "vintage": "2024",
+    "abv": "13%",
+    "price": 48,
+    "cert": "",
+    "btg": false,
+    "icons": [
+      "☁️",
+      "🍋",
+      "🌸",
+      "🍑"
+    ],
+    "notes": [
+      "Unoaked style",
+      "Willamette Valley",
+      "Oregon Chardonnay"
+    ],
+    "tableside": "Elk Cove's entry-level Chardonnay from the Willamette Valley — lean, fresh, and much closer to Chablis than California. The cool Oregon climate keeps the wine bright and food-friendly. For guests who want Chardonnay without the oak and butter.",
+    "pairings": [
+      "Shellfish",
+      "White fish",
+      "Light pasta"
+    ],
+    "story": "Elk Cove is one of Oregon's pioneering estates, farming in the Chehalem Mountains since 1974. Their Willamette Valley Chardonnay is made in a restrained style that reflects the region's natural acidity — a deliberate counterpoint to the richer California expressions.",
+    "trivia": [
+      "Elk Cove was founded in 1974, making it one of Oregon's original wave of serious wine estates — established just after Eyrie and Ponzi pioneered the region.",
+      "The Willamette Valley's volcanic and sedimentary soils produce Chardonnay with a mineral precision that distinguishes Oregon from California's richer styles.",
+      "Oregon Chardonnay has historically been overshadowed by Oregon Pinot Noir, but producers like Elk Cove are increasingly making the case that it deserves equal attention."
     ]
   }
 ]

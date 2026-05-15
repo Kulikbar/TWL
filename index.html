@@ -132,7 +132,7 @@
     <div class="eyebrow">Staff Reference Guide</div>
     <div class="title">The Wine List</div>
     <div class="subtitle">Search across all sections</div>
-    <div class="wine-count-badge">374 wines &nbsp;·&nbsp; 3 sections</div>
+    <div class="wine-count-badge" id="wine-count-badge">383 wines &nbsp;·&nbsp; 3 sections</div>
   </div>
 
   <div class="search-section">
@@ -269,6 +269,8 @@ fetch('wines.json')
   .then(r => r.json())
   .then(data => {
     ALL_WINES = data;
+    const badge = document.getElementById('wine-count-badge');
+    if(badge) badge.textContent = ALL_WINES.length + ' wines · 3 sections';
   })
   .catch(err => {
     const meta = document.getElementById('search-meta');
