@@ -1797,82 +1797,6 @@
     "file": "whites"
   },
   {
-    "id": "750",
-    "cat": "Grüner Veltliner",
-    "type": "white",
-    "producer": "Bründlmayer",
-    "name": "Ried Berg Vogelsang – 1ÖTW",
-    "region": "Kamptal DAC, Austria",
-    "vintage": "2023",
-    "abv": "13%",
-    "price": 96,
-    "cert": "PR",
-    "icons": [
-      "⚖️",
-      "🍋",
-      "🧂"
-    ],
-    "notes": [
-      "Tart green apple",
-      "Lemon pith",
-      "Wet chalk",
-      "White pepper",
-      "Grapefruit zest"
-    ],
-    "tableside": "Same vineyard as the other Berg Vogelsang expressions, one year younger — sharper edges, higher tension, more electric. The 2023 vintage was brighter and more energetic across Kamptal. Where the 2022 has begun to settle, this one is still coiling. For guests who want to taste the vineyard before time softens it.",
-    "pairings": [
-      "Raw shellfish",
-      "Fried fish",
-      "Goat cheese",
-      "Spring vegetables"
-    ],
-    "story": "Same vineyard, same producer, different vintage character. 2023 was brighter and more energetic than 2022 across Kamptal. The 2022 Berg Vogelsang has more texture and integration; the 2023 is more tightly wound and precise. Together they show how profoundly vintage shapes expression even from an identical site.",
-    "trivia": [
-      "Kamptal's diurnal temperature shifts can exceed 20°C — that swing keeps acidity alive even in warm vintages.",
-      "2023 was challenging across Europe, but Austria's northern vineyards retained freshness that warmer southern regions lost.",
-      "Grüner Veltliner at the premier cru level genuinely improves with age — most people drink it too young."
-    ],
-    "file": "whites"
-  },
-  {
-    "id": "732",
-    "cat": "Grüner Veltliner",
-    "type": "white",
-    "producer": "Schloss Gobelsburg",
-    "name": "Ried Steinsetz",
-    "region": "Kamptal DAC, Austria",
-    "vintage": "2019",
-    "abv": "13%",
-    "price": 118,
-    "cert": "",
-    "icons": [
-      "⚖️",
-      "🍋",
-      "🧂"
-    ],
-    "notes": [
-      "Crisp apple",
-      "Pear skin",
-      "River stone",
-      "White pepper",
-      "Clean citrus finish"
-    ],
-    "tableside": "Gobelsburg's calling card for serious everyday drinking — terraced, steep, hand-harvested, rocky soils. The 2019 is in a sweet spot right now: past its youthful sharpness, not yet into the mellow territory of the aged Renner.",
-    "pairings": [
-      "Wiener schnitzel",
-      "Grilled white fish",
-      "Pork with mustard",
-      "Vegetable tart"
-    ],
-    "story": "The name Steinsetz means 'stone setting' — a reference to the dry stone walls holding the terraces in place. On terrain like this, tractors are useless. Everything is done by hand, the same way it's been done for centuries. The 2019 vintage gave Kamptal wines real structure and balance — not the most showy, but one of the most reliable.",
-    "trivia": [
-      "Terraced vineyard harvesters pick 200–400kg per day by hand versus several tons per hour mechanically — the labor cost is built into the bottle price.",
-      "The dry stone walls store heat by day and release it at night, acting as a thermal buffer for the vines.",
-      "Gobelsburg produces wines at every level of the Austrian classification — useful for explaining the system to curious guests."
-    ],
-    "file": "whites"
-  },
-  {
     "id": "875",
     "cat": "Grüner Veltliner",
     "type": "white",
@@ -12121,7 +12045,7 @@
     "region": "Montsant, Spain",
     "vintage": "2019",
     "abv": "14.5%",
-    "price": 140,
+    "price": 156,
     "cert": "",
     "btg": false,
     "icons": [
