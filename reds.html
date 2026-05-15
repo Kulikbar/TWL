@@ -295,7 +295,7 @@ function buildSummary() {
   if(activeCat!=='All') tags.push({label:activeCat,clear:()=>{activeCat='All';buildFilters();render();}});
   activeIcons.forEach(ic=>tags.push({label:`${ic} ${ICON_LABELS[ic]}`,clear:()=>{activeIcons.delete(ic);buildFilters();render();}}));
   const isPriceActive=priceMin>0||priceMax<PRICE_MAX;
-  if(isPriceActive){const pl=priceMax>=PRICE_MAX?`$${priceMin}+`:`$${priceMin}–$${priceMax}`;tags.push({label:pl,clear:()=>{priceMin=0;priceMax=PRICE_MAX;activePreset=null;document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));buildSummary();render();}});}
+  if(isPriceActive){const pl=priceMax>=PRICE_MAX?`$${priceMin}+`:`$${priceMin}–$${priceMax}`;tags.push({label:pl,clear:()=>{priceMin=0;priceMax=PRICE_MAX;activePreset=null;document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));updateSliderUI();buildSummary();render();}});}
   if(btgOnly) tags.push({label:'🍷 By the Glass',clear:()=>{btgOnly=false;buildFilters();render();}});
   const s=document.getElementById('active-summary');
   if(!tags.length){s.innerHTML='';return;}
