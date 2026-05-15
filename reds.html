@@ -373,15 +373,21 @@ function toggleSec(e,secId){e.stopPropagation();const sec=document.getElementByI
 function scrollToHash() {
   if (!window.location.hash) return;
   const id = window.location.hash.slice(1);
-  const el = document.getElementById(id);
-  if (!el) return;
-  // If it's a wine card, open it automatically
+  if (!id) return;
+  // If it's a wine card, open it and scroll after render completes
   if (id.startsWith('card-')) {
     const wineId = id.replace('card-', '');
     openId = wineId;
     render();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  } else {
+    const el = document.getElementById(id);
+    if (!el) return;
+    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
   }
-  setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
 }
 fetch('wines.json')
   .then(r => r.json())
