@@ -325,12 +325,14 @@ function scrollToHash() {
   const id = window.location.hash.slice(1);
   const el = document.getElementById(id);
   if (!el) return;
+  // Jump to top first so pageYOffset is 0, then calculate clean
+  window.scrollTo(0, 0);
   setTimeout(() => {
     const controls = document.querySelector('.controls');
     const controlsH = controls ? controls.offsetHeight : 140;
-    const elTop = el.getBoundingClientRect().top + window.pageYOffset;
+    const elTop = el.getBoundingClientRect().top;
     window.scrollTo({ top: elTop - controlsH - 16, behavior: 'smooth' });
-  }, 150);
+  }, 50);
 }
 fetch('wines.json')
   .then(r => r.json())
