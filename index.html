@@ -308,7 +308,7 @@ function handleSearch() {
 
   browse.classList.add('hidden');
 
-  const terms = q.split(/\s+/).filter(Boolean);
+  const terms = normalize(q).split(/\s+/).filter(Boolean);
   const matches = ALL_WINES.filter(w => {
     const haystack = normalize([w.id, w.producer, w.name, w.cat, w.region, w.vintage, w.file, FILE_LABELS[w.file]].join(' '));
     return terms.every(t => haystack.includes(t));
