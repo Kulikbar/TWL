@@ -1516,7 +1516,7 @@
     "file": "sparkling"
   },
   {
-    "id": "HILL-SECCO",
+    "id": "BTG-011",
     "cat": "Other Bubbles",
     "btg": true,
     "type": "sparkling",
@@ -1555,7 +1555,7 @@
     "file": "sparkling"
   },
   {
-    "id": "MITT-ROSE",
+    "id": "BTG-012",
     "cat": "Rosé",
     "btg": true,
     "type": "rosé",
@@ -14894,5 +14894,405 @@
       "The Willamette Valley's volcanic and sedimentary soils produce Chardonnay with a mineral precision that distinguishes Oregon from California's richer styles.",
       "Oregon Chardonnay has historically been overshadowed by Oregon Pinot Noir, but producers like Elk Cove are increasingly making the case that it deserves equal attention."
     ]
+  },
+  {
+    "id": "BTG-001",
+    "cat": "Other Bubbles",
+    "type": "Sparkling",
+    "producer": "Szigeti",
+    "name": "Blanc de Blancs, Burgenland, NV",
+    "region": "Burgenland, Austria",
+    "vintage": "NV",
+    "abv": 12.0,
+    "price": 64,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🌸"
+    ],
+    "notes": [
+      "White peach",
+      "Citrus zest",
+      "Toasted lees",
+      "Almond",
+      "Crisp finish"
+    ],
+    "tableside": "An Austrian Blanc de Blancs made by traditional method — think of it as Austria's answer to Champagne, with the same fine bubbles but the bright, clean character of Burgenland Welschriesling.",
+    "pairings": [
+      "Oysters",
+      "Shellfish",
+      "Light appetizers",
+      "Charcuterie"
+    ],
+    "story": "The Szigeti brothers founded their sparkling wine house in Gols, Burgenland in 1991, abandoning still wine entirely to focus on méthode traditionelle sparkling. They source from the best vineyard sites around Lake Neusiedl, producing some of Austria's most acclaimed Sekt.",
+    "trivia": [
+      "The Szigeti Blanc de Blancs is made using the same traditional method as Champagne — secondary fermentation in the bottle, extended lees aging, and hand disgorgement. The result is a wine that rivals Champagne in quality at a fraction of the price.",
+      "Welschriesling — despite the name — has no genetic relation to German Riesling. It's an entirely separate variety that thrives in Austria and produces wines of bright acidity and clean citrus character, ideal for sparkling wine production.",
+      "Burgenland's proximity to Lake Neusiedl — Europe's largest steppe lake — moderates temperatures and creates ideal conditions for slow, even ripening of grapes destined for sparkling wine."
+    ],
+    "file": "sparkling"
+  },
+  {
+    "id": "BTG-002",
+    "cat": "Champagne",
+    "type": "Sparkling",
+    "producer": "Laurent-Perrier",
+    "name": "Cuvée Brut, NV (Split)",
+    "region": "Champagne, France",
+    "vintage": "NV",
+    "abv": 12.0,
+    "price": 37,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🥐"
+    ],
+    "notes": [
+      "Citrus",
+      "Green apple",
+      "Brioche",
+      "White flowers",
+      "Crisp finish"
+    ],
+    "tableside": "Laurent-Perrier's Brut NV in an individual 187ml split bottle — the perfect single-glass Champagne experience, or a beautiful way to start a meal for one. Same wine as a full bottle, just in a personal format.",
+    "pairings": [
+      "Oysters",
+      "Caviar",
+      "Light appetizers",
+      "Solo celebration"
+    ],
+    "story": "Laurent-Perrier is one of Champagne's great family-owned houses, headquartered in Tours-sur-Marne. Known for their elegant, Chardonnay-dominant house style, they are also the house behind the iconic Grande Cuvée and the famous Laurent-Perrier Rosé — one of Champagne's most recognized bottles.",
+    "trivia": [
+      "This is a split — a 187ml individual bottle, roughly one generous glass. It is priced as an individual serving rather than a full bottle.",
+      "Laurent-Perrier is one of the few remaining large Champagne houses still entirely family-owned — the Nonancourt family has controlled the estate since 1939.",
+      "The house's Brut NV is among the most Chardonnay-dominant of the major Champagne house blends — typically around 50-60% Chardonnay — giving it the freshness and precision the style is known for."
+    ],
+    "file": "sparkling"
+  },
+  {
+    "id": "BTG-003",
+    "cat": "Other Whites",
+    "type": "White",
+    "producer": "Allegrini",
+    "name": "Turbiana 'Oasi Mantellina,' Lugana, IT",
+    "region": "Lugana, Lombardy, Italy",
+    "vintage": "2025",
+    "abv": 12.7,
+    "price": 68,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🌸"
+    ],
+    "notes": [
+      "White peach",
+      "Elderflower",
+      "Citrus zest",
+      "Almond",
+      "Saline finish"
+    ],
+    "tableside": "Turbiana is the local name for a biotype of Trebbiano found only around Lake Garda — this is Allegrini's venture into Lugana, and it shows their typically elegant touch. Crisp, saline, and surprisingly complex.",
+    "pairings": [
+      "Seafood",
+      "Light pasta",
+      "Grilled fish",
+      "Goat cheese"
+    ],
+    "story": "Allegrini is one of the Veneto's most celebrated families — their Amarone is a benchmark of the style. In 2018 they purchased 40 hectares in Pozzolengo in the Lugana appellation, creating a white wine project that reflects the same commitment to quality they bring to their reds.",
+    "trivia": [
+      "Turbiana is a biotype of Trebbiano di Soave found almost exclusively around Lake Garda — the lake's moderating influence gives the wines a freshness and minerality unusual for northern Italy's white wines.",
+      "Lugana DOC spans the border between Lombardy and Veneto — the appellation's unique position on glacial moraine soils left by the retreating Garda glacier gives the wines their characteristic saline, mineral quality.",
+      "Allegrini purchased their Lugana estate in 2018 after years of searching — the property surrounds a small protected lake called Mantellina, which gives the wine its full name, Oasi Mantellina."
+    ],
+    "file": "whites"
+  },
+  {
+    "id": "BTG-004",
+    "cat": "Chardonnay",
+    "type": "White",
+    "producer": "The Vice",
+    "name": "Chardonnay, Napa Valley",
+    "region": "Napa Valley, California",
+    "vintage": "2025",
+    "abv": 14.2,
+    "price": 72,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "💪",
+      "🍑",
+      "🪵",
+      "🧈"
+    ],
+    "notes": [
+      "Yellow apple",
+      "Ripe pear",
+      "Toasted oak",
+      "Crème brûlée",
+      "Vanilla"
+    ],
+    "tableside": "The Vice's Chardonnay is the Napa approach — generous, rich, and toasty. If a guest loves California Chardonnay this is the glass for them, and it's available by the bottle as well.",
+    "pairings": [
+      "Lobster",
+      "Roasted chicken",
+      "Cream sauces",
+      "Rich fish"
+    ],
+    "story": "The Vice operates across Napa Valley's spectrum, making both Pinot Noir and Cabernet Sauvignon as their primary bottle list wines. The Chardonnay is their white expression — rich, Napa-styled, and designed for guests who want something with presence.",
+    "trivia": [
+      "Napa Valley Chardonnay is often made in a richer, more oaked style than its Burgundian counterpart — the warmer climate produces riper fruit, and extended barrel aging adds the toasty, creamy character the style is known for.",
+      "Malolactic fermentation — converting sharp malic acid to softer lactic acid — is standard practice in Napa Chardonnay production and is responsible for much of the buttery, creamy character guests associate with the style.",
+      "The Vice's red wines appear three times on the bottle list — the Chardonnay is exclusively a BTG offering, making it a unique expression from a producer guests may already know."
+    ],
+    "file": "whites"
+  },
+  {
+    "id": "BTG-005",
+    "cat": "Grüner Veltliner",
+    "type": "White",
+    "producer": "Steininger",
+    "name": "Grüner Veltliner, Ried Loisium, Kamptal",
+    "region": "Kamptal, Austria",
+    "vintage": "2025",
+    "abv": 12.5,
+    "price": 64,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍋",
+      "🧂",
+      "🌿"
+    ],
+    "notes": [
+      "White pepper",
+      "Green apple",
+      "Citrus zest",
+      "Wet stone",
+      "Herbs"
+    ],
+    "tableside": "Classic Kamptal Grüner Veltliner — the white pepper note is the giveaway. Dry, mineral, and food-friendly in the way that only Austrian whites can be. Steininger is also known for their Sekt, which appears several times on the sparkling list.",
+    "pairings": [
+      "Wiener Schnitzel",
+      "White asparagus",
+      "Grilled fish",
+      "Vegetable dishes"
+    ],
+    "story": "Steininger is a Kamptal estate with a dual identity — serious still wines and one of Austria's finest Sekt programs. The Loisium vineyard sits in the heart of Kamptal's best growing zone, producing Grüner Veltliner with the characteristic white pepper and minerality the variety is famous for.",
+    "trivia": [
+      "The Loisium is also the name of a famous wine spa and hotel in Langenlois built around a labyrinth of historic wine cellars — the Steininger estate is closely associated with the cultural life of the Kamptal wine world.",
+      "Kamptal's name comes from the Kamp River, whose valley creates the temperature variation that gives the region's wines their freshness and precision.",
+      "Steininger's sparkling wines appear multiple times on the sparkling list — having their still Grüner on the BTG list gives guests a way to explore the producer's range beyond the bubbles."
+    ],
+    "file": "whites"
+  },
+  {
+    "id": "BTG-006",
+    "cat": "Sauvignon Blanc",
+    "type": "White",
+    "producer": "Paris-Simoneau",
+    "name": "Sauvignon Blanc, Val de Loire, FR",
+    "region": "Loire Valley, France",
+    "vintage": "2025",
+    "abv": 12.5,
+    "price": 60,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "☁️",
+      "🍋",
+      "🧂",
+      "🌿"
+    ],
+    "notes": [
+      "Grapefruit",
+      "Gooseberry",
+      "Fresh herbs",
+      "Chalk",
+      "Crisp finish"
+    ],
+    "tableside": "Loire Sauvignon Blanc at its most honest — all grapefruit and fresh herbs over chalk minerality. Clean and direct, it's the style that made Sancerre famous, at a more accessible price.",
+    "pairings": [
+      "Goat cheese",
+      "Oysters",
+      "Green salads",
+      "Light fish"
+    ],
+    "story": "Paris-Simoneau is a Loire Valley producer working in the classic Sauvignon Blanc tradition of the region — focused on freshness, minerality, and varietal purity rather than oak or weight. The Val de Loire designation covers wines from across the broad Loire appellation.",
+    "trivia": [
+      "Loire Valley Sauvignon Blanc is considered the benchmark for the variety in France — the chalky soils of Sancerre and Pouilly-Fumé give the wines a mineral, flinty quality that Sauvignon from warmer regions rarely achieves.",
+      "The Loire is France's longest river, stretching over 600 miles from the Massif Central to the Atlantic — the wines along its length vary dramatically from the mineral whites of the upper Loire to the sweeter expressions near the coast.",
+      "Sauvignon Blanc's characteristic aromas — grapefruit, gooseberry, cut grass, fresh herbs — come from a group of compounds called thiols, which are released during fermentation and give the variety its instantly recognizable profile."
+    ],
+    "file": "whites"
+  },
+  {
+    "id": "BTG-007",
+    "cat": "Pinot Noir",
+    "type": "Red",
+    "producer": "Maison de la Villette",
+    "name": "Pinot Noir, Loire Valley, FR",
+    "region": "Loire Valley, France",
+    "vintage": "2025",
+    "abv": 12.5,
+    "price": 60,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "☁️",
+      "🍒",
+      "🌿",
+      "🧂"
+    ],
+    "notes": [
+      "Red cherry",
+      "Strawberry",
+      "Fresh herbs",
+      "Light tannins",
+      "Earthy finish"
+    ],
+    "tableside": "Loire Pinot Noir is one of wine's best-kept secrets — lighter and more food-friendly than Burgundy, with the same red cherry freshness but more herbal lift. Perfect for guests who want something red but not too heavy.",
+    "pairings": [
+      "Roasted chicken",
+      "Salmon",
+      "Charcuterie",
+      "Goat cheese"
+    ],
+    "story": "The Loire Valley's Pinot Noir tradition is older than most guests realize — Sancerre Rouge has been made from Pinot Noir for centuries, and the region's cool climate produces a distinctly lighter, more aromatic style than Burgundy. Maison de la Villette works across the Loire's white and red expressions.",
+    "trivia": [
+      "Loire Pinot Noir is often overlooked in favor of the region's famous Sauvignon Blancs and Chenin Blancs — but the variety has been grown here for centuries and produces wines of genuine delicacy and food-friendliness.",
+      "The Loire Valley's cool climate is ideal for preserving Pinot Noir's natural acidity and freshness — the wines typically run 12-13% alcohol, making them significantly lighter than California or Burgundy expressions.",
+      "Sancerre Rouge — the Loire's most famous Pinot Noir — is made from the same grape variety as the white, grown on the same chalk and flint soils, producing wines with a distinctive mineral quality unique to the region."
+    ],
+    "file": "reds"
+  },
+  {
+    "id": "BTG-008",
+    "cat": "Italian Reds",
+    "type": "Red",
+    "producer": "Cantina Vini Tipici dell'Aretino",
+    "name": "Super Tuscan, Tuscany, IT",
+    "region": "Tuscany, Italy",
+    "vintage": "2025",
+    "abv": 13.5,
+    "price": 60,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🪵",
+      "🌿"
+    ],
+    "notes": [
+      "Dark cherry",
+      "Blackcurrant",
+      "Cedar",
+      "Dried herbs",
+      "Smooth tannins"
+    ],
+    "tableside": "A classic Super Tuscan blend — Sangiovese with Cabernet Sauvignon — that bridges the gap between Italy and Bordeaux. Approachable and food-friendly, it's a reliable choice for guests who want something Italian with familiar structure.",
+    "pairings": [
+      "Bistecca Fiorentina",
+      "Pasta Bolognese",
+      "Hard cheeses",
+      "Grilled meats"
+    ],
+    "story": "Cantina Vini Tipici dell'Aretino is a cooperative based in Arezzo, in the heart of Tuscany. The Super Tuscan category — blending traditional Italian varieties with international grapes like Cabernet Sauvignon — was born in Tuscany in the 1970s and has become one of Italy's most recognizable wine styles internationally.",
+    "trivia": [
+      "The Super Tuscan category was created in the 1970s when producers like Antinori and Sassicaia began blending Cabernet Sauvignon with Sangiovese — a practice prohibited under the existing Chianti DOC rules, forcing them to label their wines as humble table wine despite their exceptional quality.",
+      "Arezzo — the province where this producer is based — sits in eastern Tuscany between Florence and Rome, a historically important area for both art and agriculture. Piero della Francesca's famous frescoes are in Arezzo.",
+      "The IGT (Indicazione Geografica Tipica) designation, created in 1992, gave legal identity to Super Tuscan wines that had been classified as table wine — allowing producers to use non-traditional varieties while still indicating geographic origin."
+    ],
+    "file": "reds"
+  },
+  {
+    "id": "BTG-009",
+    "cat": "Spanish Reds",
+    "type": "Red",
+    "producer": "Ontañon",
+    "name": "Tempranillo/Garnacha, Crianza, Rioja, SP",
+    "region": "Rioja, Spain",
+    "vintage": "2025",
+    "abv": 13.5,
+    "price": 64,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "⚖️",
+      "🍒",
+      "🪵",
+      "🌶️"
+    ],
+    "notes": [
+      "Dark cherry",
+      "Plum",
+      "Vanilla",
+      "Warm spice",
+      "Smooth oak"
+    ],
+    "tableside": "Rioja Crianza — the entry point into Rioja's aging classification system. At least two years of aging including one in American oak gives it the vanilla and spice that defines the classic Rioja style. A natural partner for red meat.",
+    "pairings": [
+      "Lamb",
+      "Grilled meats",
+      "Manchego",
+      "Tapas"
+    ],
+    "story": "Ontañon has been making wine in Rioja for generations. Their Gran Reserva appears on the bottle list — the Crianza is the younger, more approachable expression from the same house, showing the classic Rioja style of Tempranillo with American oak at an accessible price point.",
+    "trivia": [
+      "Rioja's Crianza designation requires a minimum of two years aging — at least one year in oak barrels. The American oak traditionally used in Rioja imparts the vanilla and dill notes that define the region's classic style.",
+      "Garnacha (Grenache) has been blended with Tempranillo in Rioja for centuries — it adds roundness, red fruit, and body to the more structured, tannic Tempranillo base.",
+      "Ontañon's Gran Reserva appears elsewhere on the bottle list — having the Crianza as a BTG pour gives guests an opportunity to explore the same producer at different aging levels and price points."
+    ],
+    "file": "reds"
+  },
+  {
+    "id": "BTG-010",
+    "cat": "Cabernet",
+    "type": "Red",
+    "producer": "Black Stallion Winery",
+    "name": "Cabernet Sauvignon, North Coast, CA",
+    "region": "North Coast, California",
+    "vintage": "2025",
+    "abv": 14.5,
+    "price": 72,
+    "cert": "",
+    "btg": true,
+    "icons": [
+      "💪",
+      "🍒",
+      "🍑",
+      "🪵"
+    ],
+    "notes": [
+      "Blackcurrant",
+      "Dark plum",
+      "Vanilla",
+      "Mocha",
+      "Smooth tannins"
+    ],
+    "tableside": "Black Stallion's North Coast Cabernet is the house pour — rich, approachable California Cab with the dark fruit and vanilla that guests expect from the style. The estate's Sam Jasper Napa Valley bottling on the bottle list is the prestige tier if they want to step up.",
+    "pairings": [
+      "Ribeye",
+      "Lamb",
+      "Hard aged cheese",
+      "Grilled meats"
+    ],
+    "story": "Black Stallion Winery occupies a former equestrian facility in Oakville, Napa Valley. Their portfolio spans from the North Coast Cabernet — the accessible BTG tier — to the single-vineyard Sam Jasper Napa Valley Cabernet on the bottle list. The North Coast designation allows fruit sourcing from across a broad region including Napa, Sonoma, Lake, and Mendocino counties.",
+    "trivia": [
+      "The North Coast AVA is one of California's broadest appellations, covering six counties north of San Francisco Bay — Napa, Sonoma, Mendocino, Lake, Marin, and Solano. It allows producers to blend across a wide area while still indicating a California origin.",
+      "Black Stallion's two Cabernets on the list — this North Coast BTG pour and the Sam Jasper Napa Valley on the bottle list — illustrate how dramatically appellation specificity affects both character and price in California wine.",
+      "The winery building was originally constructed as an equestrian center before being converted to wine production — the stable aesthetic and horse imagery throughout the brand references that history."
+    ],
+    "file": "reds"
   }
 ]
