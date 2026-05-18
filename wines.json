@@ -7333,7 +7333,7 @@
     ],
     "story": "Erich Sattler farms in southern Burgenland, one of Austria's most important red wine regions. The Reserve designation means extra aging and fruit selection, giving the wine more concentration than the standard bottling. Zweigelt is Austria's most widely planted red variety — a crossing of Blaufränkisch and St. Laurent developed in the early 20th century.",
     "trivia": [
-      "Zweigelt was bred in 1922 by Dr. Fritz Zweigelt at the Klosterneuburg Agricultural Institute — one of the few grape varieties named after a real person.",
+      "Zweigelt was bred in 1922 by Dr. Fritz Zweigelt at the Klosterneuburg Agricultural Institute — a cross of Blaufränkisch and Sankt Laurent that became Austria's most planted red variety, and one of the few grapes named after its creator.",
       "Burgenland's warm Pannonian climate makes it Austria's warmest and driest wine region, ideal for red varieties.",
       "Austria was considered a white-wine country by most drinkers until the 1990s, when Burgenland producers began proving the region could make serious reds."
     ],
@@ -7390,7 +7390,7 @@
     "cert": "",
     "btg": false,
     "icons": [
-      "💪",
+      "⚖️",
       "🍒",
       "🪵",
       "🌶️"
@@ -7413,7 +7413,7 @@
     "story": "Leo Hillinger built one of the most visible wine brands in Austria from a small family estate in Jois on the northern shore of Lake Neusiedl. His dramatic hillside winery is as well-known in Austria as his wines. Hill 1 is the top of his red wine pyramid: a blend designed to compete with serious international benchmarks.",
     "trivia": [
       "Hillinger's winery was designed to be integrated into the hillside — from the air it's barely visible, the underground cellar naturally temperature-controlled by the surrounding earth.",
-      "The Leithaberg DAC appellation was created in 2009, focused specifically on Blaufränkisch and Pinot Blanc from the limestone and schist soils of the Leitha Mountains.",
+      "The Leithaberg DAC appellation was approved in 2009 and came into force in 2010, focused specifically on Blaufränkisch and Pinot Blanc from the limestone and schist soils of the Leitha Mountains.",
       "Leo Hillinger was instrumental in modernizing the image of Austrian wine internationally, investing heavily in design and marketing when most producers focused solely on the wine."
     ],
     "file": "reds"
@@ -7456,8 +7456,8 @@
     "story": "The Eisenberg DAC appellation was created to protect the reputation of Blaufränkisch from this compact hill at the southern end of Burgenland. The iron-rich basalt soils produce wines with a distinct metallic, almost volcanic mineral character quite different from the more fruit-forward lake-region examples. Jalits is a small family producer making wines that punch well above their price.",
     "trivia": [
       "Eisenberg translates directly as 'iron mountain' — the soils are genuinely iron-rich basalt and volcanic rock, and you can often taste it as a distinct metallic or blood-orange note.",
-      "The Eisenberg DAC was created in 2010, one of Austria's most recent appellations, established to give legal identity to wines that a small group of producers were already making.",
-      "Blaufränkisch from Eisenberg is aged longer than most Austrian reds — the structure requires time to integrate, and the best bottles improve for 15–20 years."
+      "The Eisenberg DAC was established in the late 2000s, one of Austria's more recent appellations, created to give legal identity to wines that a small group of producers were already making with conviction.",
+      "Blaufränkisch from Eisenberg is aged longer than most Austrian reds — the structure requires time to integrate, and the best bottles improve for 15-20 years."
     ],
     "file": "reds"
   },
@@ -7749,7 +7749,7 @@
     "cert": "",
     "btg": false,
     "icons": [
-      "💪",
+      "⚖️",
       "🍒",
       "🪵",
       "🌶️"
@@ -7770,7 +7770,7 @@
     ],
     "story": "The Netzl family farms some of Göttlesbrunn's best sites, including several classified as 1ÖTW — the country's top vineyard classification. Anna-Christina is named for a family member and is the estate's flagship red: an international blend that uses Carnuntum fruit to compete with Napa and Bordeaux on familiar terms.",
     "trivia": [
-      "The 1ÖTW classification (roughly equivalent to Burgundy's Premier and Grand Cru) was created in 2002 by a group of top Austrian producers to identify their best vineyards.",
+      "The 1ÖTW classification — roughly equivalent to Burgundy's Premier and Grand Cru — is administered by the Österreichische Traditionsweingüter, an association of top Austrian estates that has been classifying vineyard sites since the early 1990s.",
       "Netzl's vineyards in Göttlesbrunn are planted on ancient gravel terraces — remnants of the prehistoric Danube delta — that drain quickly and force vines to root deeply.",
       "Cabernet Sauvignon rarely headlines in Austria, but Carnuntum's warm continental climate is actually well-suited to it."
     ],
@@ -7867,7 +7867,7 @@
     "cert": "",
     "btg": false,
     "icons": [
-      "💪",
+      "⚖️",
       "🍒",
       "🪵",
       "🧂"
@@ -7945,7 +7945,7 @@
     "cert": "",
     "btg": false,
     "icons": [
-      "💪",
+      "⚖️",
       "🍒",
       "🍑",
       "🪵"
@@ -9080,7 +9080,7 @@
     ],
     "story": "Robert Drouhin's investment in Oregon was seen as either bold or eccentric. Véronique Drouhin, who makes wine at both the Oregon and Burgundy estates, has turned Domaine Drouhin Oregon into a reference point for what French terroir philosophy produces in Pacific Northwest conditions.",
     "trivia": [
-      "Robert Drouhin first visited Oregon in 1961, but didn't invest until 1987 — after an Oregon Pinot beat several Burgundy Grand Crus in a blind tasting. The wine was the 1975 Eyrie Vineyards Pinot, which outperformed Drouhin's own Chambolle-Musigny.",
+      "Robert Drouhin first visited Oregon in 1961 but didn't invest until 1987 — after the famous 1979 Gault Millau tasting in Paris where the 1975 Eyrie Vineyards Pinot finished in the top ten among world Pinots, stunning the wine world. Drouhin organized a rematch in 1980, where Eyrie finished a narrow second to his own 1959 Chambolle-Musigny.",
       "The Eola-Amity Hills benefits from the Van Duzer Corridor, a gap in the Coast Range that channels cool Pacific winds directly into the area each afternoon.",
       "Drouhin has maintained both the Oregon and Burgundy projects simultaneously for over 30 years — a genuine vote of confidence in both locations."
     ],
@@ -9467,7 +9467,7 @@
     "story": "St. Supery is a Rutherford estate with significant French ownership that has always maintained a Bordeaux-influenced approach. The Dolce Ranch, where this Merlot's fruit comes from, is one of the classic Rutherford addresses. Rutherford's famous silky tannin character — sometimes called 'Rutherford Dust' — shows up in the wine's long, seamless finish.",
     "trivia": [
       "'Rutherford Dust' is one of wine's most famous marketing terms — coined in the 1990s to describe the chalky, mineral quality of tannins in wines from this specific stretch of the Napa Valley floor.",
-      "St. Supery was acquired by Chanel (the fashion house) in 2015, adding to the French luxury brand's wine portfolio that also includes Rauzan-Ségla in Bordeaux and Château Canon in St-Emilion.",
+      "St. Supery was acquired by Chanel (the fashion house) in 2015 — the French luxury brand's first American winery acquisition. Chanel's wine portfolio also includes Château Rauzan-Ségla in Margaux, Château Canon and Château Berliquet in St-Émilion.",
       "The 2017 Napa vintage was complicated by October wildfires. St. Supery's Rutherford vineyards avoided the worst smoke effects, producing clean, concentrated wine."
     ],
     "file": "reds"
@@ -9504,7 +9504,7 @@
     ],
     "story": "Jada Vineyard sits in the oak-studded hills of western Paso Robles, where the Pacific influence moderates temperatures just enough to preserve freshness in otherwise warm-climate grapes. The Jersey Girl Syrah is the estate's statement on what Paso Syrah can be: dense, dark, with enough structure to age but enough fruit to drink young.",
     "trivia": [
-      "Paso Robles' western hills benefit from the Templeton Gap — a break in the Santa Lucia mountain range that allows cool Pacific air to flow in. The temperature difference between the cool western and warm eastern sides of Paso can be 50°F on a given afternoon.",
+      "Paso Robles' western hills benefit from the Templeton Gap — a break in the Santa Lucia mountain range that allows cool Pacific air to flow in each afternoon. The region is also famous for dramatic diurnal swings of up to 50°F between daytime highs and overnight lows, preserving natural acidity in the grapes.",
       "Syrah in warm climates like Paso tends toward black fruit, tobacco, and dark chocolate. Cool-climate Syrah — Northern Rhône or West Sonoma Coast — is more purple-fruited and peppery.",
       "At 15% alcohol, this is one of the higher-ABV wines on the list — worth noting for guests who are sensitive to alcohol, though the richness of the wine tends to absorb it well."
     ],
@@ -9975,7 +9975,7 @@
     ],
     "story": "Heidi Barrett earned the nickname 'La Reine' — the queen — for her work making Screaming Eagle, whose 1992 vintage sold for a world-record price at auction. Au Sommet means 'at the summit' and is her own estate label from Atlas Peak vineyards. At over a decade of age, this 2011 has moved well past its initial power phase into genuine complexity.",
     "trivia": [
-      "The 1992 Screaming Eagle, made by Barrett, sold at a charity auction for $500,000 for a 6-liter imperial bottle — a world record for the most expensive bottle of wine ever sold at that time.",
+      "In 2000, a 6-liter bottle of the 1992 Screaming Eagle, made by Barrett, sold at a Napa Valley charity auction for $500,000 — the highest price ever paid for a single bottle of wine at that time.",
       "Heidi Barrett worked as a consulting winemaker for numerous high-profile Napa estates simultaneously — a practice that became controversial when critics began identifying a house style across her clients' wines.",
       "Atlas Peak's elevation and volcanic soils make it one of the most distinctive Napa sub-appellations — the wines age differently from valley-floor examples, with a more mineral, European-leaning character."
     ],
@@ -10210,7 +10210,7 @@
     "story": "Randy Dunn started Dunn Vineyards on Howell Mountain in 1979 and has never wavered from his winemaking philosophy: low yields, minimal oak, extended maceration, and patience. His wines are often described as austere when young, and extraordinary when they've had time. The Napa Valley blend draws from mountain vineyards and is typically more accessible than the Howell Mountain single-vineyard.",
     "trivia": [
       "Dunn Vineyards has one of the most famous mailing lists in Napa — Randy Dunn reportedly kept the allocation structure exactly the same for decades, refusing to prioritize wealthy buyers over loyal longtime customers.",
-      "Howell Mountain was the first sub-appellation designated within Napa Valley (in 1983), and Dunn's success was central to establishing its reputation.",
+      "Howell Mountain was one of the first sub-appellations designated within Napa Valley, approved in December 1983, and Dunn's success was central to establishing its reputation as a serious red wine address.",
       "Randy Dunn's extended maceration approach — leaving the skins in contact with fermenting wine longer than most producers — is the source of both the wines' tannic structure and their extraordinary aging potential."
     ],
     "file": "reds"
@@ -11261,9 +11261,9 @@
     ],
     "story": "Ridge Vineyards planted Monte Bello's limestone ridgeline in the Santa Cruz Mountains in the 1940s. The wine became internationally famous in 2006 when a rematch of the 1976 Paris Tasting was held and Ridge Monte Bello placed first among all wines — red and white, American and French. Paul Draper made it one of California's most age-worthy Cabernets over a 50-year career.",
     "trivia": [
-      "The 2006 rematch tasting of the original 1976 bottles placed the 1971 Ridge Monte Bello in first place overall, ahead of the First Growth Bordeaux that had outranked it in 1976. Wine ages, and what looked like a French victory in 1976 looked like an American one thirty years later.",
-      "Paul Draper worked at Ridge for over 50 years, becoming one of the most respected winemakers in American history. He retired in 2016 but continues as a consultant.",
-      "Monte Bello's limestone soils at 2,600 feet elevation in the Santa Cruz Mountains produce Cabernet that's more mineral and less fruit-forward than valley-floor Napa — often described as the most 'Bordeaux-like' wine in California."
+      "At the original 1976 Judgment of Paris, the 1971 Ridge Monte Bello came in fifth — California still won the red category overall (Stag's Leap took first), but Monte Bello wasn't the top American wine. In the 2006 rematch, Monte Bello came first by 18 points — a remarkable vindication of the wine's aging potential.",
+      "Paul Draper worked at Ridge for over 50 years, becoming one of the most respected winemakers in American history. He stepped back from day-to-day winemaking around 2016 but has remained involved as a consultant.",
+      "Monte Bello's limestone soils at elevations up to 2,600 feet in the Santa Cruz Mountains produce Cabernet that's more mineral and less fruit-forward than valley-floor Napa — often described as the most 'Bordeaux-like' wine in California."
     ],
     "file": "reds"
   },
@@ -11618,7 +11618,7 @@
     ],
     "story": "Paradise Springs is a small family winery in Clifton, one of the Virginia wine appellations closest to the Washington DC metro area. The Cab Franc is their signature wine and reflects the lighter, more aromatic style that's emerging from younger Virginia producers who prioritize freshness over concentration.",
     "trivia": [
-      "Clifton, Virginia sits in the Bull Run Mountains appellation, one of Virginia's newest AVAs. The region's proximity to DC has made it a destination for weekend wine tourism.",
+      "Paradise Springs is Fairfax County's first winery — Clifton sits just 30 miles from Washington DC, making it one of the most accessible wine destinations in the state. The property borders the Bull Run River and the surrounding Occoquan watershed.",
       "Virginia's proximity to Washington DC has created an engaged, educated wine consumer base that supports quality-focused producers — restaurant demand from the capital has helped elevate overall standards across the state.",
       "Paradise Springs at $60 is the most affordable Virginia red on the list — a useful starting point for guests curious about local wine who aren't ready to commit to RdV pricing."
     ],
@@ -12986,7 +12986,7 @@
     ],
     "story": "Listrac-Médoc sits in the middle of the Haut-Médoc, west of the more famous communes of Pauillac and St-Julien. The soils here are heavier and the wines tend toward a more rustic, earthy style than the polished grands châteaux. Château Ducluzeau produces honest, food-friendly Bordeaux from a blend that leans on Merlot for roundness with Cabernet Sauvignon providing structure.",
     "trivia": [
-      "Listrac-Médoc is the only one of the six Haut-Médoc communal appellations with no Cru Classé estates — all six Médoc Cru Classé communes (Pauillac, St-Julien, Margaux, St-Estèphe, Moulis, Listrac) have their own appellation, but Listrac has never had a wine classified in the 1855 system.",
+      "Listrac-Médoc and Moulis-en-Médoc are the only two of the six Haut-Médoc communal appellations with no Cru Classé estates — a historical quirk of the 1855 classification that excluded these villages despite their quality potential.",
       "The 2016 Bordeaux vintage is widely considered one of the greatest of the 21st century — a near-perfect growing season produced wines of exceptional concentration, balance, and aging potential across all appellations.",
       "Merlot-dominant Bordeaux blends tend to be more approachable younger than Cabernet-dominant ones — the grape's softer tannins and plush fruit make it a gentler introduction to the Bordeaux style."
     ],
@@ -14423,7 +14423,7 @@
     ],
     "story": "Dry Creek Valley has long been known for Zinfandel, but its Cabernet Sauvignon program is increasingly attracting attention. The valley's warm days and cool nights — moderated by fog from the Petaluma Gap — produce Cabernet with more freshness and structure than many Napa counterparts.",
     "trivia": [
-      "Dry Creek Valley was California's first AVA, established in 1983 — recognized before many of the appellations that are now more famous.",
+      "Dry Creek Valley was established as an AVA in 1983, one of the first wine regions in California to receive the designation — a recognition of its distinct identity as a Zinfandel and Cabernet producer.",
       "Adobe Road was founded by Kevin Buckler, a professional race car driver who brings the same precision-focused approach to winemaking.",
       "Sonoma Cabernet typically shows more herbal, savory character than Napa — the result of cooler temperatures and the influence of the Pacific."
     ]
@@ -14576,7 +14576,7 @@
     ],
     "story": "Dave Phinney founded Orin Swift after the success of The Prisoner, building a portfolio of wines designed for immediate enjoyment. 8 Years in the Desert references the time Phinney spent developing his winemaking philosophy before the wines started attracting attention — the desert metaphor for a period of struggle before recognition.",
     "trivia": [
-      "The name references the eight years Phinney spent under a non-compete agreement after selling The Prisoner Wine Company, during which he was prohibited from making Zinfandel — the variety that made his name.",
+      "After selling The Prisoner Wine Company, Dave Phinney founded Orin Swift — named after his father Orion and mother Swift — focusing on bold blends like this one.",
       "Old-vine Zinfandel from California's Lodi and Amador County regions can be over 100 years old — these gnarly, head-trained vines produce concentrated, intensely flavored fruit unlike any younger vineyard.",
       "Petite Sirah adds the deep color and tannic backbone that keeps a wine like this from feeling flabby despite its generous fruit — without it, high-alcohol Zinfandel can fall apart in the glass."
     ]
